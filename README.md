@@ -46,5 +46,5 @@
 
 <h1>:open_file_folder: 서비스 발표영상 & PPT</h1><br>
 <a href="">엔플릿 발표 영상</a><br>
-<a href="">엔플릿 PPT</a>
+<a href="https://moonhy7.github.io/N-PLIT/nplit_presentation.pdf">엔플릿 PPT</a>
 <br><br>
