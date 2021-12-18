@@ -8,36 +8,39 @@
 
 
 <h1>⚡ 핵심기능</h1>
-위치 기반 검색<br><br>
+<li>위치 기반 검색<br>
+&nbsp;&nbsp; : 사용자가 원하는 물건을 검색하면 해당 위치 근거리에 있는 쉐어링 목록을 제공<br><br></li><br>
 
-: 사용자가 원하는 물건을 검색하면 해당 위치 근거리에 있는 쉐어링 목록을 제공<br><br>
+<li>쉐어링 매칭 서비스<br>
+&nbsp;&nbsp; : 등록된 쉐어링 글을 통해 함께 참여할 회원들이 모이면 매칭 완료<br><br></li><br>
 
-
-쉐어링 매칭 서비스<br>
-
-: 등록된 쉐어링 글을 통해 함께 참여할 회원들이 모이면 매칭 완료<br><br>
-
-
-채팅 기능<br>
-
-: 쉐어링하기 위해 모인 회원들이 금액이나 거래 장소 등을 결정하기 위한 소통 수단 <br><br>
-
+<li>채팅 기능<br>
+&nbsp;&nbsp; : 쉐어링하기 위해 모인 회원들이 금액이나 거래 장소 등을 결정하기 위한 소통 수단<br><br></li><br>
 
 <h1>👩‍💻팀명</h1>
 엔플릿조<br><br>
 
 
-<h1>👥팀원</h1>
-![image](https://user-images.githubusercontent.com/78725674/146631600-6be81cd3-cb86-496f-b227-edcaafb7e537.png)
+<h1>👥팀원</h1><br>
 
-<h1>💻 사용기술 / 개발환경</h1>
-image-20210715161805862<br><br>
+![image](https://user-images.githubusercontent.com/78725674/146631607-e288a96c-daa5-490c-b687-ffb8ed7ddc04.png)
+<br><br>
 
-
-<h1>💿DB설계</h1>
-image-20210715230957933<br><br>
+<h1>💻 사용기술 / 개발환경</h1><br>
 
 
-<h1>🏋️‍ 서비스 발표영상 & PPT</h1>
-<a href="">엔플릿 발표 영상</a>
+![image](https://user-images.githubusercontent.com/78725674/146631626-d94f375d-399f-4373-b28c-768fd9532edf.png)
+<br><br>
+
+<h1>💿DB설계</h1><br>
+
+![image](https://user-images.githubusercontent.com/78725674/146631628-ac3306e2-ab56-4c8c-9f8a-4b64a8dd84da.png)
+<br><br>
+
+
+
+
+<h1>:open_file_folder: 서비스 발표영상 & PPT</h1><br>
+<a href="">엔플릿 발표 영상</a><br>
 <a href="">엔플릿 PPT</a>
+<br><br>
