@@ -19,8 +19,8 @@
 
 <h1>👩‍💻팀명</h1>
 
-![image](https://user-images.githubusercontent.com/78725674/146631883-baa87f31-6211-49e1-ab60-6570bda27a75.png)
-<br><br>
+![image](https://user-images.githubusercontent.com/78725674/146631906-485d5ee4-f958-45be-a173-396f5190ca1c.png)
+
 
 
 
@@ -28,7 +28,7 @@
 
 ![image](https://user-images.githubusercontent.com/78725674/146631607-e288a96c-daa5-490c-b687-ffb8ed7ddc04.png)
 
-<br><br>
+<br>
 
 <h1>💻 사용기술 / 개발환경</h1><br>
 
