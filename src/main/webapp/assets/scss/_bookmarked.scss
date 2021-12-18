@@ -1,0 +1,90 @@
+/*======================================
+    Bookmarked CSS
+========================================*/
+.bookmarked {
+    background-color: $gray;
+
+    .job-items {
+        padding: 30px;
+        background-color: #fff;
+        border: 1px solid #eee;
+        border-radius: 6px;
+
+        .manage-content {
+            padding: 25px 0;
+            border-bottom: 1px solid #f1f1f1;
+
+            &:last-child {
+                margin-bottom: 0;
+                padding-bottom: 0;
+                border-bottom: none;
+            }
+
+            .title-img {
+                .can-img {
+                    float: left;
+                    margin-right: 8px;
+                }
+
+                h3 {
+                    font-weight: 600;
+                    position: relative;
+                    top: 8px;
+
+                    span {
+                        font-size: 13px;
+                        font-weight: 400;
+                        display: block;
+                        margin-top: 5px;
+                    }
+                }
+            }
+
+            .time {
+                background: #2042e314;
+                color: $theme-color;
+                padding: 5px 14px;
+                border-radius: 3px;
+                font-size: 13px;
+            }
+
+            .can-img {
+                img {
+                    width: 50px;
+                    margin: 5px 15px;
+                }
+            }
+
+            .location {
+                font-size: 13px;
+                position: relative;
+                padding-left: 20px;
+
+                i {
+                    display: inline-block;
+                    position: absolute;
+                    left: 0;
+                    top: 3px;
+                }
+            }
+
+            p {
+                i {
+                    font-size: 14px;
+                }
+            }
+
+            h3 {
+                font-size: 15px;
+                font-weight: 500;
+            }
+
+            .button {
+                .btn {
+                    padding: 8px 12px;
+                    font-size: 13px;
+                }
+            }
+        }
+    }
+}

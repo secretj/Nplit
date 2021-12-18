@@ -1,0 +1,32 @@
+/*======================================
+    Our Achievement CSS
+========================================*/
+
+.our-achievement {
+    background-color: $theme-color;
+    padding-top: 70px;
+    padding: 90px 0 120px 0;
+
+    .single-achievement {
+        margin-top: 30px;
+        text-align: center;
+        padding: 0px 50px;
+
+        h3 {
+            font-size: 40px;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 5px;
+            color: $white;
+        }
+
+        p {
+            font-size: 18px;
+            color: $white;
+            font-weight: 500;
+            font-family: 'Jost',
+                sans-serif;
+            ;
+        }
+    }
+}

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- mapper DTD 선언 -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+ <mapper namespace="com.nplit.mapper.ChatMapper">
+	 	<!-- 채팅방 개설 -->
+	 	<insert id="createRoom">
+			<![CDATA[
+			INSERT INTO chatroom(
+				roomId,
+			    TITLE
+				)
+			VALUES(
+				#{roomId},
+				#{title}
+				)
+			]]>
+		</insert>
+	
+		<!-- 채팅방 방장 참가 -->
+	 	<insert id="joinRoomMaster">
+			<![CDATA[
+			INSERT INTO ChatMemberList(
+				roomId,
+			    memberId
+				)
+			VALUES(
+				#{roomId},
+				#{memberId}
+				)
+			]]>
+		</insert>
+		
+		<!-- 채팅방 참가 -->
+	 	<insert id="roomJoin">
+			<![CDATA[
+			INSERT INTO ChatMemberList(
+				roomId,
+			    memberId
+				)
+			VALUES(
+				#{roomId},
+				#{memberId}
+		
+				)
+			]]>
+		</insert>
+		
+		   <select id = "chatcheck" parameterType="com.nplit.vo.ChatMemberListVO" resultType ="int">
+             <![CDATA[
+                            SELECT COUNT(*) FROM
+                          CHATMEMBERLIST
+                         WHERE ROOMID =#{roomId} and memberId=#{memberId};
+             ]]>
+             </select>
+ 
+		
+		<!-- 내가 참가중인 채팅리스트 불러오기 -->
+   <select id="selectMyChatting" parameterType="string" resultType="com.nplit.vo.ChatRoomVO">
+      <![CDATA[
+         SELECT * FROM CHATROOM A
+         			  JOIN CHATMEMBERLIST B
+         			 ON A.ROOMID=B.ROOMID 
+         			 WHERE B.MEMBERID=#{MEMBERID}
+         
+
+      ]]>
+   </select>
+   
+
+   
+   <!-- 메세지 저장 -->
+	 	<insert id="insertSendMsg">
+			<![CDATA[
+			INSERT INTO chatmessage(
+				roomId,
+				sendId,
+				message,
+				fullFilePath
+				)
+			VALUES(
+				#{roomId},
+				#{sendId},
+				#{message},
+				#{fullFilePath}
+				)
+			]]>
+		</insert>
+		
+	
+   			<!-- 해당방의 메세지 조회 -->
+		   <select id="selectMessage" parameterType="int" resultType="com.nplit.vo.ChatMessageVO">
+		      <![CDATA[
+		          SELECT * FROM CHATMESSAGE A
+		         			  JOIN CHATROOM B
+		         			 ON A.ROOMID=B.ROOMID
+                             where A.roomId=#{roomId};
+		         
+		
+		      ]]>
+		   </select>
+
+	
+		<!-- 해당방의 정보 조회 -->
+		   <select id="selectChattingDetail" parameterType="int" resultType="com.nplit.vo.ChatRoomVO">
+		      <![CDATA[
+		          SELECT * FROM CHATROOM 
+		         			
+                             where roomId=#{roomId};
+		         
+		
+		      ]]>
+		   </select>
+   
+ 
+  <select id ="getListCount" parameterType="com.nplit.vo.ChatRoomVO" resultType="int">
+       <![CDATA[
+       SELECT
+             COUNT(*)
+       FROM
+             CHATMEMBERLIST
+       WHERE 
+             MEMBERID= #{parId}
+       
+          ]]>
+    </select>
+    
+    <select id="selectMemberList" parameterType="HashMap" resultType="HashMap">
+       <![CDATA[
+       SELECT A.SEQ AS seq,
+               A.TITLE AS title,
+               A.CATEGORY AS category,
+               A.MAXNUM AS maxNum,
+               A.PRICE AS price,
+               B.FILENO AS fileno,
+               CONCAT('/upload/', B.FILENAME) AS filename,
+               B.UPLOADPATH AS uploadpath
+       FROM BOARD A LEFT OUTER JOIN ATTACH B ON A.SEQ = B.SEQ AND B.FILENO = 1
+       WHERE A.SEQ IN (       
+                     SELECT C.roomId
+                     FROM CHATMEMBERLIST AS C
+                     WHERE memberId = #{parId} 
+                    )
+       ORDER BY SEQ DESC
+       LIMIT #{criteria.amount} OFFSET #{criteria.startNum}
+       
+       ]]>
+    </select>
+ 
+ 
+ </mapper>
+ 
