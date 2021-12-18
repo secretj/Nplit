@@ -18,12 +18,16 @@
 &nbsp;&nbsp; : 쉐어링하기 위해 모인 회원들이 금액이나 거래 장소 등을 결정하기 위한 소통 수단<br><br></li><br>
 
 <h1>👩‍💻팀명</h1>
-엔플릿조<br><br>
+
+![image](https://user-images.githubusercontent.com/78725674/146631883-baa87f31-6211-49e1-ab60-6570bda27a75.png)
+<br><br>
+
 
 
 <h1>👥팀원</h1><br>
 
 ![image](https://user-images.githubusercontent.com/78725674/146631607-e288a96c-daa5-490c-b687-ffb8ed7ddc04.png)
+
 <br><br>
 
 <h1>💻 사용기술 / 개발환경</h1><br>
