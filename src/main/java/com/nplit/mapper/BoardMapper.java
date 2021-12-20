@@ -78,10 +78,7 @@ public interface BoardMapper {
 	
 	//내가 등록한 리스트
 	List<BoardVO> registered_mylist(Map<String, Object> paramMap);
-	
-	//내가 참여한 리스트
-//		List<BoardVO> participate_mylist(Map<String, Object> paramMap);
-			
+
 	
 	//총 등록수
 	int registered_mylist_count(String id);
@@ -161,8 +158,7 @@ public interface BoardMapper {
 	//게시글 등록
 	void admin_register(AdminVO vo);
 	
-	//리스트
-//	List<BoardVO> admin_register_list();
+
 	
 	List<Map<String, String>> admin_getsharinglist(Map<String, Object> paramMap);
 }

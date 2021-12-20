@@ -16,7 +16,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(authenticationInterceptor)
-        .excludePathPatterns("/upload/**","/assets/**","/error","/login","/loginProcess");
+        .excludePathPatterns("/upload/**","/assets/**","/error","/login","/loginProcess");			//인터셉터가 제외할 path를 지정
         
     }
 }

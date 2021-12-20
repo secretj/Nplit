@@ -49,9 +49,9 @@
 		
 		   <select id = "chatcheck" parameterType="com.nplit.vo.ChatMemberListVO" resultType ="int">
              <![CDATA[
-                            SELECT COUNT(*) FROM
-                          CHATMEMBERLIST
-                         WHERE ROOMID =#{roomId} and memberId=#{memberId};
+                         SELECT COUNT(*) FROM
+                          						CHATMEMBERLIST
+                        						WHERE ROOMID =#{roomId} and memberId=#{memberId};
              ]]>
              </select>
  

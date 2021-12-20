@@ -32,13 +32,13 @@ public interface ChatMapper {
 	void insertSendMsg(ChatMessageVO vo);
 
 	//메세지 조회
-	 List<ChatMessageVO> selectMessage(int seq);
+    List<ChatMessageVO> selectMessage(int seq);
 
-	 int getListCount(String parId);
+	int getListCount(String parId);
 
-	   int chatcheck(ChatMemberListVO cmlvo);
+    int chatcheck(ChatMemberListVO cmlvo);
 	 
-	 List<Map<String, String>> selectMemberList(Map<String, Object> paramMap);
+	List<Map<String, String>> selectMemberList(Map<String, Object> paramMap);
 	 
 	 
 }

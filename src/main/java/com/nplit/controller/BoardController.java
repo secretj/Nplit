@@ -71,16 +71,12 @@ public class BoardController {
         return "/main/index";
     }
 	
-	
+	//***************** notice *******************************
 	@RequestMapping(value = "/notice")
     public String notice(){
         return "/main/notice";
     }
 	
-	/*
-	 * @RequestMapping(value = "/error") public String error(){ return
-	 * "/success/404"; }
-	 */
 
 	/******* 하윤 처음 nearme 페이지에 왔을 때 화면 **********/
 	@RequestMapping(value = "/near_me")
@@ -97,31 +93,19 @@ public class BoardController {
 		}
 		System.out.println("vo.getSearchAddress()==============================================" + vo.getSearchAddress());
 		
-//	   System.out.println("글 상세 조회 처리");
-//	   System.out.println(cri.getPageNum());
-//	   System.out.println(cri.getAmount());
-	   //mypage list에서 조회쿼리 호출 전에 cri.setAmount(4);
 	   cri.setAmount(9);
 	   
 	   int total = boardService.selectRegisterCount(vo);
 	   System.out.println(total);
 	   
 	   model.addAttribute("registerlist", boardService.getsharinglist(vo, cri));
-//	   model.addAttribute("category_count", boardService.category_count()); // 카테고리별 개수
-//	   model.addAttribute("pageMaker", new PageVO(cri, total));
-
-	   System.out.println(boardService.getsharinglist(vo, cri));
 	   
 		return "/near/near_me";
    }
 	
-	//*******************  chatting  **************************
+	//*******************  채팅 페이지 이동  **************************
 	
-	@RequestMapping(value = "/chatting_registered_spot")
-    public String chatting_registered_spot(){
-        return "/chatting/chatting_registered_spot";
-    }
-	
+
 	@RequestMapping(value = "/chatting")
     public String chatting(){
         return "/chatting/chatting";
@@ -164,22 +148,10 @@ public class BoardController {
       if(CollectionUtils.isEmpty(fileList) == false) {
          boardService.insertAttachFileList(fileList);
       }
-      //model.addAttribute("board", boardService.registered_list());
-	  //model.addAttribute("fileList", boardService.getFileList(b_fileno));
 	return "redirect:/details?seq=" + seq;
 	}
 	
-//	// 쉐어링 목록 보기 (grid 형태)
-//	@RequestMapping(value = "/sharing/grid")
-//    public String grid(){
-//        return "/sharing/grid";
-//    }
-//	
-//	// 쉐어링 목록 보기 (list 형태) 
-//	@RequestMapping(value = "/sharing/list")
-//    public String sharing_list(){
-//        return "/sharing/list";
-//    }
+
 	
 	//쉐어링 목록 화면 - 그리드(기본) 
 	@RequestMapping("/registerlist")
@@ -255,34 +227,11 @@ public class BoardController {
 		model.addAttribute("mylist", boardService.registered_mylist(id, vo, cri));
 		model.addAttribute("pageMaker", new PageVO(cri, total));
 		model.addAttribute("mylist_count", total);
-		//mypage list에서 조회쿼리 호출 전에 cri.setAmount(4);
-//		cri.setAmount(4);
-		/*
-		 * model.addAttribute("mylist", boardService.registered_mylist(id));
-		 * model.addAttribute("mylist_count", boardService.registered_mylist_count(id));
-		 */
+
         return "/mypage/sharing_registered";
     }
 	
-	// 하윤 마이페이지 쉐어링 목록 보기
-//	@RequestMapping(value = "/sharing_participate")
-//    public String participate_mylist(BoardVO vo, Criteria cri, Model model, HttpServletRequest request) throws Exception {
-//
-//		HttpSession session = request.getSession();
-//		MemberVO loginInfo = (MemberVO)session.getAttribute("login");
-//		String id = loginInfo.getMemberId();
-//		
-//		// 페이징처리 수정 
-//		cri.setAmount(4);
-//		int total = boardService.registered_mylist_count(id); //total = 내가 등록한 쉐어링 총 개수
-//		System.out.println("**** 내가 등록한 쉐어링 총 개수" + total);
-//		
-//		model.addAttribute("mylist", boardService.registered_mylist(id, vo, cri));
-//		model.addAttribute("pageMaker", new PageVO(cri, total));
-//		model.addAttribute("mylist_count", total);
-//		
-//		return "/mypage/sharing_participate";
-//    }
+
 	
 	   
 	  // 하윤 마이페이지 - 쉐어링 삭제
