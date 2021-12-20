@@ -110,15 +110,6 @@ public class BoardServiceImpl implements BoardService {
 		return boardMapper.registered_mylist(paramMap);
 	}
 
-	// 내가 참여중인 쉐어링 페이지
-//	public List<BoardVO> participate_mylist(String id, BoardVO vo, Criteria cri) {
-//		Map<String, Object> paramMap  = new HashMap<String, Object>();
-//		paramMap.put("id", id);
-//		paramMap.put("vo", vo);
-//		paramMap.put("cri", cri);
-//		cri.setStartNum((cri.getPageNum() - 1) * cri.getAmount());
-//		return boardMapper.registered_mylist(paramMap);
-//	}
 
 	// 마이페이지 - 등록된 글 수
 	public int registered_mylist_count(String id) {
@@ -259,14 +250,7 @@ public class BoardServiceImpl implements BoardService {
 		boardMapper.admin_register(vo);
 	}
 
-	// 내가 등록한 쉐어링 페이지
 
-	/*
-	 * public List<BoardVO> admin_register_mylist(String id, BoardVO vo) {
-	 * Map<String, Object> paramMap = new HashMap<String, Object>();
-	 * paramMap.put("id", id); paramMap.put("vo", vo); return
-	 * boardMapper.registered_mylist(paramMap); }
-	 */
 
 	public List<Map<String, String>> admin_getsharinglist(AdminVO vo, Criteria cri) {
 		Map<String, Object> paramMap = new HashMap<String, Object>();
