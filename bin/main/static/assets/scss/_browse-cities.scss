@@ -1,0 +1,109 @@
+/*======================================
+    Browse Cities CSS
+========================================*/
+.browse-cities {
+    background-color: $gray;
+
+    .section-title {
+        margin-bottom: 50px;
+    }
+
+    .single-city {
+        margin-top: 30px;
+        position: relative;
+        z-index: 3;
+        border-radius: 6px;
+        overflow: hidden;
+
+        .info-box {
+            position: relative;
+
+            &::before {
+                position: absolute;
+                content: "";
+                left: 0;
+                bottom: 0;
+                height: 130px;
+                width: 100%;
+                background: linear-gradient(transparent, #000000f0);
+                z-index: 0;
+            }
+        }
+
+        .more-btn {
+            font-size: 30px;
+            color: $white;
+            transition: all 0.4s ease;
+            opacity: 0;
+            visibility: hidden;
+            transform: scale(0);
+            position: absolute;
+            right: 25px;
+            bottom: 25px;
+
+            &:hover {
+                color: $theme-color;
+            }
+        }
+
+        &:hover {
+            .more-btn {
+                opacity: 1;
+                visibility: visible;
+                transform: scale(1);
+            }
+        }
+
+
+        .image {
+            z-index: -1;
+            position: relative;
+
+            img {
+                height: 100%;
+                width: 100%;
+                transition: all 0.4s ease;
+
+            }
+        }
+
+        &:hover {
+            .image {
+                img {
+                    transform: scale(1.1);
+                }
+            }
+        }
+
+        .content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 25px;
+            padding-right: 70px;
+
+            .name {
+                font-size: 18px;
+                font-weight: 600;
+                color: $white;
+                display: block;
+                transition: all 0.4s ease;
+                display: inline-block;
+
+                &:hover {
+                    color: $theme-color;
+                }
+
+                span {
+                    color: $white;
+                    font-size: 14px;
+                    font-weight: 400;
+                    display: block;
+                    margin-top: 4px;
+                }
+            }
+        }
+
+    }
+}

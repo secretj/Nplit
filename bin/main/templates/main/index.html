@@ -1,0 +1,1433 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html class="no-js" lang="zxx">
+
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="x-ua-compatible" content="ie=edge" />
+	<title>Main - NPLIT</title>
+	<meta name="description" content="" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="shortcut icon" type="image/x-icon" href="/assets/images/logo/favicon.png" />
+	<!-- Place favicon.ico in the root directory -->
+
+	<!-- Web Font -->
+	<link
+		href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+		rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+
+	<!-- ========================= CSS here ========================= -->
+	<link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="/assets/css/LineIcons.2.0.css" />
+	<link rel="stylesheet" href="/assets/css/animate.css" />
+	<link rel="stylesheet" href="/assets/css/tiny-slider.css" />
+	<link rel="stylesheet" href="/assets/css/glightbox.min.css" />
+	<link rel="stylesheet" href="/assets/css/main.css" />
+	<!--<link rel="styelsheet" href="/assets/css/style.css"/>-->
+
+
+	<!-- 수정 (예진) : 스타일 추가-->
+	<style>
+		#sub_a {
+			height: 100%;
+			width: 100%;
+		}
+
+		#sub_img {
+			height: 100%;
+
+		}
+
+
+
+
+		.notice {
+			float: right;
+			min-width: 100%;
+			color: gray;
+		}
+
+		.noticeImg img {
+			margin: 0 auto;
+			display: block;
+			margin: 10%;
+			border: 1px solid gray;
+			width: 80%;
+		}
+
+		/* 글씨 통통 수정 (예진)*/
+		.hero-area {
+			width: 100%;
+			height: 100%;
+			-webkit-font-smoothing: antialiased;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.anitest {
+			height: 100px;
+		}
+
+		.anitest span {
+			position: relative;
+			top: 20px;
+			display: inline-block;
+			animation: bounce .3s ease infinite alternate;
+			font-family: 'Titan One', cursive;
+			font-size: 150px;
+			color: #FFF;
+			text-shadow: 0 1px 0 #CCC,
+				0 2px 0 #CCC,
+				0 3px 0 #CCC,
+				0 4px 0 #CCC,
+				0 5px 0 #CCC,
+				0 6px 0 transparent,
+				0 7px 0 transparent,
+				0 8px 0 transparent,
+				0 9px 0 transparent,
+				0 10px 10px rgba(0, 0, 0, .4);
+		}
+
+		.anitest span:nth-child(2) {
+			animation-delay: .1s;
+		}
+
+		.anitest span:nth-child(3) {
+			animation-delay: .2s;
+		}
+
+		.anitest span:nth-child(4) {
+			animation-delay: .3s;
+		}
+
+		.anitest span:nth-child(5) {
+			animation-delay: .4s;
+		}
+
+		.anitest span:nth-child(6) {
+			animation-delay: .5s;
+		}
+
+		.anitest span:nth-child(7) {
+			animation-delay: .6s;
+		}
+
+		.anitest span:nth-child(8) {
+			animation-delay: .7s;
+		}
+
+		.anitest span:nth-child(9) {
+			animation-delay: .8s;
+		}
+
+
+		@keyframes bounce {
+			100% {
+				top: -20px;
+				text-shadow: 0 1px 0 #CCC,
+					0 2px 0 #CCC,
+					0 3px 0 #CCC,
+					0 4px 0 #CCC,
+					0 5px 0 #CCC,
+					0 6px 0 #CCC,
+					0 7px 0 #CCC,
+					0 8px 0 #CCC,
+					0 9px 0 #CCC,
+					0 50px 25px rgba(0, 0, 0, .2);
+			}
+		}
+
+		.duration {
+			color: black !important;
+		}
+
+
+		.amount {
+			color: black !important;
+		}
+
+		.title {
+			color: black !important;
+		}
+
+		.table-list {
+			margin: 0px;
+		}
+
+		/* 수정 끝*/
+
+
+		/* 하윤 개발자 소개 페이지 css 추가 시작 */
+
+		/* Projects area
+================================================== */
+		/* Project filter nav */
+		.shuffle-btn-group {
+			display: inline-block;
+			margin: 20px 0 50px;
+			width: 100%;
+			border-bottom: 3px solid #ffb600;
+		}
+
+		.shuffle-btn-group label {
+			display: inline-block;
+			color: #212121;
+			font-size: 14px;
+			padding: 6px 25px;
+			padding-top: 10px;
+			font-weight: 700;
+			text-transform: uppercase;
+			transition: all 0.3s;
+			cursor: pointer;
+			margin: 0;
+		}
+
+		@media (max-width: 1200px) {
+			.shuffle-btn-group label {
+				padding: 3px 18px;
+			}
+		}
+
+		@media (max-width: 991px) {
+			.shuffle-btn-group label {
+				padding: 3px 7px;
+				font-size: 12px;
+			}
+		}
+
+		.shuffle-btn-group label.active {
+			color: #212121;
+			background: #ffb600;
+		}
+
+		.shuffle-btn-group label input {
+			display: none;
+		}
+
+		/* Project shuffle Item */
+		.shuffle-item {
+			padding: 0;
+		}
+
+		.shuffle-item .project-img-container {
+			position: relative;
+			overflow: hidden;
+		}
+
+		.shuffle-item .project-img-container img {
+			-webkit-transform: perspective(1px) scale3d(1.1, 1.1, 1);
+			transform: perspective(1px) scale3d(1.1, 1.1, 1);
+			transition: all 400ms;
+		}
+
+		.shuffle-item .project-img-container:hover img {
+			-webkit-transform: perspective(1px) scale3d(1.15, 1.15, 1);
+			transform: perspective(1px) scale3d(1.15, 1.15, 1);
+		}
+
+		.shuffle-item .project-img-container:after {
+			opacity: 0;
+			position: absolute;
+			content: '';
+			top: 0;
+			right: auto;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0, 0, 0, 0.7);
+			transition: all 400ms;
+		}
+
+		.shuffle-item .project-img-container:hover:after {
+			opacity: 1;
+		}
+
+		.shuffle-item .project-img-container .gallery-popup .gallery-icon {
+			position: absolute;
+			top: 0;
+			right: 0;
+			z-index: 1;
+			padding: 5px 12px;
+			background: #926a9d;
+			color: #fff;
+			opacity: 0;
+			-webkit-transform: perspective(1px) scale3d(0, 0, 0);
+			transform: perspective(1px) scale3d(0, 0, 0);
+			transition: all 400ms;
+		}
+
+		.shuffle-item .project-img-container:hover .gallery-popup .gallery-icon {
+			opacity: 1;
+			-webkit-transform: perspective(1px) scale3d(1, 1, 1);
+			transform: perspective(1px) scale3d(1, 1, 1);
+		}
+
+		.shuffle-item .project-img-container .project-item-info {
+			position: absolute;
+			top: 50%;
+			margin-top: -10%;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			padding: 0 30px;
+			z-index: 1;
+		}
+
+		.shuffle-item .project-img-container .project-item-info-content {
+			opacity: 0;
+			-webkit-transform: perspective(1px) translate3d(0, 15px, 0);
+			transform: perspective(1px) translate3d(0, 15px, 0);
+			transition: all 400ms;
+		}
+
+		.shuffle-item .project-img-container .project-item-info-content .project-item-title {
+			font-size: 20px;
+		}
+
+		.shuffle-item .project-img-container .project-item-info-content .project-item-title a {
+			color: #fff;
+		}
+
+		.shuffle-item .project-img-container .project-item-info-content .project-item-title a:hover {
+			color: #926a9d;
+		}
+
+		.shuffle-item .project-img-container .project-item-info-content .project-cat {
+			background: #926a9d;
+			display: inline-block;
+			padding: 2px 8px;
+			font-weight: 700;
+			color: #fff;
+			font-size: 10px;
+			text-transform: uppercase;
+		}
+
+		.shuffle-item .project-img-container:hover .project-item-info-content {
+			opacity: 1;
+			-webkit-transform: perspective(1px) translate3d(0, 0, 0);
+			transform: perspective(1px) translate3d(0, 0, 0);
+		}
+
+		.general-btn .btn-primary:hover {
+			background: #000;
+		}
+
+		/* 하윤 개발자 소개 페이지 css 추가 끝 */
+	</style>
+</head>
+
+<body>
+	<p th:text="${hello}">message</p>
+	<!--[if lte IE 9]>
+      <p class="browserupgrade">
+        You are using an <strong>outdated</strong> browser. Please
+        <a href="https://browsehappy.com/">upgrade your browser</a> to improve
+        your experience and security.
+      </p>
+    <![endif]-->
+
+	<!-- Preloader -->
+	<div class="preloader">
+		<div class="preloader-inner">
+			<div class="preloader-icon">
+				<span></span>
+				<span></span>
+			</div>
+		</div>
+	</div>
+	<!-- /End Preloader -->
+
+	<!-- Start Header Area -->
+	<header class="header navbar-area">
+		<div class="container">
+			<div class="row align-items-center">
+				<div class="col-lg-12">
+					<div class="nav-inner">
+						<nav class="navbar navbar-expand-lg">
+							<a class="navbar-brand" th:href="@{/index}">
+								<img src="/assets/images/logo/header/nplitlogo.svg" alt="Logo">
+							</a>
+							<button class="navbar-toggler mobile-menu-btn" type="button" data-bs-toggle="collapse"
+								data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+								aria-expanded="false" aria-label="Toggle navigation">
+								<span class="toggler-icon"> </span>
+								<span class="toggler-icon"> </span>
+								<span class="toggler-icon"> </span>
+							</button>
+							<div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
+								<ul id="nav" class="navbar-nav ms-auto">
+									<li class="nav-item">
+										<a class="active dd-menu collapsed" th:href="@{/index}"
+											aria-label="Toggle navigation">Home</a>
+
+									</li>
+									<li class="nav-item">
+										<a th:href="@{/registerlist}" aria-label="Toggle navigation">카테고리</a>
+										<ul class="sub-menu mega-menu collapse" id="submenu-1-4">
+											<!-- <li class="mega-menu-title">Dashboard</li> -->
+											<li class="nav-item"><a th:href="@{/registerlist?category=패션/잡화}">패션/잡화</a>
+											</li>
+											<li class="nav-item"><a
+													th:href="@{/registerlist?category=가전/디지털}">가전/디지털</a></li>
+											<li class="nav-item"><a th:href="@{/registerlist?category=라이프}">라이프</a>
+											<li class="nav-item"><a th:href="@{/registerlist?category=배달음식}">배달음식</a>
+											</li>
+											<li class="nav-item"><a th:href="@{/registerlist?category=홈쉐어링}">홈쉐어링</a>
+											</li>
+									</li>
+									<li class="nav-item"><a th:href="@{/registerlist?category=식품}">식품</a></li>
+									<li class="nav-item"><a th:href="@{/registerlist?category=구독서비스}">구독서비스</a></li>
+									<li class="nav-item"><a th:href="@{/registerlist?category=기타}">기타</a></li>
+								</ul>
+								</li>
+
+								<!--예진 로그인 안했을 경우 내 근처 못들어가게-->
+								<li class="nav-item">
+									<a class="dd-menu collapsed" th:if="${#strings.isEmpty(session.login)}"
+										onclick="alert('로그인이 필요한 서비스 입니다.')" th:href="@{/login}"
+										aria-label="Toggle navigation">내 근처</a>
+									<a class="dd-menu collapsed" th:if="${not #strings.isEmpty(session.login)}"
+										th:href="@{/near_me}" aria-label="Toggle navigation">내 근처</a>
+								</li>
+
+								<!--예진 로그인 안했을경우 마이페이지 못들어가게-->
+								<li class="nav-item" th:if="${#strings.isEmpty(session.login)}" th:href="@{/login}"
+									onclick="alert('로그인이 필요한 서비스 입니다.')">
+									<a class="dd-menu collapsed" th:href="@{/login}" aria-label="Toggle navigation">마이
+										페이지</a>
+									<ul class="sub-menu collapse" id="submenu-1-5">
+										<li class="nav-item"><a th:href="@{/login}">내 프로필 보기</a>
+										</li>
+										<li class="nav-item"><a th:href="@{/login}">개인정보 수정</a></li>
+										<li class="nav-item"><a th:href="@{/login}">내가 등록한 쉐어링</a></li>
+										<li class="nav-item"><a th:href="@{/login}">내가 참여중인 쉐어링</a></li>
+										<li class="nav-item"><a th:href="@{/login}">내가 찜한 쉐어링</a></li>
+										<li class="nav-item"><a th:href="@{/myquestion_list}">1:1 문의 내역</a></li>
+									</ul>
+								</li>
+
+								<li class="nav-item" th:if="${not #strings.isEmpty(session.login)}">
+									<!--예진 로그인 했을경우-->
+									<a class="dd-menu collapsed" th:href="@{/profile_show}"
+										aria-label="Toggle navigation">마이 페이지</a>
+									<ul class="sub-menu collapse" id="submenu-1-5">
+										<li class="nav-item"><a th:href="@{/profile_show}">내 프로필 보기</a>
+										</li>
+										<li class="nav-item"><a th:href="@{/profile_update}">개인정보 수정</a></li>
+										<li class="nav-item"><a th:href="@{/sharing_registered}">내가 등록한 쉐어링</a></li>
+										<li class="nav-item"><a th:href="@{/sharing_participate}">내가 참여중인 쉐어링</a></li>
+										<li class="nav-item"><a th:href="@{/sharing_like}">내가 찜한 쉐어링</a></li>
+										<li class="nav-item"><a th:href="@{/selectMyQuestion}">1:1 문의 내역</a></li>
+									</ul>
+								</li>
+								<!--예진 로그인 안했을 경우 내채팅 못들어가게-->
+								<li class="nav-item">
+									<a class="dd-menu collapsed" th:if="${#strings.isEmpty(session.login)}"
+										onclick="alert('로그인이 필요한 서비스 입니다.')" th:href="@{/selectMyChatting}"
+										aria-label="Toggle navigation">내 채팅</a>
+									<a class="dd-menu collapsed" th:if="${not #strings.isEmpty(session.login)}"
+										th:href="@{/selectMyChatting}" aria-label="Toggle navigation">내 채팅</a>
+								</li>
+
+								<li style="position: relative; top: 2.2rem;">
+									<span class="notranslate">
+										<div id="google_translate_element" style="display:none;"></div>
+										<!-- "새 번역 링크 UI" -->
+
+										<ul class="translation-links" style="list-style:none;">
+											<li style="float:left; margin-right:0.5rem;"><i class="fas fa-circle"
+													style="color:#cfb0cf; font-size:0.5rem;"></i></li>
+											<li style="float:left"><a href="javascript:void(0)" class="english"
+													data-lang="en">En</a></li>
+											<li style="float:left">&nbsp &#124; &nbsp</li>
+											<li style="float:left"><a href="javascript:void(0)" class="korean"
+													data-lang="ko">Ko</a></li>
+											<li style="float:left; margin-left:0.5rem;"><i class="fas fa-circle"
+													style="color:#cfb0cf; font-size:0.5rem;"></i></li>
+										</ul>
+
+										<script
+											src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+										<script type="text/javascript">
+											/* 구글 번역 초기화 */
+											function googleTranslateElementInit() {new google.translate.TranslateElement({pageLanguage: 'ko', autoDisplay: true}, 'google_translate_element');}
+										</script>
+										<script type="text/javascript">
+											/* 새 UI 선택 클릭 이벤트가 발생하면
+											   감춤 처리한 구글 번역 콤보리스트에
+											   선택한 언어를 적용해 변경 이벤트를 발생시키는 코드  */
+											document.querySelector('.translation-links').addEventListener('click', function (event) {
+												let el = event.target;
+												if (el != null) {
+													while (el.nodeName == 'FONT') {el = el.parentElement;}//data-lang 속성이 있는 태그 찾기
+													const tolang = el.dataset.lang; // 변경할 언어 코드 얻기
+													const gtcombo = document.querySelector('.goog-te-combo');
+													if (gtcombo == null) {
+														alert("Error: Could not find Google translate Combolist.");
+														return false;
+													}
+													gtcombo.value = tolang; // 변경할 언어 적용
+													gtcombo.dispatchEvent(new Event('change')); // 변경 이벤트 트리거
+												}
+												return false;
+											});
+										</script>
+									</span>
+								</li>
+
+								</ul>
+							</div> <!-- navbar collapse -->
+
+							<div class="login-button">
+								<ul>
+									<li>
+										<a th:if="${not #strings.isEmpty(session.login)}">
+											<a th:href="@{/profile_show}" class="see-all"><span
+													th:text="${session.login.name}"> </span>님 환영합니다.</a>
+										</a>
+										<a th:if="${#strings.isEmpty(session.login)}" th:href="@{/login}">
+											<i class="lni lni-enter"> </i>로그인
+										</a>
+									</li>
+
+									<li>
+										<a th:if="${not #strings.isEmpty(session.login)}" th:href="@{/logout}">
+											<i class="lni lni-enter"> </i> 로그아웃
+										</a>
+										<a th:if="${#strings.isEmpty(session.login)}" th:href="@{/join}">
+											<i class="lni lni-user"> </i> 가입하기
+										</a>
+									</li>
+								</ul>
+							</div>
+
+							<div class="button header-button">
+								<!--로그인 안되어있을경우 쉐어링 등록 불가-->
+								<a th:if="${#strings.isEmpty(session.login)}" onclick="alert('로그인이 필요한 서비스 입니다.')"
+									th:href="@{/login}" class="btn">쉐어링 등록하기</a>
+								<a th:if="${not #strings.isEmpty(session.login)}" th:href="@{/register_view}"
+									class="btn">쉐어링 등록하기</a>
+							</div>
+						</nav> <!-- navbar -->
+					</div>
+				</div>
+			</div> <!-- row -->
+		</div> <!-- container -->
+	</header>
+	<!-- End Header Area -->
+
+	<!-- Start Hero Area -->
+	<section class="hero-area overlay">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-10 offset-lg-1 col-md-12 col-12">
+					<div class="hero-text text-center">
+						<!-- Start Hero Text -->
+						<div class="section-heading">
+							<h1 class="anitest">
+								<span>N</span>
+								<span>-</span>
+								<span>p</span>
+								<span>l</span>
+								<span>i</span>
+								<span>t</span>
+								<span>!</span>
+							</h1>
+							<br><br>
+							<!-- <h1 class="wow fadeInUp" data-wow-delay=".3s" style="color: #8c6796;">N-Plit</h1> -->
+							<p class="wow fadeInUp" data-wow-delay=".5s" style="margin-top: 100px; color: white;">세상의 모든
+								물건들을 쉐어링 하세요
+								<br>N-Plit 500만 회원들과 함께 물건을 공유해 보세요
+							</p>
+						</div>
+						<!-- End Search Form -->
+						<!-- Start Search Form -->
+						<form action="registerlist" method="post" name="search-form">
+							<div class="search-form wow fadeInUp" data-wow-delay=".7s">
+								<div class="row">
+									<div class="col-lg-4 col-md-4 col-12 p-0">
+										<div class="search-input">
+											<label for="keyword"><i class="lni lni-search-alt theme-color"></i></label>
+											<input type="text" name="SearchKeyword" id="SearchKeyword" placeholder="제품명"
+												autocomplete="off">
+										</div>
+									</div>
+									<div class="col-lg-3 col-md-3 col-12 p-0">
+										<div class="search-input">
+											<label for="category"><i class="lni lni-grid-alt theme-color"></i></label>
+											<select name="category" id="category">
+												<option value="">카테고리</option>
+												<option value="배달음식">배달음식</option>
+												<option value="홈쉐어링">홈쉐어링</option>
+												<option value="패션/잡화">패션/잡화</option>
+												<option value="식품">식품</option>
+												<option value="가전/디지털">가전/디지털</option>
+												<option value="구독서비스">구독서비스</option>
+												<option value="라이프">라이프</option>
+												<option value="기타">기타</option>
+											</select>
+										</div>
+									</div>
+									<div class="col-lg-3 col-md-3 col-12 p-0">
+										<div class="search-input">
+											<label for="location"><i class="lni lni-map-marker theme-color"></i></label>
+											<input type="text" name="SearchAddress" id="SearchAddress" placeholder="지역"
+												autocomplete="off">
+										</div>
+									</div>
+									<div class="col-lg-2 col-md-2 col-12 p-0">
+										<div class="search-btn button">
+											<button class="btn" type="submit">
+												<a class="text-white"> <i class="lni lni-search-alt"> </i> 검색</a>
+											</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</form>
+						<!-- End Search Form -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End Hero Area -->
+
+	<!-- Start Categories Area -->
+	<section class="categories">
+		<div class="container">
+			<div class="cat-inner">
+				<div class="row">
+					<div class="col-12 p-0">
+						<div class="category-slider">
+
+							<!-- Start Single Category -->
+							<a th:each="item : ${category_count}" th:href="@{/registerlist(category=${item.category})}"
+								class="single-cat">
+								<div class="icon">
+									<img th:if="${item.category.equals('패션/잡화')}"
+										src="/assets/images/categories/categoriesarea/clothes.png" alt="#">
+									<img th:if="${item.category.equals('가전/디지털')}"
+										src="/assets/images/categories/categoriesarea/electronics.png" alt="#">
+									<img th:if="${item.category.equals('라이프')}"
+										src="/assets/images/categories/categoriesarea/heart.png" alt="#">
+									<img th:if="${item.category.equals('배달음식')}"
+										src="/assets/images/categories/categoriesarea/delivery.png" alt="#">
+									<img th:if="${item.category.equals('홈쉐어링')}"
+										src="/assets/images/categories/categoriesarea/house.png" alt="#">
+									<img th:if="${item.category.equals('식품')}"
+										src="/assets/images/categories/categoriesarea/cart.png" alt="#">
+									<img th:if="${item.category.equals('구독서비스')}"
+										src="/assets/images/categories/categoriesarea/video.png" alt="#">
+									<img th:if="${item.category.equals('기타')}"
+										src="/assets/images/categories/categoriesarea/dots.png" alt="#">
+								</div>
+								<h3 th:text="${item.category}"></h3>
+								<h5 class="total" th:text="${item.cnt}"> </h5>
+							</a>
+
+							<!-- End Single Category -->
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End Categories Area -->
+
+	<!-- Start Items Tab Area -->
+	<section class="items-tab section">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<div class="section-title">
+						<h2 class="wow fadeInUp" data-wow-delay=".4s" style="margin-top:50px;">쉐어링 목록</h2>
+						<!-- <p class="wow fadeInUp" data-wow-delay=".6s"></p> -->
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-12">
+					<nav>
+						<div class="nav nav-tabs" id="nav-tab" role="tablist">
+							<button class="nav-link active" id="nav-t-tab" data-bs-toggle="tab" data-bs-target="#nav-t"
+								type="button" role="tab" aria-controls="nav-t" aria-selected="true">최신순</button>
+							<button class="nav-link" id="nav-popular-tab" data-bs-toggle="tab"
+								data-bs-target="#nav-popular" type="button" role="tab" aria-controls="nav-popular"
+								aria-selected="false">인기순</button>
+							<button class="btn" style="float:right; margin-top:10px; position:absolute; right:0;"
+								role="tab"><a th:href="@{/registerlist}" style="color:black;">더보기 &#62; </a></button>
+						</div>
+					</nav>
+					<div class="tab-content" id="nav-tabContent">
+						<div class="tab-pane fade show active" id="nav-t" role="tabpanel" aria-labelledby="nav-t-tab">
+							<div class="row">
+								<!--foreach-->
+								<div th:each="register : ${registerlist}" class="col-lg-4 col-md-6 col-12 h-100">
+									<!-- Start Single Item -->
+									<div class="single-item-grid">
+										<div class="image single-sharing-item">
+											<a>
+												<a th:if="${register.filename != null}"
+													th:href="@{/details(seq=${register.seq})}">
+													<img th:src="${register.filename}" alt="#">
+												</a>
+												<a th:if="${register.filename == null}"
+													th:href="@{/details(seq=${register.seq})}">
+													<img th:src="@{/assets/images/default_img.png}">
+												</a>
+											</a>
+											<!--<i class=" cross-badge lni lni-heart"> </i>-->
+											<span class="flat-badge sale" style=" padding: 0.3rem 0.5rem;"><a
+													th:text="${register.maxNum}" style="display: inline;"> </a> 명 남음
+											</span>
+										</div>
+										<div class="content">
+											<a th:href="@{/details(seq=${register.seq})}" class="tag"
+												th:text="${register.category}"> </a>
+											<h3 class="title">
+												<a th:href="@{/details(seq=${register.seq})}"
+													th:text="${register.title}"> </a>
+											</h3>
+
+											<ul class="info">
+												<li class="price">
+													<a class="price" th:text="${register.price}"> </a>
+													<span style="padding-top:0.4rem; padding-left:0.2rem;">원</span>
+												</li>
+												<!-- <li class="like">
+	                                                	<a th:href="@{/sharing_like}"><i class="lni lni-heart"> </i></a>
+	                                                 </li>-->
+											</ul>
+										</div>
+									</div>
+									<!-- End Single Item -->
+								</div>
+								<!--foreach-->
+							</div>
+						</div>
+						<div class="tab-pane fade" id="nav-popular" role="tabpanel" aria-labelledby="nav-popular-tab">
+							<div class="row">
+								<!--foreach-->
+								<div th:each="popular : ${popularlist}" class="col-lg-4 col-md-6 col-12 h-100">
+									<!-- Start Single Item -->
+									<div class="single-item-grid">
+										<div class="image single-sharing-item">
+											<a>
+												<a th:if="${popular.filename != null}"
+													th:href="@{/details(seq=${popular.seq})}">
+													<img th:src="${popular.filename}" alt="#">
+												</a>
+												<a th:if="${popular.filename == null}"
+													th:href="@{/details(seq=${popular.seq})}">
+													<img th:src="@{/assets/images/default_img.png}">
+												</a>
+											</a>
+											<!--<i class=" cross-badge lni lni-heart"> </i>-->
+											<span class="flat-badge sale"><a th:text="${popular.maxNum}"
+													style="display: inline;"> </a> 명 남음 </span>
+										</div>
+										<div class="content">
+											<a th:href="@{/details(seq=${popular.seq})}" class="tag"
+												th:text="${popular.category}"> </a>
+											<h3 class="title">
+												<a th:href="@{/details(seq=${popular.seq})}" th:text="${popular.title}">
+												</a>
+											</h3>
+
+											<ul class="info">
+												<li class="price">
+													<a class="price" th:text="${popular.price}"> </a> <span
+														style="padding-top:0.4rem; padding-left:0.2rem;">원</span>
+												</li>
+												<!-- <li class="like">
+	                                                	<a th:href="@{/sharing_like}"><i class="lni lni-heart"> </i></a>
+	                                                 </li>-->
+											</ul>
+										</div>
+									</div>
+									<!-- End Single Item -->
+								</div>
+								<!--foreach-->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End Items Tab Area -->
+
+	<!-- Start Items Grid Area -->
+	<section class="items-grid section custom-padding" style="padding: 0px;">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<div class="section-title">
+						<h2 class="wow fadeInUp" data-wow-delay=".4s">구독 서비스</h2>
+						<p class="wow fadeInUp" data-wow-delay=".6s"> N-plit 만의 구독서비스를 체험해보세요.</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="single-head">
+				<div class="row">
+
+					<!-- 원준 구독서비스-->
+					<div th:each="subscribe : ${subscribe_list}" class="col-lg-4 col-md-6 col-12">
+						<!-- Start Single Grid -->
+						<div class="single-grid wow fadeInUp" data-wow-delay=".2s">
+							<div class="image single-grid-imgbox">
+								<a id="sub_a" th:if="${subscribe.filename != null}"
+									th:href="@{/details(seq=${subscribe.seq})}">
+									<img id="sub_img" th:src="${subscribe.filename}" alt="#">
+								</a>
+								<a id="sub_a" th:if="${subscribe.filename == null}"
+									th:href="@{/details(seq=${subscribe.seq})}">
+									<img id="sub_img" th:src="@{/assets/images/default_img.png}">
+								</a>
+								<div class="author">
+									<!--<div class="author-image">
+                              <a href="javascript:void(0)"><img src="/assets/images/profile/jin-hyoeng.jpg">
+                                 <span>진형</span></a>
+                           </div>-->
+									<span class="flat-badge sale"><a th:text="${subscribe.maxNum}"
+											style="display: inline;"> </a> 명 남음 </span>
+								</div>
+							</div>
+							<div class="content">
+								<div class="top-content">
+									<a href="javascript:void(0)" class="tag">구독 서비스</a>
+									<h3 class="title">
+										<a th:href="@{/details(seq=${subscribe.seq})}" th:text="${subscribe.title}">
+									</h3>
+
+									<ul class="info-list">
+										<li>
+											<i class="lni lni-map-marker"></i>
+											<a th:href="@{/details(seq=${subscribe.seq})}">
+												<span th:text="${subscribe.address}"></span>
+											</a>
+										</li>
+										</li>
+									</ul>
+								</div>
+								<div class="bottom-content">
+									<span>1인 당 </span>
+									<p class="price" style="color: black;" th:text="${subscribe.price}"> </p>
+									<p>원</p>
+									<!--   <a href="javascript:void(0)" class="like"><i class="lni lni-heart"></i></a>-->
+								</div>
+							</div>
+						</div>
+						<!-- End Single Grid -->
+					</div>
+
+				</div>
+			</div>
+
+
+		</div>
+	</section>
+	<!-- /End Items Grid Area -->
+
+
+	<!-- Start Why Choose Area -->
+	<section class="why-choose section">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<div class="section-title">
+						<h2 class="wow fadeInUp" data-wow-delay=".4s">N-plit만의 장점</h2>
+						<p class="wow fadeInUp" data-wow-delay=".6s">1인 가구를 위한 새로운 쇼핑 트렌드,
+							최고의 공동구매와 쉐어링을 이곳에서! </p>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="choose-content">
+						<div class="row">
+							<div class="col-lg-4 col-md-6 col-12">
+								<!-- Start Single List -->
+								<div class="single-list wow fadeInUp" data-wow-delay=".6s">
+									<i class="lni lni-cog"></i>
+									<h4>합리적인 가격</h4>
+									<p>쉐어링을 통해 불필요한 지출을 줄이세요,<br>
+										1인가구에 합리적인 가격을 제시합니다.
+									</p>
+								</div>
+								<!-- Start Single List -->
+							</div>
+							<div class="col-lg-4 col-md-6 col-12">
+								<!-- Start Single List -->
+								<div class="single-list wow fadeInUp" data-wow-delay=".4s">
+									<i class="lni lni-leaf"></i>
+									<h4>근거리 기반</h4>
+									<p>접근성과 신뢰를 위해 가까운 거리 위주의 쉐어링 제공, <br>
+										주변의 쉐어링을 검색하세요 </p>
+								</div>
+								<!-- Start Single List -->
+							</div>
+							<div class="col-lg-4 col-md-6 col-12">
+								<!-- Start Single List -->
+								<div class="single-list wow fadeInUp" data-wow-delay=".2s">
+									<i class="lni lni-book"></i>
+									<h4>채팅서비스</h4>
+									<p>N-plit에서 편리하게 거래하세요, <br>
+										채팅을 통한 빠른거래가 가능합니다</p>
+								</div>
+								<!-- Start Single List -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- /End Why Choose Area -->
+
+
+	<!-- Start Call Action Area -->
+	<section class="call-action overlay section">
+		<div class="container">
+			<div class="row ">
+				<div class="col-lg-8 offset-lg-2 col-12">
+					<div class="inner">
+						<div class="content">
+							<h2 class="wow fadeInUp" data-wow-delay=".4s" style="color: #503866;">함께 구매하면 더 저렴해집니다 !
+							</h2>
+							<p class="wow fadeInUp" data-wow-delay=".6s" style="color: #503866;">지금 바로 N플릿에서 쉐어링을 체험해보세요
+								!</p>
+							<div class="button wow fadeInUp" data-wow-delay=".8s">
+								<!--로그인 안되어있을경우 쉐어링 등록 불가-->
+								<a th:if="${#strings.isEmpty(session.login)}" onclick="alert('로그인이 필요한 서비스 입니다.')"
+									th:href="@{/login}" class="btn">쉐어링 등록하기</a>
+								<a th:if="${not #strings.isEmpty(session.login)}" th:href="@{/register_view}"
+									class="btn">쉐어링 등록하기</a>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End Call Action Area -->
+
+	<!-- Start Pricing Table Area -->
+	<section class="pricing-table section">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<div class="section-title">
+						<h2 class="wow fadeInUp" data-wow-delay=".4s">EVENT</h2>
+						<p class="wow fadeInUp" data-wow-delay=".6s">2021 11 월 진행중인 이벤트</p>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-4 col-md-6 col-12">
+					<!-- Single Table -->
+					<div class="single-table wow fadeInUp" data-wow-delay=".2s">
+						<!-- Table Head -->
+						<div class="table-head">
+							<div>
+								<img src="/assets/images/items/ikea-stand.png">
+							</div>
+							<div class="index-event-title">
+								<h3>이케아 스탠드</h3>
+								<h4>5개</h4>
+								<h5 class="title">1회 구매시 1회 응모</h5>
+							</div>
+						</div>
+						<!-- End Table Head -->
+						<!-- Table List -->
+						<div class="index-event-text">
+							<p>이케아 LERSTA 플로어 스탠드</p>
+							<p>독서등으로 사용해보세요 </p>
+						</div>
+						<div class="index-event-btn">
+							<a class="btn button" href="javascript:void(0)">응모하기</a>
+						</div>
+						<!-- End Table Bottom -->
+					</div>
+					<!-- End Single Table-->
+				</div>
+				<div class="col-lg-4 col-md-6 col-12">
+					<!-- Single Table -->
+					<div class="single-table wow fadeInUp" data-wow-delay=".4s">
+						<!-- Table Head -->
+						<div class="table-head">
+							<div>
+								<img src="/assets/images/items/disney-plus.png">
+							</div>
+							<div class="index-event-title">
+								<h3>디즈니 3개월 구독권</h3>
+								<h4>3명</h4>
+								<h5 class="title">1회 구매시 1회 응모</h5>
+							</div>
+						</div>
+						<!-- End Table Head -->
+						<!-- Table List -->
+						<div class="index-event-text">
+							<p>디즈니 3개월 구독권</p>
+							<p>3개월 동안 디즈니의 컨텐츠를 체험하세요</p>
+						</div>
+						<div class="index-event-btn">
+							<a class="btn button" href="javascript:void(0)">응모하기</a>
+						</div>
+						<!-- End Table Bottom -->
+					</div>
+					<!-- End Single Table-->
+				</div>
+				<div class="col-lg-4 col-md-6 col-12">
+					<!-- Single Table -->
+					<div class="single-table wow fadeInUp" data-wow-delay=".6s">
+						<!-- Table Head -->
+						<div class="table-head">
+							<div>
+								<img src="/assets/images/items/apple-watch.png">
+							</div>
+							<div class="index-event-title">
+								<h3>애플워치 3종 세트</h3>
+								<h4>3개</h4>
+								<h5 class="title">1회 구매시 1회 응모</h5>
+							</div>
+						</div>
+						<!-- End Table Head -->
+						<!-- Table List -->
+						<div class="index-event-text">
+							<p>Apple watch series 7</p>
+							<p>애플 워치를 체험하세요</p>
+						</div>
+						<div class="index-event-btn">
+							<a class="btn button" href="javascript:void(0)">응모하기</a>
+						</div>
+						<!-- End Table Bottom -->
+					</div>
+					<!-- End Single Table-->
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--/ End Pricing Table Area -->
+
+
+
+
+	<!-- 하윤 - 관리자 공지사항 -->
+	<section class="testimonials section">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<div class="section-title align-center gray-bg">
+						<h2 class="wow fadeInUp" data-wow-delay=".4s">공지 사항</h2>
+					</div>
+				</div>
+			</div>
+
+			<form action="admin_registerlist" method="post" id="listForm">
+				<div class="row testimonial-slider">
+					<div class="col-lg-4 col-md-6 col-12" th:each="notice : ${admin_registerlist}">
+						<!-- Start Single Testimonial -->
+						<!-- 수정 : 공지 미리보기 / 누르면 링크 이동-->
+						<a th:href="@{/notice}" class="notice">
+							<div class="single-testimonial">
+								<div class="quote-icon">
+									<i class="lni lni-quotation" style="color: #D5D5D5"> </i>
+								</div>
+								<div class="author">
+									<img src="assets\images\logo\nplitlogo.svg" alt="#" style="size: 70px;">
+									<div>
+										<h4 class="name">N 플릿</h4>
+										<div class="name-content-top">
+											<p> 작성자 :<span class="deg" th:text="${notice.writer}"></span></p>
+										</div>
+										<div class="name-content-top">
+											<p> 등록 날짜 : <span class="regDate" th:text="${notice.reg_date}"></span></p>
+										</div>
+									</div>
+								</div>
+								<div class="text" style="font: gray;">
+									<h4><span th:text="${notice.title}"></span></h4>
+									<span th:text="${notice.content}"></span>
+								</div>
+
+
+							</div>
+						</a>
+						<!-- End Single Testimonial -->
+					</div>
+
+					<!-- <div class="col-lg-4 col-md-6 col-12">
+                    <a th:href="@{/notice}" class="notice">
+                        <div class="single-testimonial">
+                            <div class="quote-icon">
+                                <i class="lni lni-quotation" style="color: #D5D5D5"></i>
+                            </div>
+                            <div class="author">
+                                <img src="/assets/images/logo/nplitlogo.svg" alt="#">
+                                <h4 class="name">
+                                    N 플릿
+                                    <span class="deg">관리자</span>
+                                </h4>
+                            </div>
+                            <div class="text">
+                                <h4>개인정보처리방침 개정안내</h4><br>
+                                <p>"N플릿의 개인정보처리방침 개정에 대한 공지 드립니다.
+                                    <br>
+                                    개정내용
+                                    <br><br>
+                                    (추가)<br>
+                                    "나"항. 수집하는 개인정보 항목과 수집 방법<br>
+                                    - 회원/비회원 필수항목 추가<br>
+                                    - 마이페이지 개인정보 등록시 필수항목 내용 추가<br>
+                                    - 서포터즈 지원시 수집 필수 항목 추가<br>
+                            </div>
+                        </div>
+                    </a>
+                </div>-->
+
+					<!-- <div class="col-lg-4 col-md-6 col-12">
+                    <a th:href="@{/notice}" class="notice">
+                        <div class="single-testimonial">
+                            <div class="quote-icon">
+                                <i class="lni lni-quotation" style="color: #D5D5D5"></i>
+                            </div>
+                            <div class="author">
+                                <img src="assets\images\logo\nplitlogo.svg" alt="#">
+                                <h4 class="name">
+                                    N 플릿
+                                    <span class="deg">관리자</span>
+                                </h4>
+                            </div>
+                            <div class="text">
+                                <h4>신고 유저 처리 방침 업데이트</h4>
+                                <br>
+                                <p>"신고 유저 처리 방침에 관한 업데이트 요약 입니다."</p>
+
+                            </div>
+                        </div>
+                    </a>
+                </div>-->
+				</div>
+		</div>
+	</section>
+	<!-- 하윤 관리자 공지글 끝-->
+
+	<!-- 하윤 개발자 소개글 시작 -->
+	<section class="testimonials section" style="background-color: white; margin-top: 0px; padding-top: 0px;">
+		<div class="container">
+			<div class="col-12">
+				<div class="section-title">
+					<h2 class="wow fadeInUp" data-wow-delay=".4s" style="color: black;">개발자 소개</h2>
+					<p class="wow fadeInUp" data-wow-delay=".6s" style="color: black;">마우스를 올리면 각 개발자의 역할을 볼 수 있습니다.</p>
+				</div>
+			</div>
+			<div class="row shuffle-wrapper" style="border: 2px solid #926a9d;">
+				<!--     <div class="col-1 shuffle-sizer"></div>-->
+
+				<div class="col-lg-4 col-sm-6 shuffle-item"
+					data-groups="[&quot;government&quot;,&quot;healthcare&quot;]">
+					<div class="project-img-container">
+						<a class="gallery-popup" href="/assets/images/developer_intro/1.jpg" aria-label="project-img">
+							<img class="img-fluid" src="/assets/images/developer_intro/1.jpg" alt="project-img">
+							<span class="gallery-icon"><i class="fa fa-plus"></i></span>
+						</a>
+						<div class="project-item-info">
+							<div class="project-item-info-content">
+								<p class="project-cat">Ha Yoon</p>
+								<h3 class="project-item-title">
+									<a href="projects-single.html">- 쉐어링등록수정삭제</a><br>
+									<a href="projects-single.html">- 카테고리분류</a><br>
+									<a href="projects-single.html">- 검색기능</a><br>
+									<a href="projects-single.html">- 지도 API</a><br>
+									<a href="projects-single.html">- 관리자이벤트공지</a><br>
+								</h3>
+
+							</div>
+						</div>
+					</div>
+				</div><!-- shuffle item 1 end -->
+
+				<div class="col-lg-4 col-sm-6 shuffle-item" data-groups="[&quot;healthcare&quot;]">
+					<div class="project-img-container">
+						<a class="gallery-popup" href="/assets/images/developer_intro/2.jpg" aria-label="project-img">
+							<img class="img-fluid" src="/assets/images/developer_intro/2.jpg" alt="project-img">
+							<span class="gallery-icon"><i class="fa fa-plus"></i></span>
+						</a>
+						<div class="project-item-info">
+							<div class="project-item-info-content">
+								<p class="project-cat">Won Jun</p>
+								<h3 class="project-item-title">
+									<a href="projects-single.html">- 쉐어링 찜기능</a><br>
+									<a href="projects-single.html">- 조회수 기능</a><br>
+									<a href="projects-single.html">- 관리자 게시판 등록</a><br>
+									<a href="projects-single.html">- 메인구독서비스기능</a><br>
+
+								</h3>
+							</div>
+						</div>
+					</div>
+				</div><!-- shuffle item 2 end -->
+
+				<div class="col-lg-4 col-sm-6 shuffle-item"
+					data-groups="[&quot;infrastructure&quot;,&quot;commercial&quot;]">
+					<div class="project-img-container">
+						<a class="gallery-popup" href="/assets/images/developer_intro/3.jpg" aria-label="project-img">
+							<img class="img-fluid" src="/assets/images/developer_intro/3.jpg" alt="project-img">
+							<span class="gallery-icon"><i class="fa fa-plus"></i></span>
+						</a>
+						<div class="project-item-info">
+							<div class="project-item-info-content">
+								<p class="project-cat">Yea Jin</p>
+								<h3 class="project-item-title">
+									<a href="projects-single.html">- 구글소셜로그인</a><br>
+									<a href="projects-single.html">- 정규표현식, 데이터중복체크</a><br>
+									<a href="projects-single.html">- 오류 담당</a><br>
+									<a href="projects-single.html">- 주소 등록API </a><br>
+									<a href="projects-single.html">- AWS 서버연동</a><br>
+								</h3>
+							</div>
+						</div>
+					</div>
+				</div><!-- shuffle item 3 end -->
+
+				<div class="col-lg-4 col-sm-6 shuffle-item"
+					data-groups="[&quot;education&quot;,&quot;infrastructure&quot;]">
+					<div class="project-img-container">
+						<a class="gallery-popup" href="/assets/images/developer_intro/4.jpg" aria-label="project-img">
+							<img class="img-fluid" src="/assets/images/developer_intro/4.jpg" alt="project-img">
+							<span class="gallery-icon"><i class="fa fa-plus"></i></span>
+						</a>
+						<div class="project-item-info">
+							<div class="project-item-info-content">
+								<p class="project-cat">Jin Heong</p>
+								<h3 class="project-item-title">
+									<a href="projects-single.html">- 회원가입, 로그인</a><br>
+									<a href="projects-single.html">- 마이페이지 개인정보관리</a><br>
+									<a href="projects-single.html">- 관리자1:1문의하기</a><br>
+									<a href="projects-single.html">- 채팅기능</a><br>
+								</h3>
+							</div>
+						</div>
+					</div>
+				</div><!-- shuffle item 4 end -->
+
+				<div class="col-lg-4 col-sm-6 shuffle-item"
+					data-groups="[&quot;infrastructure&quot;,&quot;education&quot;]">
+					<div class="project-img-container">
+						<a class="gallery-popup" href="/assets/images/developer_intro/5.jpg" aria-label="project-img">
+							<img class="img-fluid" src="/assets/images/developer_intro/5.jpg" alt="project-img">
+							<span class="gallery-icon"><i class="fa fa-plus"></i></span>
+						</a>
+						<div class="project-item-info">
+							<div class="project-item-info-content">
+								<p class="project-cat">You Me</p>
+								<h3 class="project-item-title">
+									<a href="projects-single.html">- 프로토타입 제작</a><br>
+									<a href="projects-single.html">- 전체적인 UI 구현</a><br>
+									<a href="projects-single.html">- 로고 / 폰트 생성</a><br>
+									<a href="projects-single.html">- CSS 보완</a><br>
+								</h3>
+							</div>
+						</div>
+					</div>
+				</div><!-- shuffle item 5 end -->
+
+				<div class="col-lg-4 col-sm-6 shuffle-item" data-groups="[&quot;residential&quot;]">
+					<div class="project-img-container">
+						<a class="gallery-popup" href="/assets/images/developer_intro/6.jpg" aria-label="project-img">
+							<img class="img-fluid" src="/assets/images/developer_intro/6.jpg" alt="project-img">
+							<span class="gallery-icon"><i class="fa fa-plus"></i></span>
+						</a>
+						<div class="project-item-info">
+							<div class="project-item-info-content">
+								<p class="project-cat">Cheol U</p>
+								<h3 class="project-item-title">
+									<a href="projects-single.html">- DB연동 및 데이터관리</a><br>
+									<a href="projects-single.html">- 파일업로드</a><br>
+									<a href="projects-single.html">- 페이징처리</a><br>
+									<a href="projects-single.html">- 메인 쉐어링 정렬기능</a><br>
+								</h3>
+							</div>
+						</div>
+					</div>
+				</div><!-- shuffle item 6 end -->
+			</div><!-- shuffle end -->
+		</div>
+	</section>
+	<!-- 하윤 개발자 소개글 끝 --> 
+
+
+	<!-- Start Footer Area -->
+	<footer class="footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4">
+					<!-- Single Widget -->
+					<div class="single-footer mobile-app">
+						<a><img src="assets/images/footer/footer_nplitlogo.svg" alt="Logo" ;
+								style="width:300px; height:300px"></a>
+					</div>
+					<!-- End Single Widget -->
+				</div>
+				<div class="col-md-4" style="display:inline;">
+					<div class="single-footer f-contact">
+						<h3>Contact</h3>
+						<ul>
+							<li>서울 강남구 강남대로94길 20, <br> 삼오빌딩(5층 ~ 9층)</li>
+							<li>문의 : 02-3486-9600 | 팩스 : 02.6007.1298 <br> 사업자등록번호 : 214-85-24928</li>
+							<li>(주)비트컴퓨터 강남본원 대표이사 : 허원준</li>
+						</ul>
+					</div>
+				</div>
+
+
+
+				<div class="col-md-4">
+					<!-- Single Widget -->
+					<div class="footer-bottom">
+						<div class="container">
+							<div class="inner">
+								<!-- <div class="row"> -->
+								<!-- <div class="col-6"> -->
+								<div class="content">
+									<div class="content-top">
+										<p>통신판매업 신고번호 : 제 서초-00098호 <br> 개인정보보호관리책임자 : 박진형</p>
+									</div>
+									<p>이용약관 | 개인정보취급방침 | 위치기반서비스 이용약관</p>
+									<ul class="footer-social">
+										<li><a href="javascript:void(0)"><i class="lni lni-facebook-filled"></i></a>
+										</li>
+										<li><a href="javascript:void(0)"><i class="lni lni-twitter-original"></i></a>
+										</li>
+										<li><a href="javascript:void(0)"><i class="lni lni-youtube"></i></a>
+										</li>
+										<li><a href="javascript:void(0)"><i class="lni lni-linkedin-original"></i></a>
+										</li>
+									</ul>
+									<!-- <i class="fas fa-link"></i> -->
+
+								</div>
+								<!-- </div> -->
+								<!-- </div> -->
+							</div>
+						</div>
+
+						<!-- End Single Widget -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!--/ End Footer Area -->
+
+	<!-- ========================= scroll-top ========================= -->
+	<a href="#" class="scroll-top btn-hover">
+		<i class="lni lni-chevron-up"></i>
+	</a>
+
+
+	<!-- ========================= JS here ========================= -->
+   <!-- 하윤 개발자 소개 페이지 Javascript Files 시작 -->
+   <!-- initialize jQuery Library -->
+   <script src="/assets/plugins/jQuery/jquery.min.js"></script>
+   <!-- Bootstrap jQuery -->
+   <script src="/assets/plugins/bootstrap/bootstrap.min.js" defer></script>
+   <!-- Slick Carousel -->
+   <script src="/assets/plugins/slick/slick.min.js"></script>
+   <script src="/assets/plugins/slick/slick-animation.min.js"></script>
+   <!-- Color box -->
+   <script src="/assets/plugins/colorbox/jquery.colorbox.js"></script>
+   <!-- shuffle -->
+   <script src="/assets/plugins/shuffle/shuffle.min.js" defer></script>
+   <!-- Template custom -->
+   <script src="/assets/plugins/script.js"></script>
+   <!-- 하윤 개발자 소개 페이지 Javascript Files 끝 -->	
+	
+	<script src="assets/js/bootstrap.min.js"></script>
+
+	<script src="assets/js/wow.min.js"></script>
+	<script src="assets/js/tiny-slider.js"></script>
+	<script src="assets/js/glightbox.min.js"></script>
+	<script src="assets/js/main.js"></script>
+	<script src="assets/js/jquery-3.6.0.min.js"></script>
+	<script type="text/javascript">
+
+
+
+		//========= Category Slider 
+		tns({
+			container: '.category-slider',
+			items: 3,
+			slideBy: 'page',
+			autoplay: false,
+			mouseDrag: true,
+			gutter: 0,
+			nav: false,
+			controls: true,
+			controlsText: ['<i class="lni lni-chevron-left"></i>', '<i class="lni lni-chevron-right"></i>'],
+			responsive: {
+				0: {
+					items: 1,
+				},
+				540: {
+					items: 2,
+				},
+				768: {
+					items: 4,
+				},
+				992: {
+					items: 5,
+				},
+				1170: {
+					items: 6,
+				}
+			}
+		});
+
+		//========= testimonial 
+		tns({
+			container: '.testimonial-slider',
+			items: 3,
+			slideBy: 'page',
+			autoplay: false,
+			mouseDrag: true,
+			gutter: 0,
+			nav: true,
+			controls: false,
+			controlsText: ['<i class="lni lni-arrow-left"></i>', '<i class="lni lni-arrow-right"></i>'],
+			responsive: {
+				0: {
+					items: 1,
+				},
+				540: {
+					items: 1,
+				},
+				768: {
+					items: 2,
+				},
+				992: {
+					items: 2,
+				},
+				1170: {
+					items: 2,
+				}
+			}
+		});
+
+
+
+
+
+	</script>
+	<script src="https://kit.fontawesome.com/4a6a853753.js" crossorigin="anonymous"></script>
+
+</body>
+
+</html>
