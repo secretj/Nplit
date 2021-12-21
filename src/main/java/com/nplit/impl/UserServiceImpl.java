@@ -209,10 +209,6 @@ public class UserServiceImpl implements UserService {
         //문의하기 인설트
     @Override
     public void question(QueVO vo, HttpServletRequest request) {
-//           HttpSession session = request.getSession();
-//           MemberVO loginInfo = (MemberVO)session.getAttribute("login");
-//           String writer = loginInfo.getMemberId();
-//           vo.setWriter(writer);
        dao.question(vo);
        
     }
@@ -220,7 +216,6 @@ public class UserServiceImpl implements UserService {
     
     //내가 등록한 문의 리스트뽑아오기
         public List<QueVO> selectMyQuestion(String memberId) {
-           
            List<QueVO> listtest = userMapper.selectMyQuestion(memberId);
            return listtest;
         }
