@@ -27,7 +27,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @Controller
 public class ChatController {
-   @Inject // byType으로 자동 주입
+   @Inject 
    ChatService service;
    
    //채팅방 참가
@@ -49,7 +49,6 @@ public class ChatController {
        model.addAttribute("chatcheck",service.chatcheck(cmlvo));
        return "redirect:/selectMessage?roomId="+ roomId;
       
-        //채팅창 완성되면 채팅창으로 연결 시킬것 
     }
    
    
@@ -58,7 +57,7 @@ public class ChatController {
       public String selectMyChatting(HttpSession session, ChatMemberListVO cmlvo,Model model) {
        
       MemberVO loginInfo = (MemberVO)session.getAttribute("login");      //로그인 정보 뽑아오기
-                          //writer라는 변수에 로그인 아이디 저장
+                          //loginInfo라는 변수에 로그인 아이디 저장
       
       model.addAttribute("selectMyChatting", service.selectMyChatting(loginInfo.getMemberId()));
       model.addAttribute("chatcheck",service.chatcheck(cmlvo));
@@ -88,7 +87,7 @@ public class ChatController {
          vo.setFullFilePath(loginInfo.getFullFilePath());
          service.insertSendMsg(vo);
          
-           //채팅창 완성되면 채팅창으로 연결 시킬것 
+  
        }
       
       //진형 - 해당 방의 메세지 조회
