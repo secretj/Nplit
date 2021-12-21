@@ -36,7 +36,7 @@
 ![image](https://user-images.githubusercontent.com/78725674/146631626-d94f375d-399f-4373-b28c-768fd9532edf.png)
 <br><br>
 
-<h1>💿DB설계</h1><br>
+<h1>💿ERD 설계</h1><br>
 
 ![image](https://user-images.githubusercontent.com/78725674/146631628-ac3306e2-ab56-4c8c-9f8a-4b64a8dd84da.png)
 <br><br>
