@@ -1,0 +1,47 @@
+/* How It Works */
+.how-works {
+    background-color: $gray;
+
+    .single-work {
+        text-align: center;
+        padding: 40px;
+        background-color: $white;
+        border: 1px solid #eee;
+        border-radius: 6px;
+
+        .serial {
+            height: 80px;
+            width: 80px;
+            line-height: 68px;
+            background-color: $theme-color;
+            color: $white;
+            text-align: center;
+            border-radius: 50%;
+            border: 6px solid #b29cfb;
+            display: inline-block;
+            margin-bottom: 25px;
+            font-weight: 700;
+            font-size: 25px;
+            transition: all 0.4s ease;
+        }
+
+        &:hover {
+            .serial {
+                color: $theme-color;
+                background-color: transparent;
+                border-color: $theme-color;
+            }
+        }
+
+        h3 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 24px;
+        }
+    }
+}

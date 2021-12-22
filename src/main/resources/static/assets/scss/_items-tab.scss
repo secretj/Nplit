@@ -1,0 +1,219 @@
+/*======================================
+    Ads Grid CSS
+========================================*/
+.items-tab {
+    background: $white;
+
+    &.custom-padding {
+        padding-top: 150px;
+    }
+
+    .nav-tabs {
+        border-bottom: 2px solid #eee;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 30px !important;
+    }
+
+    .nav {
+        display: inline-block !important;
+        flex-wrap: wrap;
+        padding-left: 0;
+        margin-bottom: 0;
+        list-style: none;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .nav-tabs .nav-link {
+        display: inline-block !important;
+        background: transparent !important;
+        color: $black;
+        font-size: 16px;
+        font-weight: 500;
+        padding: 15px 40px;
+        border: none;
+        border-bottom: 2px solid transparent;
+        border-radius: 0;
+        transition: all 0.4s ease;
+        position: relative;
+        bottom: -1px;
+
+        &:hover {
+            color: $theme-color;
+        }
+
+        &.active {
+            color: $theme-color;
+            border: none;
+            border-bottom: 2px solid $theme-color;
+        }
+    }
+
+}
+
+.single-item-grid {
+    background: #f7f7f770;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-top: 30px;
+    border: 1px solid #3333331a;
+    transition: all 0.4s ease;
+
+    &:hover {
+        box-shadow: 0px 10px 30px #00000010;
+        background: $white;
+    }
+
+    .image {
+        overflow: hidden;
+        position: relative;
+
+        a {
+            width: 100%;
+        }
+
+        img {
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+
+        .cross-badge {
+            position: absolute;
+            top: 0px;
+            left: 15px;
+        }
+
+        .cross-badge {
+            width: 25px;
+            height: 35px;
+            font-size: 14px;
+            line-height: 30px;
+            color: $white;
+            text-align: center;
+            background: $theme-color;
+            border-bottom-left-radius: 3px;
+            border-bottom-right-radius: 3px;
+            -webkit-clip-path: polygon(0 0, 53% 0, 100% 0, 100% 100%, 50% 85%, 0 100%);
+            clip-path: polygon(0 0, 53% 0, 100% 0, 100% 100%, 50% 85%, 0 100%);
+        }
+
+        .flat-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+        }
+
+        .flat-badge {
+            color: $white;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 13px;
+            line-height: 18px;
+            letter-spacing: 0.3px;
+            text-transform: capitalize;
+        }
+
+        .sale {
+            background: #dc3545;
+        }
+
+        .rent {
+            background: #03a70c;
+        }
+    }
+
+    &:hover {
+        .image {
+            img {
+                transform: scale(1.1);
+            }
+        }
+    }
+
+    .content {
+        padding: 20px 25px 20px 20px;
+
+        .tag {
+            font-size: 14px;
+            font-weight: 400;
+            color: #888;
+            font-weight: 500;
+
+            &:hover {
+                color: $theme-color;
+            }
+        }
+
+        .title {
+            border-top: 1px solid #eee;
+            margin-top: 10px;
+            padding-top: 10px;
+
+            a {
+                font-size: 18px;
+                font-weight: 600;
+                color: $black;
+
+                &:hover {
+                    color: $theme-color;
+                }
+            }
+        }
+
+        .location {
+            margin-top: 10px;
+
+            a {
+                color: #888;
+
+                i {
+                    color: $theme-color;
+                    display: inline-block;
+                    margin-right: 5px;
+                }
+
+                &:hover {
+                    color: $theme-color;
+                }
+            }
+        }
+
+        .info {
+            overflow: hidden;
+            margin-top: 15px;
+
+            .price {
+                font-size: 18px;
+                font-weight: 600;
+                color: $theme-color;
+                float: left;
+                position: relative;
+                top: 5px;
+            }
+
+            .like {
+                float: right;
+
+                a {
+                    color: #888;
+                    font-size: 14px;
+                    height: 35px;
+                    width: 35px;
+                    line-height: 35px;
+                    text-align: center;
+                    display: block;
+                    border: 1px solid #eee;
+                    border-radius: 50%;
+
+                    &:hover {
+                        color: $white;
+                        background: $theme-color;
+                        border-color: transparent;
+                    }
+                }
+            }
+        }
+    }
+}

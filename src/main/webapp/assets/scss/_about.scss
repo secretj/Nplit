@@ -1,0 +1,80 @@
+/*======================================
+    About Us CSS
+========================================*/
+
+.about-us {
+    .content-left {
+        position: relative;
+
+        img {
+            width: 100%;
+            border-radius: 6px;
+        }
+
+        .video {
+            position: absolute;
+            height: 80px;
+            width: 80px;
+            line-height: 80px;
+            text-align: center;
+            color: $theme-color;
+            background-color: $white;
+            border-radius: 50%;
+            left: 50%;
+            top: 50%;
+            margin-left: -40px;
+            margin-top: -40px;
+            font-size: 16px;
+            padding-left: 3px;
+            transition: all 0.4s ease-in-out;
+
+            &:hover {
+                color: $white;
+                background-color: $theme-color;
+                transform: scale(1.05);
+            }
+        }
+    }
+
+    .content-right {
+        padding-right: 70px;
+        padding-left: 40px;
+
+        .sub-heading {
+            display: inline-block;
+            margin-bottom: 10px;
+            font-weight: 500;
+            font-size: 15px;
+            color: $theme-color;
+            background-color: $gray;
+            padding: 5px 20px;
+            border-radius: 4px;
+        }
+
+        h2 {
+            display: block;
+            font-size: 32px;
+            margin-bottom: 25px;
+            line-height: 40px;
+            text-transform: capitalize;
+            position: relative;
+            font-weight: 700;
+
+        }
+
+        h3 {
+            font-size: 22px;
+            margin-top: 40px;
+            margin-bottom: 8px;
+            line-height: 45px;
+            text-transform: capitalize;
+            position: relative;
+            font-weight: 600;
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 26px;
+        }
+    }
+}

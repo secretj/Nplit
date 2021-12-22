@@ -1,0 +1,177 @@
+/*======================================
+	Coming Soon CSS
+========================================*/
+
+.coming-soon {
+    height: 100vh;
+    text-align: center;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    background: $gray;
+    z-index: 2;
+
+    .verticle-lines .vlines {
+        width: 3px;
+        height: 100%;
+        background: rgb(155, 155, 155);
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        -webkit-transform: scaleY(0);
+        -ms-transform: scaleY(0);
+        transform: scaleY(0);
+        -webkit-transform-origin: top left;
+        -ms-transform-origin: top left;
+        transform-origin: top left;
+        -webkit-animation-name: lineanim;
+        animation-name: lineanim;
+        -webkit-animation-iteration-count: infinite;
+        animation-iteration-count: infinite;
+        -webkit-animation-timing-function: cubic-bezier(.785, .135, .15, .86);
+        animation-timing-function: cubic-bezier(.785, .135, .15, .86);
+        -webkit-animation-duration: 3s;
+        animation-duration: 3s;
+        opacity: 0.05;
+        z-index: -1;
+    }
+
+    .verticle-lines .vlines.one {
+        left: 20%;
+        -webkit-animation-delay: 1s;
+        animation-delay: 1s
+    }
+
+    .verticle-lines .vlines.two {
+        left: 40%;
+        -webkit-animation-delay: 0s;
+        animation-delay: 0s;
+    }
+
+    .verticle-lines .vlines.three {
+        left: 60%;
+        -webkit-animation-delay: 2s;
+        animation-delay: 2s
+    }
+
+    .verticle-lines .vlines.four {
+        left: 80%;
+        -webkit-animation-delay: 1.5s;
+        animation-delay: 1.5s
+    }
+
+
+    @-webkit-keyframes lineanim {
+        50% {
+            -webkit-transform: scaleY(1);
+            transform: scaleY(1);
+            -webkit-transform-origin: top left;
+            transform-origin: top left
+        }
+
+        50.1% {
+            -webkit-transform-origin: bottom left;
+            transform-origin: bottom left
+        }
+
+        100% {
+            -webkit-transform: scaleY(0);
+            transform: scaleY(0);
+            -webkit-transform-origin: bottom left;
+            transform-origin: bottom left
+        }
+    }
+
+    @keyframes lineanim {
+        50% {
+            -webkit-transform: scaleY(1);
+            transform: scaleY(1);
+            -webkit-transform-origin: top left;
+            transform-origin: top left
+        }
+
+        50.1% {
+            -webkit-transform-origin: bottom left;
+            transform-origin: bottom left
+        }
+
+        100% {
+            -webkit-transform: scaleY(0);
+            transform: scaleY(0);
+            -webkit-transform-origin: bottom left;
+            transform-origin: bottom left
+        }
+    }
+}
+
+.d-table {
+    width: 100%;
+    height: 100%;
+}
+
+.d-table {
+    display: table !important;
+}
+
+.d-table-cell {
+    vertical-align: middle;
+}
+
+.d-table-cell {
+    display: table-cell !important;
+}
+
+.coming-soon .soon-content {
+    text-align: center;
+
+    .text {
+        margin-bottom: 60px;
+
+        h2 {
+            font-size: 40px;
+            font-weight: 700;
+            line-height: 52px;
+            color: $black;
+            display: block;
+            margin-bottom: 20px;
+            text-transform: capitalize;
+        }
+
+        p {
+            color: #888;
+            font-size: 16px;
+        }
+    }
+
+    .box {
+        background: $white;
+        border: 1px solid #eee;
+        border-radius: 6px;
+        width: 100px;
+        height: 100px;
+        margin: 0 5px;
+        display: inline-block;
+        padding-top: 25px;
+    }
+
+    h2 {
+        text-align: center;
+        padding-top: 2px;
+        color: $black;
+        font-size: 15px;
+        font-weight: 400;
+    }
+
+    .box h1 {
+        font-size: 26px;
+        text-align: center;
+        font-weight: 700;
+        margin-bottom: 5px;
+        color: $theme-color;
+    }
+
+    .alert {
+        display: none;
+    }
+}

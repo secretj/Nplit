@@ -1,0 +1,112 @@
+/*=============================
+	Pricing Table CSS
+===============================*/
+.pricing-table {
+    background: $gray;
+    position: relative;
+
+    .section-title {
+        margin-bottom: 50px;
+    }
+}
+
+.pricing-table .single-table {
+    margin-top: 30px;
+    background: #fff;
+    text-align: left;
+    position: relative;
+    -webkit-transition: all 0.4s ease;
+    -moz-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+    border: 1px solid #ececec;
+    overflow: hidden;
+    border-radius: 6px;
+    padding: 40px 40px;
+    z-index: 2;
+
+    &::before {
+        position: absolute;
+        content: "";
+        left: 0;
+        top: 0;
+        height: 300px;
+        width: 300px;
+        background: $theme-color;
+        border-radius: 50%;
+        left: -50px;
+        top: -110px;
+    }
+
+    &::after {
+        position: absolute;
+        content: "";
+        left: 0;
+        top: 0;
+        height: 300px;
+        width: 300px;
+        background: $theme-color;
+        border-radius: 50%;
+        left: -40px;
+        top: -110px;
+        opacity: 0.8;
+        z-index: -1;
+    }
+
+    .table-head {
+        position: relative;
+
+        .amount {
+            font-size: 35px;
+            line-height: 56px;
+            font-weight: 700;
+            color: $white;
+        }
+
+        .duration {
+            color: $white;
+            font-size: 14px;
+            font-weight: 400;
+            display: inline-block;
+            margin-left: 4px;
+            position: relative;
+            top: -2px;
+        }
+
+        .title {
+            font-size: 16px;
+            line-height: 26px;
+            color: $white;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            margin-bottom: 19px;
+        }
+    }
+
+    .table-list {
+        position: relative;
+        display: block;
+        margin-top: 90px;
+
+        li {
+            position: relative;
+            display: block;
+            font-size: 16px;
+            line-height: 26px;
+            color: #444;
+            font-weight: 400;
+            margin-bottom: 10px;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    .button {
+        margin-top: 40px;
+
+        .btn {}
+    }
+
+}

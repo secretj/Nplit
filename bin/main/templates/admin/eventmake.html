@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html class="no-js" lang="zxx">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>adminpage</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/logo/favicon.png" />
+    <!-- Place favicon.ico in the root directory -->
+
+    <!-- Web Font -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+
+    <!-- ========================= CSS here ========================= -->
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/assets/css/LineIcons.2.0.css" />
+    <link rel="stylesheet" href="/assets/css/animate.css" />
+    <link rel="stylesheet" href="/assets/css/tiny-slider.css" />
+    <link rel="stylesheet" href="/assets/css/glightbox.min.css" />
+    <link rel="stylesheet" href="/assets/css/main.css" />
+
+</head>
+
+<body>
+    <!--[if lte IE 9]>
+      <p class="browserupgrade">
+        You are using an <strong>outdated</strong> browser. Please
+        <a href="https://browsehappy.com/">upgrade your browser</a> to improve
+        your experience and security.
+      </p>
+    <![endif]-->
+
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="preloader-inner">
+            <div class="preloader-icon">
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
+    <!-- /End Preloader -->
+
+   <!-- Start Header Area -->
+    <header class="header navbar-area">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-12">
+                    <div class="nav-inner">
+                        <nav class="navbar navbar-expand-lg">
+                        	<a class="navbar-brand" th:href="@{/index}">
+                                <img src="/assets/images/logo/header/nplitlogo.svg" alt="Logo">
+                            </a>
+                            <button class="navbar-toggler mobile-menu-btn" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                                aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="toggler-icon"> </span>
+                                <span class="toggler-icon"> </span>
+                                <span class="toggler-icon"> </span>
+                            </button>
+                            <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
+                                <ul id="nav" class="navbar-nav ms-auto">
+                                    <li class="nav-item">
+                                        <a class="active dd-menu collapsed" th:href="@{/index}"
+                                            aria-label="Toggle navigation">Home</a>
+
+                                    </li>
+                                    <li class="nav-item">
+                                        <a th:href="@{/registerlist}" aria-label="Toggle navigation">카테고리</a>
+                                        <ul class="sub-menu mega-menu collapse" id="submenu-1-4">
+                                            <!-- <li class="mega-menu-title">Dashboard</li> -->
+                                            <li class="nav-item"><a th:href="@{/registerlist?category=패션/잡화}">패션/잡화</a></li>
+                                            <li class="nav-item"><a th:href="@{/registerlist?category=가전/디지털}">가전/디지털</a></li>
+                                            <li class="nav-item"><a th:href="@{/registerlist?category=라이프}">라이프</a>
+                                            <li class="nav-item"><a th:href="@{/registerlist?category=배달음식}">배달음식</a></li>
+                                            <li class="nav-item"><a th:href="@{/registerlist?category=홈쉐어링}">홈쉐어링</a></li></li>
+                                            <li class="nav-item"><a th:href="@{/registerlist?category=식품}">식품</a></li>
+                                            <li class="nav-item"><a th:href="@{/registerlist?category=구독서비스}">구독서비스</a></li>
+                                            <li class="nav-item"><a th:href="@{/registerlist?category=기타}">기타</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="dd-menu collapsed" th:href="@{/near_me}" aria-label="Toggle navigation">내 근처</a>
+                                    </li>
+                                        <!--예진 로그인 안했을경우 마이페이지 못들어가게-->
+			                        <li class="nav-item" th:if="${#strings.isEmpty(session.login)}" th:href="@{/login}"
+			                           onclick="alert('로그인이 필요한 서비스 입니다.')">
+			                           <a class="dd-menu collapsed" th:href="@{/login}" aria-label="Toggle navigation">마이
+			                              페이지</a>
+			                           <ul class="sub-menu collapse" id="submenu-1-5">
+			                              <li class="nav-item"><a th:href="@{/login}">내 프로필 보기</a>
+			                              </li>
+			                              <li class="nav-item"><a th:href="@{/login}">개인정보 수정</a></li>
+			                              <li class="nav-item"><a th:href="@{/login}">내가 등록한 쉐어링</a></li>
+			                              <li class="nav-item"><a th:href="@{/login}">내가 참여중인 쉐어링</a></li>
+			                              <li class="nav-item"><a th:href="@{/login}">내가 찜한 쉐어링</a></li>
+			                           </ul>
+			                        </li>
+			
+			                        <li class="nav-item" th:if="${not #strings.isEmpty(session.login)}">
+			                           <!--예진 로그인 했을경우-->
+			                           <a class="dd-menu collapsed" th:href="@{/profile_show}"
+			                              aria-label="Toggle navigation">마이 페이지</a>
+			                           <ul class="sub-menu collapse" id="submenu-1-5">
+			                              <li class="nav-item"><a th:href="@{/profile_show}">내 프로필 보기</a>
+			                              </li>
+			                              <li class="nav-item"><a th:href="@{/profile_update}">개인정보 수정</a></li>
+			                              <li class="nav-item"><a th:href="@{/sharing_registered}">내가 등록한 쉐어링</a></li>
+			                              <li class="nav-item"><a th:href="@{/sharing_participate}">내가 참여중인 쉐어링</a></li>
+			                              <li class="nav-item"><a th:href="@{/sharing_like}">내가 찜한 쉐어링</a></li>
+			                           </ul>
+			                        </li>
+                                    <!--예진 로그인 안했을 경우 내채팅 못들어가게-->
+                                    <li class="nav-item">
+                                        <a class="dd-menu collapsed"  th:if="${#strings.isEmpty(session.login)}" onclick="alert('로그인이 필요한 서비스 입니다.')" th:href="@{/login}" aria-label="Toggle navigation">내 채팅</a>
+                                           <a class="dd-menu collapsed"  th:if="${not #strings.isEmpty(session.login)}"  th:href="@{/chatting}" aria-label="Toggle navigation">내 채팅</a>
+                                    </li>
+                                </ul>
+                            </div> <!-- navbar collapse -->
+                            
+                           <div class="login-button">
+		                        <ul>
+		                           <li>
+		                              <a th:if="${not #strings.isEmpty(session.login)}">
+		                              	<a th:href="@{/profile_show}" class="see-all"><span th:text="${session.login.name}"> </span>님 환영합니다.</a>
+		                              </a>
+		                              <a th:if="${#strings.isEmpty(session.login)}" th:href="@{/login}">
+		                              	<i class="lni lni-enter"> </i>로그인
+		                              </a>
+		                           </li>
+		
+		                           <li>
+		                              <a th:if="${not #strings.isEmpty(session.login)}" th:href="@{/logout}">
+		                              	<i class="lni lni-enter"> </i> 로그아웃 
+		                              </a>
+		                              <a th:if="${#strings.isEmpty(session.login)}" th:href="@{/join}">
+		                              	<i class="lni lni-user"> </i> 가입하기
+		                              </a>
+		                            </li>
+		                        </ul>
+		                     </div>
+                            
+                            <div class="button header-button">
+                            <!--로그인 안되어있을경우 쉐어링 등록 불가-->
+                                <a   th:if="${#strings.isEmpty(session.login)}" onclick="alert('로그인이 필요한 서비스 입니다.')" th:href="@{/login}" class="btn">쉐어링 등록하기</a>
+                                 <a th:if="${not #strings.isEmpty(session.login)}" th:href="@{/register_view}" class="btn">쉐어링 등록하기</a>
+                            </div>
+                        </nav> <!-- navbar -->
+                    </div>
+                </div>
+            </div> <!-- row -->
+        </div> <!-- container -->
+    </header>
+    <!-- End Header Area -->
+
+    <section class="admin-make section">
+        <div class="make-background">
+            <div>
+                <div class="make-title">
+                    <h4>게시글 등록</h4>
+                    <p>관리자 &#62; 게시글 등록</p>
+                </div>
+                <form  action="admin_register" class="make-event" method="post" enctype="multipart/form-data">
+                	<!-- 제목 -->
+                    <div class="event-title row">
+                        <div class="col-md-9">
+                            <input type="text" name="title" id="title" placeholder="제목을 입력하세요." required>
+                        </div>
+                        <div class="col-md-2 make-dropdown">
+                            <label class="down-make" for="board">게시판</label>
+                            <select id="category" name="category">
+                                <option value="선택해주세요" selected>선택해주세요</option>
+                                <option value="이벤트 작성">이벤트</option>
+                                <option value="공지사항 작성">공지사항</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!-- 내용 -->
+                    <div>
+                        <textarea placeholder="내용을 입력하세요." name="content" id="content" cols="50" rows="20"> </textarea>
+                        <div id='image_preview'>
+                            <input type='file' id='btnAtt' multiple='multiple' />
+                            <div id='att_zone' data-placeholder='파일을 첨부 하려면 파일 선택 버튼을 클릭하거나 파일을 드래그앤드롭 하세요'
+                                style="border:1px solid #ccc;"></div>
+                        </div>
+                    </div>
+                    <!-- 등록 취소 -->
+                    <div class="event-board-btn">
+                        <button type="submit">등록</button>
+                        <button type="reset">취소</button>
+                    </div>
+                    <div class="clear"> </div>
+                </form>
+    </section>
+
+
+    <!-- Start Footer Area -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <!-- Single Widget -->
+                    <div class="single-footer mobile-app">
+                        <a><img src="/assets/images/footer/footer_nplitlogo.svg" alt="Logo" ;
+                                style="width:300px; height:300px"></a>
+                    </div>
+                    <!-- End Single Widget -->
+                </div>
+                <div class="col-md-4" style="display:inline;">
+                    <div class="single-footer f-contact">
+                        <h3>Contact</h3>
+                        <ul>
+                            <li>서울 강남구 강남대로94길 20, <br> 삼오빌딩(5층 ~ 9층)</li>
+                            <li>문의 : 02-3486-9600 | 팩스 : 02.6007.1298 <br> 사업자등록번호 : 214-85-24928</li>
+                            <li>(주)비트컴퓨터 강남본원 대표이사 : 허원준</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <!-- Single Widget -->
+                    <div class="footer-bottom">
+                        <div class="container">
+                            <div class="inner">
+                                <!-- <div class="row"> -->
+                                <!-- <div class="col-6"> -->
+                                <div class="content">
+                                    <div class="content-top">
+                                        <p>통신판매업 신고번호 : 제 서초-00098호 <br> 개인정보보호관리책임자 : 박진형</p>
+                                    </div>
+                                    <p>이용약관 | 개인정보취급방침 | 위치기반서비스 이용약관</p>
+                                    <ul class="footer-social">
+                                        <li><a href="javascript:void(0)"><i class="lni lni-facebook-filled"></i></a>
+                                        </li>
+                                        <li><a href="javascript:void(0)"><i class="lni lni-twitter-original"></i></a>
+                                        </li>
+                                        <li><a href="javascript:void(0)"><i class="lni lni-youtube"></i></a>
+                                        </li>
+                                        <li><a href="javascript:void(0)"><i class="lni lni-linkedin-original"></i></a>
+                                        </li>
+                                    </ul>
+                                    <!-- <i class="fas fa-link"></i> -->
+
+                                </div>
+                                <!-- </div> -->
+                                <!-- </div> -->
+                            </div>
+                        </div>
+
+                        <!-- End Single Widget -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!--/ End Footer Area -->
+
+    <!-- ========================= scroll-top ========================= -->
+    <a href="#" class="scroll-top btn-hover">
+        <i class="lni lni-chevron-up"></i>
+    </a>
+
+    <!-- ========================= JS here ========================= -->
+    <script src="/assets/js/bootstrap.min.js"></script>
+    <script src="/assets/js/wow.min.js"></script>
+    <script src="/assets/js/tiny-slider.js"></script>
+    <script src="/assets/js/glightbox.min.js"></script>
+    <script src="/assets/js/main.js"></script>
+    <!-- <script>
+        function previewFiles() {
+
+            var preview = document.querySelector('#preview');
+            var files = document.querySelector('input[type=file]').files;
+
+            function readAndPreview(file) {
+
+                // `file.name` 형태의 확장자 규칙에 주의하세요
+                if (/\.(jpe?g|png|gif)$/i.test(file.name)) {
+                    var reader = new FileReader();
+
+                    reader.addEventListener("load", function () {
+                        var image = new Image();
+                        image.height = 100;
+                        image.title = file.name;
+                        image.src = this.result;
+                        preview.appendChild(image);
+                    }, false);
+
+                    reader.readAsDataURL(file);
+                }
+
+            }
+
+            if (files) {
+                [].forEach.call(files, readAndPreview);
+            }
+
+        }
+    </script> -->
+    <script>
+        ( /* att_zone : 이미지들이 들어갈 위치 id, btn : file tag id */
+            imageView = function imageView(att_zone, btn) {
+
+                var attZone = document.getElementById(att_zone);
+                var btnAtt = document.getElementById(btn)
+                var sel_files = [];
+
+                // 이미지와 체크 박스를 감싸고 있는 div 속성
+                var div_style = 'display:inline-block;position:relative;'
+                    + 'width:150px;height:120px;margin:5px;border:none;z-index:1';
+                // 미리보기 이미지 속성
+                var img_style = 'width:100%;height:100%;z-index:none;';
+                // 이미지안에 표시되는 체크박스의 속성
+                var chk_style = 'width:20px;height:20px;position:absolute;font-size:20px;'
+                    + 'right:3px;bottom:3px;z-index:0;border:none;color:#fff;padding:2px;border-radius:3px; border:none;'
+                    + 'line-height:3px;background-color:#000;'
+
+                btnAtt.onchange = function (e) {
+                    var files = e.target.files;
+                    var fileArr = Array.prototype.slice.call(files)
+                    for (f of fileArr) {
+                        imageLoader(f);
+                    }
+                }
+
+
+                // 탐색기에서 드래그앤 드롭 사용
+                attZone.addEventListener('dragenter', function (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                }, false)
+
+                attZone.addEventListener('dragover', function (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+
+                }, false)
+
+                attZone.addEventListener('drop', function (e) {
+                    var files = {};
+                    e.preventDefault();
+                    e.stopPropagation();
+                    var dt = e.dataTransfer;
+                    files = dt.files;
+                    for (f of files) {
+                        imageLoader(f);
+                    }
+
+                }, false)
+
+
+
+                /*첨부된 이미리즐을 배열에 넣고 미리보기 */
+                imageLoader = function (file) {
+                    sel_files.push(file);
+                    var reader = new FileReader();
+                    reader.onload = function (ee) {
+                        let img = document.createElement('img')
+                        img.setAttribute('style', img_style)
+                        img.src = ee.target.result;
+                        attZone.appendChild(makeDiv(img, file));
+                    }
+
+                    reader.readAsDataURL(file);
+                }
+
+                /*첨부된 파일이 있는 경우 checkbox와 함께 attZone에 추가할 div를 만들어 반환 */
+                makeDiv = function (img, file) {
+                    var div = document.createElement('div')
+                    div.setAttribute('style', div_style)
+
+                    var btn = document.createElement('input')
+                    btn.setAttribute('type', 'button')
+                    btn.setAttribute('value', 'X')
+                    btn.setAttribute('delFile', file.name);
+                    btn.setAttribute('style', chk_style);
+                    btn.onclick = function (ev) {
+                        var ele = ev.srcElement;
+                        var delFile = ele.getAttribute('delFile');
+                        for (var i = 0; i < sel_files.length; i++) {
+                            if (delFile == sel_files[i].name) {
+                                sel_files.splice(i, 1);
+                            }
+                        }
+
+                        dt = new DataTransfer();
+                        for (f in sel_files) {
+                            var file = sel_files[f];
+                            dt.items.add(file);
+                        }
+                        btnAtt.files = dt.files;
+                        var p = ele.parentNode;
+                        attZone.removeChild(p)
+                    }
+                    div.appendChild(img)
+                    div.appendChild(btn)
+                    return div
+                }
+            }
+        )('att_zone', 'btnAtt')
+
+    </script>
+
+</body>
+
+</html>

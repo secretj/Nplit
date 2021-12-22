@@ -1,0 +1,284 @@
+/*======================================
+    Items Grid CSS
+========================================*/
+.items-grid {
+    background: $gray;
+
+    &.custom-padding {
+        padding-top: 220px;
+    }
+
+    .section-title {
+        margin-bottom: 50px;
+    }
+
+    .single-grid {
+        box-shadow: 0 10px 30px rgba(35, 38, 45, 0.14) !important;
+        background: $white;
+        border-radius: 6px;
+        overflow: hidden;
+        margin-top: 30px;
+
+        .image {
+            position: relative;
+
+
+
+            .author {
+                background: transparent;
+                padding: 15px 20px;
+                border-radius: 0;
+                position: absolute;
+                left: 0;
+                bottom: 5px;
+                overflow: visible;
+                width: 100%;
+                z-index: 2 !important;
+
+                &::before {
+                    position: absolute;
+                    content: "";
+                    left: 0;
+                    bottom: 0;
+                    height: 110px;
+                    width: 100%;
+                    background: linear-gradient(transparent, #000000e3);
+                    z-index: -1;
+                    overflow: visible;
+                }
+
+                .author-image {
+                    float: left;
+
+                    a {
+                        color: $black;
+
+                        &:hover {
+                            color: $theme-color;
+
+                            span {
+                                color: $theme-color;
+                            }
+                        }
+
+                        span {
+                            font-size: 14px;
+                            font-weight: 500;
+                            display: inline-block;
+                            margin-left: 5px;
+                            color: $white;
+                        }
+                    }
+
+                    img {
+                        height: 40px;
+                        width: 40px;
+                        border-radius: 50%;
+                        display: inline-block;
+                    }
+
+                    p {
+                        display: inline-block;
+                        margin-left: 5px;
+                    }
+                }
+
+                .sale {
+                    display: inline-block;
+                    background: $theme-color;
+                    color: $white;
+                    font-size: 14px;
+                    float: right;
+                    font-weight: 500;
+                    padding: 7px 15px;
+                    border-radius: 6px;
+                    font-family: 'Jost',
+                        sans-serif;
+                    ;
+                }
+            }
+
+            .item-position {
+                display: inline-block;
+                background: $theme-color;
+                color: $white;
+                font-size: 14px;
+                font-weight: 600;
+                padding: 8px 15px;
+                border-radius: 6px;
+                position: absolute;
+                right: 15px;
+                top: 15px;
+                box-shadow: 0 5px 10px rgba(35, 38, 45, 0.14) !important;
+                font-family: 'Jost',
+                    sans-serif;
+                ;
+
+                i {
+                    display: inline-block;
+                    margin-right: 3px;
+                }
+            }
+
+            img {
+                width: 100%;
+                transition: all 0.4s ease;
+            }
+
+            .thumbnail {
+                overflow: hidden;
+            }
+        }
+
+        &:hover {
+            .image {
+                .thumbnail {
+                    img {
+                        transform: scale(1.1);
+                    }
+                }
+            }
+        }
+
+        .content {
+            .top-content {
+                padding: 30px 30px 25px 30px;
+
+                .tag {
+                    display: inline-block;
+                    margin-bottom: 5px;
+
+                    i {
+                        display: inline-block;
+                        margin-right: 5px;
+                        color: $theme-color;
+                    }
+
+                    color: #888;
+                    font-size: 14px;
+                    font-weight: 500;
+
+                    &:hover {
+                        color: $theme-color;
+                    }
+                }
+
+                .title {
+                    display: block;
+                    margin-bottom: 10px;
+                    line-height: 30px;
+
+                    a {
+                        color: $black;
+                        font-size: 20px;
+                        font-weight: 600;
+
+                        &:hover {
+                            color: $theme-color;
+                        }
+                    }
+                }
+
+                .update-time {
+                    font-size: 14px;
+                }
+
+                .rating {
+                    margin-top: 10px;
+
+                    li {
+                        display: inline-block;
+                        color: #FFAB02;
+
+                        a {
+                            color: #888;
+                            font-weight: 400;
+                            font-size: 13px;
+
+                            &:hover {
+                                color: $theme-color;
+                            }
+                        }
+                    }
+                }
+
+                .info-list {
+                    margin-top: 10px;
+                    overflow: hidden;
+
+                    li {
+                        display: block;
+                        float: left;
+                        width: 50%;
+                        line-height: 30px;
+                        font-size: 14px;
+                        font-weight: 500;
+
+                        a {
+                            color: #888;
+                            font-weight: 500;
+
+                            &:hover {
+                                color: $theme-color;
+                            }
+
+                            i {
+                                color: $theme-color;
+                                display: inline-block;
+                                margin-right: 3px;
+                            }
+                        }
+
+                        &:last-child {
+                            margin: 0;
+                        }
+                    }
+                }
+            }
+
+            .bottom-content {
+                padding: 15px 30px;
+                border-top: 1px solid #eee;
+                overflow: hidden;
+
+                .price {
+                    float: left;
+                    font-size: 14px;
+                    position: relative;
+                    font-weight: 500;
+                    top: 8px;
+                    font-family: 'Jost',
+                        sans-serif;
+                    ;
+
+                    span {
+                        color: $theme-color;
+                        font-weight: 700;
+                        font-size: 18px;
+                        display: inline-block;
+                        margin-left: 5px;
+                    }
+                }
+
+                .like {
+                    float: right;
+                    color: $theme-color;
+                    font-size: 18px;
+                    height: 40px;
+                    width: 40px;
+                    line-height: 40px;
+                    text-align: center;
+                    display: block;
+                    border-radius: 50%;
+                    border: 1px solid #eee;
+
+                    &:hover {
+                        color: $white;
+                        background: $theme-color;
+                        border-color: transparent;
+                    }
+                }
+            }
+        }
+    }
+}

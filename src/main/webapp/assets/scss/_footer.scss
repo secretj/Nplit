@@ -1,0 +1,203 @@
+/*======================================
+	Footer CSS
+========================================*/
+.footer {
+    background: $black;
+
+    .footer-top {
+        padding: 100px 0;
+        padding-top: 70px;
+        border-bottom: 1px solid #ebebebs;
+    }
+
+    .single-footer {
+        margin-top: 30px;
+
+        &.mobile-app {
+            .app-button {
+                .btn {
+                    border: 1px solid #eeeeee4a;
+                    border-radius: 6px;
+                    padding: 12px 35px;
+                    position: relative;
+                    text-align: left;
+                    padding-left: 70px;
+                    margin-bottom: 12px;
+                    min-width: 192px;
+                    color: #e1e1e1;
+
+                    &:hover {
+                        border-color: transparent;
+                        background: $theme-color;
+                        color: $white;
+                    }
+
+                    &:last-child {
+                        margin: 0;
+                    }
+
+                    i {
+                        font-size: 28px;
+                        position: absolute;
+                        left: 22px;
+                        top: 50%;
+                        transform: translateY(-50%);
+                    }
+
+                    .text {
+                        font-size: 14px;
+                        font-weight: 500;
+
+                        .small-text {
+                            font-weight: 400;
+                            font-size: 13px;
+                            display: block;
+                            margin-bottom: -1px;
+                        }
+                    }
+                }
+            }
+        }
+
+        &.f-link {
+            li {
+                display: block;
+                margin-bottom: 10px;
+
+                &:last-child {
+                    margin: 0;
+                }
+
+                a {
+                    font-size: 15px;
+                    font-weight: 400;
+                    color: #e1e1e1;
+
+                    &:hover {
+                        color: $theme-color;
+                    }
+                }
+            }
+        }
+
+        &.f-contact {
+            ul {
+                li {
+                    display: block;
+                    margin-bottom: 25px;
+                    line-height: 25px;
+                    color: #e1e1e1;
+
+                    &:last-child {
+                        margin-bottom: 0;
+                    }
+                }
+            }
+        }
+
+        h3 {
+            font-size: 18px;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 35px;
+            color: $white;
+        }
+    }
+
+    .footer-bottom {
+        text-align: center;
+        position: relative;
+        z-index: 1;
+
+        .inner {
+
+            border-top: 1px solid #ebebeb4f;
+            padding: 50px 0;
+        }
+
+        .footer-bottom-links {
+            li {
+                display: inline-block;
+                margin-right: 15px;
+                position: relative;
+                padding-right: 15px;
+
+                &::before {
+                    position: absolute;
+                    content: "";
+                    right: -3px;
+                    top: 50%;
+                    height: 1px;
+                    width: 5px;
+                    background: #888;
+                }
+
+                &:last-child {
+                    margin: 0;
+                    padding: 0;
+
+                    &::before {
+                        display: none;
+                    }
+                }
+
+                a {
+                    color: #e1e1e1;
+                    font-weight: 400;
+
+                    &:hover {
+                        color: $theme-color;
+                    }
+                }
+            }
+        }
+
+        .copyright-text {
+            margin-top: 15px;
+            color: #e1e1e1;
+            font-family: 'Jost',
+                sans-serif;
+            ;
+
+            a {
+                color: #e1e1e1;
+
+                &:hover {
+                    color: $theme-color;
+                }
+            }
+        }
+
+
+        .footer-social {
+            margin-top: 40px;
+
+            li {
+                display: inline-block;
+                margin-right: 10px;
+
+                &:last-child {
+                    margin: 0;
+                }
+
+                a {
+                    height: 40px;
+                    width: 40px;
+                    line-height: 40px;
+                    text-align: center;
+                    display: block;
+                    border-radius: 50%;
+                    color: #fff;
+                    background: transparent;
+                    border: 1px solid #eee3;
+
+                    &:hover {
+                        color: $white;
+                        background: $theme-color;
+                        border-color: transparent;
+                    }
+                }
+            }
+        }
+    }
+}
