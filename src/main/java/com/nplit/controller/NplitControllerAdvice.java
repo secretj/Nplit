@@ -7,13 +7,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.nplit.exception.FailedSendMailException;
 import com.nplit.exception.ResponseBodyException;
 /**
- * ÄÁÆ®·Ñ·¯ ÄÄÆ÷³ÍÆ® ÀüÃ¼ ¿À·ù¸¦ Ã³¸®ÇÏ´Â Å¬·¡½º
+ * ï¿½ï¿½Æ®ï¿½Ñ·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ï¿½Ï´ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½
  * @author Park
  *
  */
 @ControllerAdvice
 public class NplitControllerAdvice {
-//IllegalArgumentException
+//IllegalArgumentException 
    @ExceptionHandler(Exception.class) 
    public String custom(Exception e) {
       System.out.println(e.getMessage());

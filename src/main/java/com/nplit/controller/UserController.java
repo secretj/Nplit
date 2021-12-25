@@ -130,7 +130,8 @@ public class UserController {
 	      }else { // 로그인에 실패한 경우
 	         returnURL = "redirect:/login"; // 로그인 폼으로 다시 가도록 함
 	      }
-
+	      
+	      
 	      model.addAttribute("member", vo);
 	      if(vo.getRole()==1) {
 	            return "redirect:/admin_page";
