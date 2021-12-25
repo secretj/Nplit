@@ -1,2 +1,5 @@
 eclipse.preferences.version=1
+encoding//src/main/java/com/nplit/controller/LikeController.java=UTF-8
+encoding//src/main/java/com/nplit/persistence/UserDAOImpl.java=UTF-8
 encoding//src/main/resources/templates/chatting=UTF-8
+encoding/<project>=UTF-8

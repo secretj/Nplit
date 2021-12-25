@@ -42,20 +42,15 @@ public class UserController {
 
 	//예진 구글 로그인 post
 	@ResponseBody
-	//   @RequestMapping(value = "/loginGoogle", method = RequestMethod.POST)
 	@RequestMapping(value = "/loginGoogle")
 	public String loginGooglePOST(MemberVO vo, HttpSession session, RedirectAttributes rttr, MemberVO mvo)
 			throws Exception {
-		MemberVO returnVO = service.loginMemberByGoogle(vo); // returnVO 가 null 인건 여기가 문제
+		MemberVO returnVO = service.loginMemberByGoogle(vo); 
 		String mvo_ajaxid = mvo.getMemberId();
-		System.out.println("c: returnVO 찍어보기  " + returnVO);
-		System.out.println("C: 구글아이디 포스트 db에서 가져온 vo " + vo);
-		System.out.println("C: 구글아이디 포스트 ajax에서 가져온 id " + mvo_ajaxid);
 
-		if (returnVO == null) { // 아이디가 DB에 존재하지 않는 경우
+		if (returnVO == null) { 		// 아이디가 DB에 존재하지 않는 경우
 			// 구글 회원가입
 			service.joinMemberByGoogle(vo);
-
 			// 구글 로그인
 			returnVO = service.loginMemberByGoogle(vo);
 			session.setAttribute("id", returnVO.getMemberId());
@@ -93,17 +88,11 @@ public class UserController {
 	   // 로그인 폼을 띄우는 부분
 	   @RequestMapping(value="login",method=RequestMethod.GET)
 	   public String loginForm(){
-	      // return "login"; // /login.html를 띄움.
 	      return "/main/login"; 
-
-	   }// end of loginForm
+	   }
 
 	   // 로그인 처리하는 부분
-	   //  @RequestMapping(value="/loginProcess",method=RequestMethod.POST)
 	   @RequestMapping(value = "/loginProcess")
-
-
-	   //public String loginProcess(HttpSession session, MemberVO dto, HttpServletResponse response) {
 	   public String loginProcess(HttpSession session, MemberVO dto, HttpServletResponse response,Model model) {
 
 	      String returnURL = "";
@@ -111,7 +100,6 @@ public class UserController {
 	         // 기존에 login이란 세션 값이 존재한다면
 	         session.removeAttribute("login"); // 기존값을 제거해 준다.
 	      }
-
 	      // 로그인이 성공하면 memberVO 객체를 반환함.
 	      MemberVO vo = service.login(dto);
 
@@ -122,20 +110,17 @@ public class UserController {
 	         System.out.println("로그인 회원정보"+session.getAttribute("login"));
 	         returnURL = "redirect:/index"; // 로그인 성공시 게시글 목록페이지로 바로 이동하도록 하고
 
-	         /*
-	          *  [   세션 추가되는 부분      ]
-	          */
-	         // 1. 로그인이 성공하면, 그 다음으로 로그인 폼에서 쿠키가 체크된 상태로 로그인 요청이 왔는지를 확인한다.
-	         System.out.println(dto.getIsUseCookie());
+	         /* 자동로그인 
+	          1. 로그인이 성공하면, 그 다음으로 로그인 폼에서 쿠키가 체크된 상태로 로그인 요청이 왔는지를 확인한다. */
 	         if ( dto.getIsUseCookie()!=null){ // dto 클래스 안에 useCookie 항목에 폼에서 넘어온 쿠키사용 여부(true/false)가 들어있을 것임
 	            // 쿠키 사용한다는게 체크되어 있으면...
 	            // 쿠키를 생성하고 현재 로그인되어 있을 때 생성되었던 세션의 id를 쿠키에 저장한다.
 	            Cookie cookie = new Cookie("loginCookie", session.getId());
-	            // 쿠키를 찾을 경로를 컨텍스트 경로로 변경해 주고...
 	            System.out.println("세션아이디 : "+session.getId());    //세션아이디 체크
+	            // 쿠키를 찾을 경로를 컨텍스트 경로로 변경해 주고...
 	            cookie.setPath("/");
-	            int amount = 60 * 60 * 24 * 7;
-	            cookie.setMaxAge(amount); // 단위는 (초)임으로 7일정도로 유효시간을 설정해 준다.
+	            int amount = 60 * 60 * 24 * 7;	 // 단위는 (초)임으로 7일정도로 유효시간을 설정해 준다.
+	            cookie.setMaxAge(amount); 
 	            // 쿠키를 적용해 준다.
 	            response.addCookie(cookie);
 	            Date sessionLimit = new Date(System.currentTimeMillis() + (1000*amount));

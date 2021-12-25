@@ -8,7 +8,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import com.nplit.interceptor.AuthenticationInterceptor;
 
-//@Configuration
+@Configuration
 public class WebMvcConfig implements WebMvcConfigurer {
 	 @Inject
 	 AuthenticationInterceptor authenticationInterceptor;
