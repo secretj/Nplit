@@ -11,131 +11,129 @@ import com.nplit.vo.Criteria;
 import com.nplit.vo.QueVO;
 
 public interface BoardService {
-	//CRUD ±â´ÉÀÇ ¸Þ¼Òµå ±¸Çö
-	//±Û µî·Ï
+	//CRUD ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¼Òµï¿½ ï¿½ï¿½ï¿½ï¿½
+	//ï¿½ï¿½ ï¿½ï¿½ï¿½
 	void insertBoard(BoardVO vo);
 
-	//±Û ¼öÁ¤
+	//ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	void updateBoard(BoardVO vo);
 
-	//±Û »èÁ¦
+	//ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	void deleteBoard(BoardVO vo);
 
-	//±Û »ó¼¼ Á¶È¸
+	//ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½È¸
 	BoardVO getBoard(BoardVO vo);
 
-	//±Û ¸ñ·Ï Á¶È¸
+	//ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½È¸
 	List<BoardVO> getBoardList(BoardVO vo);
 
 
 
-	//µðºñ¿¡ ÆÄÀÏ ¸®½ºÆ® µî·Ï
+	//ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½
 	void insertBoardFileList(List<BoardFileVO> fileList);
 
-	//ÆÄÀÏ¸ñ·Ï ¸®ÅÏ
+	//ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	List<AttachVO> getBoardFileList(int seq);
 
-   //ÆÄÀÏ»èÁ¦
+   //ï¿½ï¿½ï¿½Ï»ï¿½ï¿½ï¿½
    void deleteFile(int seq);
 
-   //***********¿¹Áø db ¿¬µ¿ »èÁ¦ **********/
-	//°Ô½Ã±Û »èÁ¦ ½Ã ÇØ´ç °Ô½Ã±ÛÀÇ Ã·ºÎÆÄÀÏ ¸ðµÎ »èÁ¦
+   //***********ï¿½ï¿½ï¿½ï¿½ db ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ **********/
+	//ï¿½Ô½Ã±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ø´ï¿½ ï¿½Ô½Ã±ï¿½ï¿½ï¿½ Ã·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	void deleteFileList(int seq);
 void deleteBoardChatMemberList(int seq);  
 void deleteBoardChatMessage(int seq);  
 void deleteBoardChatRoom(int seq);  
 	
 	
-	//¿£ÇÃ¸´ ½ÃÀÛ
+	//ï¿½ï¿½ï¿½Ã¸ï¿½ ï¿½ï¿½ï¿½ï¿½
 
-	// ************* ÇÏÀ± ************************ 
+	// ************* ï¿½ï¿½ï¿½ï¿½ ************************ 
 	
-	//°Ô½Ã±Û µî·Ï
+	//ï¿½Ô½Ã±ï¿½ ï¿½ï¿½ï¿½
 	void register(BoardVO vo);
 
 	List<BoardVO> registered_list();
 
-	//³»°¡ µî·ÏÇÑ ¸®½ºÆ® Á¶È¸
+	//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½È¸
 	List<BoardVO> registered_mylist(String id, BoardVO vo, Criteria cri);
 	
-	//³»°¡ Âü¿©ÇÑ ¸®½ºÆ® Á¶È¸
-//	List<BoardVO> participate_mylist(String id, BoardVO vo, Criteria cri);
 
 
-	//ÃÑ µî·Ï¼ö
+
+	//ï¿½ï¿½ ï¿½ï¿½Ï¼ï¿½
 	int registered_mylist_count(String id);
 
-	// °Ô½Ã±Û ¼öÁ¤
+	// ï¿½Ô½Ã±ï¿½ ï¿½ï¿½ï¿½ï¿½
 	void myupdate(BoardVO vo);
 
-	// ÇÏÀ±°Ô½Ã±Û »èÁ¦
+	// ï¿½ï¿½ï¿½ï¿½ï¿½Ô½Ã±ï¿½ ï¿½ï¿½ï¿½ï¿½
 	void mydelete(int seq);
 
-	//±Û µî·Ï Àü µî·Ï µÉ ÀÏ·Ã¹øÈ£ È¹µæ
+	//ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ï·Ã¹ï¿½È£ È¹ï¿½ï¿½
 	int getBoardSeq();
 	
-	//Ä«Å×°í¸® ±Û °³¼ö 
+	//Ä«ï¿½×°ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 
 	List<Map<String, String>> category_count();
 
 	int category_count_grid();
 	
-	// ************* ¿øÁØ ************************  
+	// ************* ï¿½ï¿½ï¿½ï¿½ ************************  
 	
 	List<Map<String, String>> subscribe_list(BoardVO vo);
 	
-	// ¿øÁØ - »óÇ° µðÅ×ÀÏ
+	// ï¿½ï¿½ï¿½ï¿½ - ï¿½ï¿½Ç° ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	Map<String, String> details(int seq);
 
 	int hitcount(int seq);
 
 	BoardVO mydetails(int seq);
 	
-	//ÁÁ¾Æ¿ä ±â´É
+	//ï¿½ï¿½ï¿½Æ¿ï¿½ ï¿½ï¿½ï¿½
 	int likeCheck(Map<String, Object> paramMap);
 
-	// ************* Ã¶¿ì ************************ 
+	// ************* Ã¶ï¿½ï¿½ ************************ 
 	
-	// Ã¶¿ì - Ã·ºÎÆÄÀÏ ¾÷·Îµå
+	// Ã¶ï¿½ï¿½ - Ã·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Îµï¿½
 	void insertAttachFileList(List<AttachVO> fileList);
 
 	List<Map<String, String>> getsharinglist(BoardVO vo, Criteria cri); 
 
-	// Ã¶¿ì - ÆäÀÌÂ¡
+	// Ã¶ï¿½ï¿½ - ï¿½ï¿½ï¿½ï¿½Â¡
 
 	int selectRegisterCount(BoardVO vo);
 
-	// ÇÏÀ± ÆäÀÌÂ¡ grid - ½¦¾î¸µ Ä«Å×°í¸®º°·Î total °³¼ö ´Ù¸£°Ô ÁöÁ¤ÇÏ±â
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Â¡ grid - ï¿½ï¿½ï¿½î¸µ Ä«ï¿½×°ï¿½ï¿½ï¿½ï¿½ï¿½ total ï¿½ï¿½ï¿½ï¿½ ï¿½Ù¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½
 	int selectCategoryRegisterCount(BoardVO vo);
 	
 	List<Map<String, String>> getindexsharinglist(BoardVO vo);
 	
 	List<Map<String, String>> getpopularlist(BoardVO vo);
 	
-	//Ã¶¿ì ¸¶ÀÌÆäÀÌÁö  - ³»°¡ µî·ÏÇÐ ½¦¾î¸µ - ÆäÀÌÂ¡ Ã³¸®
+	//Ã¶ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½  - ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½î¸µ - ï¿½ï¿½ï¿½ï¿½Â¡ Ã³ï¿½ï¿½
 	List<Map<String, String>> getpagesharinglist(BoardVO vo, Criteria cri);
 	
 	
-	/*************** ÁøÇü °ü¸®ÀÚ ÆäÀÌÁö ******************/
-   //¹®ÀÇ °Ô½Ã±Û ¸ñ·Ï
+	/*************** ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ******************/
+   //ï¿½ï¿½ï¿½ï¿½ ï¿½Ô½Ã±ï¿½ ï¿½ï¿½ï¿½
    List<QueVO> getQuestionList();
    
-   //°ü¸®ÀÚ ¹®ÀÇ»èÁ¦ -ÁøÇü
+   //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ç»ï¿½ï¿½ï¿½ -ï¿½ï¿½ï¿½ï¿½
    void QuestionDelete(int seq);
    
-   //¹®ÀÇ ´äº¯ ÆäÀÌÁö
+   //ï¿½ï¿½ï¿½ï¿½ ï¿½äº¯ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
    QueVO QueAnwser(int seq);
    
-   //¹®ÀÇ ´äº¯ ÀÛ¼º
+   //ï¿½ï¿½ï¿½ï¿½ ï¿½äº¯ ï¿½Û¼ï¿½
     void QueUpdate(QueVO vo);
     
-    //¿¹Áø
+    //ï¿½ï¿½ï¿½ï¿½
     void deleteBoardLike(int seq);
     
-    /*************** ÇÏÀ± °ü¸®ÀÚ ±Û µî·Ï ******************/
-    //ÇÏÀ± °ü¸®ÀÚ ÆäÀÌÁö - ±Û µî·Ï
+    /*************** ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ ******************/
+    //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ - ï¿½ï¿½ ï¿½ï¿½ï¿½
     void admin_register(AdminVO vo);
 
-    //List<BoardVO> admin_register_list();
     
     List<Map<String, String>> admin_getsharinglist(AdminVO vo, Criteria cri); 
    

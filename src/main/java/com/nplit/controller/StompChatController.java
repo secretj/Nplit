@@ -16,18 +16,18 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class StompChatController {
 
-    private final SimpMessagingTemplate template; //Æ¯Á¤ Broker·Î ¸Þ¼¼Áö¸¦ Àü´Þ
-    @Inject // byTypeÀ¸·Î ÀÚµ¿ ÁÖÀÔ
+    private final SimpMessagingTemplate template; //Æ¯ï¿½ï¿½ Brokerï¿½ï¿½ ï¿½Þ¼ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+    @Inject // byTypeï¿½ï¿½ï¿½ï¿½ ï¿½Úµï¿½ ï¿½ï¿½ï¿½ï¿½
 	ChatService service;
 
-    //Client°¡ SENDÇÒ ¼ö ÀÖ´Â °æ·Î
-    //stompConfig¿¡¼­ ¼³Á¤ÇÑ applicationDestinationPrefixes¿Í @MessageMapping °æ·Î°¡ º´ÇÕµÊ
+    //Clientï¿½ï¿½ SENDï¿½ï¿½ ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½
+    //stompConfigï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ applicationDestinationPrefixesï¿½ï¿½ @MessageMapping ï¿½ï¿½Î°ï¿½ ï¿½ï¿½ï¿½Õµï¿½
     //"/pub/chat/enter"
     @MessageMapping(value = "/chat/enter")
     public void enter(ChatMessageVO message){
-        message.setMessage(message.getSendId() + "´ÔÀÌ ½¦¾î¸µ¿¡ Âü°¡ÇÏ¼Ì½À´Ï´Ù.");
+        message.setMessage(message.getSendId() + "ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½î¸µï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¼Ì½ï¿½ï¿½Ï´ï¿½.");
         template.convertAndSend("/sub/chat/room/" + message.getRoomId(), message);
-       // service.insertSendMsg(message);
+
     }
 
     @MessageMapping(value = "/chat/message")

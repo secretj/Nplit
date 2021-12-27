@@ -36,7 +36,7 @@ public class LikeController {
       vo.setMemberId(loginInfo.getMemberId());
       likeService.insertLike(vo);
       likeService.updateLike(vo);
-      //favorite count Á¶È¸
+      //favorite count ï¿½ï¿½È¸
       int count = likeService.likeCountUpDown(vo);
            
       HashMap<String, Object> hashMap = new HashMap<String, Object>();
@@ -72,7 +72,7 @@ public class LikeController {
       return "redirect:/details?seq=" + vo.getSeq(); 
    }
    
-// //³»°¡ÂòÇÑ°Å
+// //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ°ï¿½
    @RequestMapping(value = "/sharing_like")
    public String sharing_like(Model model, HttpSession session, LikeVO vo, BoardVO bvo, Criteria cri){
       MemberVO likeInfo = (MemberVO)session.getAttribute("login");
@@ -84,7 +84,6 @@ public class LikeController {
       paramMap.put("board", bvo);
       cri.setStartNum((cri.getPageNum() - 1) * cri.getAmount());
       paramMap.put("criteria", cri);
-      //    model.addAttribute("board",bvo);
       
       cri.setAmount(4);
      int total = likeService.getLikeCount(likeId);
@@ -93,7 +92,6 @@ public class LikeController {
       model.addAttribute("selectLikeList",likeService.selectLikeList(paramMap));
       model.addAttribute("getLikeCount",likeService.getLikeCount(likeId));
       model.addAttribute("mylist_count", total);
-      /* System.out.println(likeService.getLikeCount(vo)); */
       return "/mypage/sharing_like";
    }
    

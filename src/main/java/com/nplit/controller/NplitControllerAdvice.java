@@ -13,7 +13,7 @@ import com.nplit.exception.ResponseBodyException;
  */
 @ControllerAdvice
 public class NplitControllerAdvice {
-//IllegalArgumentException 
+
    @ExceptionHandler(Exception.class) 
    public String custom(Exception e) {
       System.out.println(e.getMessage());
