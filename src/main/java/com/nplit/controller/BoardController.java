@@ -40,7 +40,7 @@ import com.nplit.vo.PageVO;
 import com.nplit.vo.QueVO;
 
 @Controller
-//board·Î model ÀúÀåµÈ °´Ã¼°¡ ÀÖÀ¸¸é HttpSession µ¥ÀÌÅÍ º¸°ü¼Ò¿¡¼­ µ¿ÀÏÇÑ Å° °ª(board)·Î ÀúÀå
+//boardï¿½ï¿½ model ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ HttpSession ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ò¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Å° ï¿½ï¿½(board)ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 //@SessionAttributes("board")
 public class BoardController {
 	@Autowired
@@ -48,15 +48,15 @@ public class BoardController {
 	@Autowired
    private ChatService chatService;
 	
-	//@ModelAttribute : 1. Command °´Ã¼ ÀÌ¸§ ÁöÁ¤
-	//					2. View(JSP)¿¡¼­ »ç¿ëÇÒ µ¥ÀÌÅÍ ¼³Á¤
+	//@ModelAttribute : 1. Command ï¿½ï¿½Ã¼ ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½ï¿½
+	//					2. View(JSP)ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	@ModelAttribute("conditionMap")
 	public Map<String, String> searchConditionMap() {
 		Map<String, String> conditionMap = new HashMap<String, String>();
-		conditionMap.put("Á¦¸ñ", "TITLE");
-		conditionMap.put("³»¿ë", "CONTENT");
-		//¸®ÅÏ °ªÀº ReqeustServlet µ¥ÀÌÅÍ º¸°ü¼Ò¿¡ ÀúÀå
-		//conditionMapÀÌ¶ó´Â Å° °ªÀ¸·Î µ¥ÀÌÅÍ°¡ ÀúÀå
+		conditionMap.put("ï¿½ï¿½ï¿½ï¿½", "TITLE");
+		conditionMap.put("ï¿½ï¿½ï¿½ï¿½", "CONTENT");
+		//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ReqeustServlet ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ò¿ï¿½ ï¿½ï¿½ï¿½ï¿½
+		//conditionMapï¿½Ì¶ï¿½ï¿½ Å° ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í°ï¿½ ï¿½ï¿½ï¿½ï¿½
 		return conditionMap;
 	}
 	
@@ -78,14 +78,14 @@ public class BoardController {
     }
 	
 
-	/******* ÇÏÀ± Ã³À½ nearme ÆäÀÌÁö¿¡ ¿ÔÀ» ¶§ È­¸é **********/
+	/******* ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ nearme ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ È­ï¿½ï¿½ **********/
 	@RequestMapping(value = "/near_me")
     public String near_me(BoardVO vo, Model model, Criteria cri){
 		model.addAttribute("registerlist", boardService.getsharinglist(vo, cri));
         return "/near/near_me";
     }
 	
-	/************** ÇÏÀ± nearme ÆäÀÌÁö -> °Ë»öÈÄ ¸ñ·ÏÀÌ ³ª¿È  ******************/
+	/************** ï¿½ï¿½ï¿½ï¿½ nearme ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ -> ï¿½Ë»ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½  ******************/
 	@RequestMapping("/registerlist_nearme")
 	public String registerlist_nearme(BoardVO vo, Model model, Criteria cri) throws Exception {
 		if(vo.getSearchAddress() == null) {
@@ -103,7 +103,7 @@ public class BoardController {
 		return "/near/near_me";
    }
 	
-	//*******************  Ã¤ÆÃ ÆäÀÌÁö ÀÌµ¿  **************************
+	//*******************  Ã¤ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½  **************************
 	
 
 	@RequestMapping(value = "/chatting")
@@ -114,13 +114,13 @@ public class BoardController {
 	//*******************  sharing  **************************
 	
 	
-	// ±Û µî·Ï È­¸éÀ¸·Î ÀÌµ¿(url Á÷Á¢ ÀÔ·Â, aÅÂ±× Å¬¸¯)
+	// ï¿½ï¿½ ï¿½ï¿½ï¿½ È­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½(url ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½, aï¿½Â±ï¿½ Å¬ï¿½ï¿½)
 	@RequestMapping(value="/register_view")
 	public String register_view() throws Exception {
 		return "/sharing/register";
 	}
 
-	// ±Û µî·Ï ÈÄ -> »ó¼¼ º¸±â ÆäÀÌÁö·Î ÀÌµ¿
+	// ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ -> ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½
 	@RequestMapping("/register")
 	public String register(BoardVO vo,ChatRoomVO crvo,ChatMemberListVO cmlvo, Model model, HttpServletRequest request, MultipartHttpServletRequest mhsr) throws IOException {
 
@@ -132,16 +132,16 @@ public class BoardController {
 
 	boardService.register(vo);
 	
-	   //Ã¤ÆÃ¹æ °³¼³
+	   //Ã¤ï¿½Ã¹ï¿½ ï¿½ï¿½ï¿½ï¿½
 	   crvo.setRoomId(seq);
 	   chatService.craeteRoom(crvo);
 	   
-	   //¹æÀå Ã¤ÆÃ¹æ Âü°¡
+	   //ï¿½ï¿½ï¿½ï¿½ Ã¤ï¿½Ã¹ï¿½ ï¿½ï¿½ï¿½ï¿½
 	   cmlvo.setRoomId(seq);
 	   cmlvo.setMemberId(id);
 	   chatService.joinRoomMaster(cmlvo);
 	
-	//Ã·ºÎÆÄÀÏ µî·Ï
+	//Ã·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
       FileUtils fileUtils = new FileUtils();
       List<AttachVO> fileList = fileUtils.parseFileInfo(seq, request, mhsr);
       
@@ -153,7 +153,7 @@ public class BoardController {
 	
 
 	
-	//½¦¾î¸µ ¸ñ·Ï È­¸é - ±×¸®µå(±âº») 
+	//ï¿½ï¿½ï¿½î¸µ ï¿½ï¿½ï¿½ È­ï¿½ï¿½ - ï¿½×¸ï¿½ï¿½ï¿½(ï¿½âº») 
 	@RequestMapping("/registerlist")
 	public String registerlist(BoardVO vo, Model model, Criteria cri) throws Exception {
 		System.out.println("cate==========================================" + vo.getCategory());
@@ -169,22 +169,11 @@ public class BoardController {
 		if(vo.getSearchAddress() == null) {
 			vo.setSearchAddress("");
 		}
-		System.out.println("vo.getSearchAddress()==============================================" + vo.getSearchAddress());
-		//	     if(vo.getSearchCondition() == null) {
-		//      vo.setSearchCondition("TITLE");
-		//      }
-		//   if(vo.getSearchKeyword() == null) {
-		//        vo.setSearchKeyword("");
-		//       }
-	    
-	   System.out.println("±Û »ó¼¼ Á¶È¸ Ã³¸®");
-	   System.out.println(cri.getPageNum());
-	   System.out.println(cri.getAmount());
-	   //mypage list¿¡¼­ Á¶È¸Äõ¸® È£Ãâ Àü¿¡ cri.setAmount(4);
+
+
 	   cri.setAmount(9);
 	   int total = 0;
-	   //System.out.println(vo.getCategory());
-	   // ÇÏÀ± ÆäÀÌÂ¡ grid - ½¦¾î¸µ Ä«Å×°í¸®º°·Î total °³¼ö ´Ù¸£°Ô ÁöÁ¤ÇÏ±â
+
 	   if(vo.getCategory() == null || vo.getCategory().equals("")) {
 		   total = boardService.selectRegisterCount(vo);
 		   System.out.println("11111111111111111" + vo.getCategory());
@@ -196,12 +185,12 @@ public class BoardController {
 	   System.out.println(total);
 	   
 	   model.addAttribute("registerlist", boardService.getsharinglist(vo, cri));
-	   model.addAttribute("category_count", boardService.category_count()); // Ä«Å×°í¸®º° °³¼ö
+	   model.addAttribute("category_count", boardService.category_count()); // Ä«ï¿½×°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	   model.addAttribute("pageMaker", new PageVO(cri, total));
 	   
 	   System.out.println(boardService.getsharinglist(vo, cri));
 	   
-		//ÇÏÀ± Ä«Å×°í¸® 
+		//ï¿½ï¿½ï¿½ï¿½ Ä«ï¿½×°ï¿½ 
 		model.addAttribute("current_category", vo.getCategory());
 	
 		return "/sharing/grid";
@@ -210,7 +199,7 @@ public class BoardController {
 	
 	//*******************  mypage - sharing  **************************
 	
-	// ÇÏÀ± ¸¶ÀÌÆäÀÌÁö ½¦¾î¸µ ¸ñ·Ï º¸±â
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½î¸µ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	@RequestMapping(value = "/sharing_registered")
     public String registered_mylist(BoardVO vo, Criteria cri, Model model, HttpServletRequest request) throws Exception {
 		
@@ -219,10 +208,10 @@ public class BoardController {
 		MemberVO loginInfo = (MemberVO)session.getAttribute("login");
 		String id = loginInfo.getMemberId();
 		
-		// ÆäÀÌÂ¡Ã³¸® ¼öÁ¤ 
+		// ï¿½ï¿½ï¿½ï¿½Â¡Ã³ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 
 		cri.setAmount(4);
-		int total = boardService.registered_mylist_count(id); //total = ³»°¡ µî·ÏÇÑ ½¦¾î¸µ ÃÑ °³¼ö
-		System.out.println("**** ³»°¡ µî·ÏÇÑ ½¦¾î¸µ ÃÑ °³¼ö" + total);
+		int total = boardService.registered_mylist_count(id); //total = ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½î¸µ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+		System.out.println("**** ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½î¸µ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½" + total);
 		
 		model.addAttribute("mylist", boardService.registered_mylist(id, vo, cri));
 		model.addAttribute("pageMaker", new PageVO(cri, total));
@@ -234,16 +223,16 @@ public class BoardController {
 
 	
 	   
-	  // ÇÏÀ± ¸¶ÀÌÆäÀÌÁö - ½¦¾î¸µ »èÁ¦
+	  // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ - ï¿½ï¿½ï¿½î¸µ ï¿½ï¿½ï¿½ï¿½
     @RequestMapping(value = "/mypage/sharing_registered/delete")
      public String mypage_sharing_delete(@RequestParam("seq") int seq) {
        boardService.mydelete(seq);
        boardService.deleteFile(seq);
        
        
-       //¿¹Áø ±Û »èÁ¦ -> ÁÁ¾Æ¿ä Å×ÀÌºí »èÁ¦
+       //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ -> ï¿½ï¿½ï¿½Æ¿ï¿½ ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½ï¿½ï¿½
        boardService.deleteBoardLike(seq);
-       // ±Û»èÁ¦ -> Ã¤ÆÃ °ü·Ã Å×ÀÌºí Á¤º¸ »èÁ¦ 
+       // ï¿½Û»ï¿½ï¿½ï¿½ -> Ã¤ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 
        boardService.deleteBoardChatMemberList(seq);
        boardService.deleteBoardChatMessage(seq);
        boardService.deleteBoardChatRoom(seq);
@@ -251,7 +240,7 @@ public class BoardController {
      }
 
 	
-	// ¸¶ÀÌÆäÀÌÁö¿¡¼­ ±Û ¼öÁ¤ È­¸éÀ¸·Î ÀÌµ¿(url Á÷Á¢ ÀÔ·Â, aÅÂ±× Å¬¸¯)
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ È­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½(url ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½, aï¿½Â±ï¿½ Å¬ï¿½ï¿½)
 	@RequestMapping(value="/myupdate_view")
 	public String update_view(@RequestParam("seq") int seq, Model model) {
 		BoardVO vo = boardService.mydetails(seq);
@@ -262,17 +251,11 @@ public class BoardController {
 		return "/sharing/update";
 	}
 	
-	   //ÇÏÀ± ±Û ¼öÁ¤ ±â´É
-	   //ModelAttribute·Î ¼¼¼Ç¿¡ board¶ó´Â ÀÌ¸§À¸·Î ÀúÀåµÈ °´Ã¼°¡ ÀÖ´ÂÁö Ã£¾Æ¼­ Command°´Ã¼¿¡ ´ã¾ÆÁÜ
+	   //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
+	   //ModelAttributeï¿½ï¿½ ï¿½ï¿½ï¿½Ç¿ï¿½ boardï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½Ö´ï¿½ï¿½ï¿½ Ã£ï¿½Æ¼ï¿½ Commandï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
 	      @RequestMapping(value="/myupdate")
 	      public String myupdate(@ModelAttribute("myupdate") BoardVO vo, Model model, HttpSession session) throws IOException {
-	         System.out.println("±Û ¼öÁ¤ Ã³¸®");
-	         System.out.println("ÀÏ·Ã¹øÈ£ : " + vo.getSeq());
-	         System.out.println("Á¦¸ñ : " + vo.getTitle());
-	         System.out.println("ÀÛ¼ºÀÚ ÀÌ¸§ : " + vo.getWriter());
-	         System.out.println("³»¿ë : " + vo.getContents());
-	         System.out.println("µî·ÏÀÏ : " + vo.getRegDate());
-	         System.out.println("Á¶È¸¼ö : " + vo.getHit());
+
 	         
 	         int seq = vo.getSeq();
 
@@ -283,64 +266,61 @@ public class BoardController {
 	         return "redirect:/details?seq=" + vo.getSeq();
 	      }
 	
-	      // ÇÏÀ± delete ±â´É ±¸Çö
+	      // ï¿½ï¿½ï¿½ï¿½ delete ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	         @RequestMapping(value="/mydelete")
 	         public String mydelete(int seq) {
-	            System.out.println("±Û »èÁ¦ Ã³¸®");
+	            System.out.println("ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½");
 	            boardService.deleteFile(seq);
 	            boardService.mydelete(seq);
-	            //¿¹Áø ±Û »èÁ¦ -> ÁÁ¾Æ¿ä Å×ÀÌºí »èÁ¦
+	            //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ -> ï¿½ï¿½ï¿½Æ¿ï¿½ ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½ï¿½ï¿½
 	            boardService.deleteBoardLike(seq);
-	            // ±Û»èÁ¦ -> Ã¤ÆÃ °ü·Ã Å×ÀÌºí Á¤º¸ »èÁ¦ 
+	            // ï¿½Û»ï¿½ï¿½ï¿½ -> Ã¤ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 
 	            boardService.deleteBoardChatMemberList(seq);
 	            boardService.deleteBoardChatMessage(seq);
 	            boardService.deleteBoardChatRoom(seq);
 	            return "redirect:/sharing_registered";
 	         }
     
-	   // ÇÏÀ± ¸¶ÀÌÆäÀÌÁö - ½¦¾î¸µ »ó¼¼º¸±â
+	   // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ - ï¿½ï¿½ï¿½î¸µ ï¿½ó¼¼ºï¿½ï¿½ï¿½
 	      @RequestMapping(value = "/sharing_registered/details")
 	       public String mypage_sharing_details(@RequestParam("seq") int seq, Model model,HttpSession session) {
 	         MemberVO loginInfo = (MemberVO)session.getAttribute("login");
 	         String memberId= loginInfo.getMemberId();
 	         
-	         //boardService.hitcount(seq); //Á¶È¸¼ö¸¦ ¸ÕÀú ¾÷µ¥ÀÌÆ®ÇÏ°í
+	         //boardService.hitcount(seq); //ï¿½ï¿½È¸ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½Ï°ï¿½
 	         
 	         Map<String, Object> paramMap = new HashMap<String, Object>();
 	          
 	          paramMap.put("seq", seq);
 	          paramMap.put("memberId", memberId);
 	         
-	       // »óÇ°À» Á¶È¸ÇØ¾ßÇÔ (À§¾Æ·¡ ¼ø¼­°¡ ¹Ù²î¾îÀÖ¾î¼­ Á¶È¸¼ö°¡ 0ºÎÅÍ ¶á °ÍÀÓ)
+	       // ï¿½ï¿½Ç°ï¿½ï¿½ ï¿½ï¿½È¸ï¿½Ø¾ï¿½ï¿½ï¿½ (ï¿½ï¿½ï¿½Æ·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù²ï¿½ï¿½ï¿½Ö¾î¼­ ï¿½ï¿½È¸ï¿½ï¿½ï¿½ï¿½ 0ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½)
 	          Map<String, String> resultMap = boardService.details(seq);
-	          System.out.println("===================>" + resultMap);
-	          
+
 	         model.addAttribute("board", boardService.mydetails(seq));
 	         model.addAttribute("likeCheck", boardService.likeCheck(paramMap));
 	         model.addAttribute("fileList", boardService.getBoardFileList(seq));
 	         model.addAttribute("member",loginInfo);
-	         
-	      
-	         
+	                  
 	         BoardVO vo = boardService.mydetails(seq);
-	         System.out.println(vo.getHit());
+
 	         
 	           return "/sharing/details";
 	       }
 	      
 	      
 	      
-    //¿øÁØ - »ó¼¼ÆäÀÌÁö
+    //ï¿½ï¿½ï¿½ï¿½ - ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
       @RequestMapping("/details")
       public String details(@RequestParam("seq") int seq, Model model, BoardVO vo, HttpSession session) {
                 
     	  if((MemberVO)session.getAttribute("login")==null) {
-    		  boardService.hitcount(seq); //Á¶È¸¼ö¸¦ ¸ÕÀú ¾÷µ¥ÀÌÆ®ÇÏ°í
+    		  boardService.hitcount(seq); //ï¿½ï¿½È¸ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½Ï°ï¿½
    	          
    	          Map<String, Object> paramMap = new HashMap<String, Object>();
    	          
    	          paramMap.put("seq", seq);
-   	       // »óÇ°À» Á¶È¸ÇØ¾ßÇÔ (À§¾Æ·¡ ¼ø¼­°¡ ¹Ù²î¾îÀÖ¾î¼­ Á¶È¸¼ö°¡ 0ºÎÅÍ ¶á °ÍÀÓ)
+   	       // ï¿½ï¿½Ç°ï¿½ï¿½ ï¿½ï¿½È¸ï¿½Ø¾ï¿½ï¿½ï¿½ (ï¿½ï¿½ï¿½Æ·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù²ï¿½ï¿½ï¿½Ö¾î¼­ ï¿½ï¿½È¸ï¿½ï¿½ï¿½ï¿½ 0ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½)
    	          Map<String, String> resultMap = boardService.details(seq);
    	          System.out.println("===================>" + resultMap);
    	          
@@ -352,7 +332,7 @@ public class BoardController {
     		  MemberVO loginInfo = (MemberVO)session.getAttribute("login");
    	       String memberId= loginInfo.getMemberId();
    	    	  
-   	          boardService.hitcount(seq); //Á¶È¸¼ö¸¦ ¸Õ¤±Àú ¾÷µ¥ÀÌÆ®ÇÏ°í
+   	          boardService.hitcount(seq); //ï¿½ï¿½È¸ï¿½ï¿½ï¿½ï¿½ ï¿½Õ¤ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½Ï°ï¿½
    	          
    	          Map<String, Object> paramMap = new HashMap<String, Object>();
    	          
@@ -360,7 +340,7 @@ public class BoardController {
    	          paramMap.put("memberId", memberId);
    	      
    	          
-   	           // »óÇ°À» Á¶È¸ÇØ¾ßÇÔ (À§¾Æ·¡ ¼ø¼­°¡ ¹Ù²î¾îÀÖ¾î¼­ Á¶È¸¼ö°¡ 0ºÎÅÍ ¶á °ÍÀÓ)
+   	           // ï¿½ï¿½Ç°ï¿½ï¿½ ï¿½ï¿½È¸ï¿½Ø¾ï¿½ï¿½ï¿½ (ï¿½ï¿½ï¿½Æ·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù²ï¿½ï¿½ï¿½Ö¾î¼­ ï¿½ï¿½È¸ï¿½ï¿½ï¿½ï¿½ 0ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½)
    	          Map<String, String> resultMap = boardService.details(seq);
    	          System.out.println("===================>" + resultMap);
    	          
@@ -386,61 +366,23 @@ public class BoardController {
 //	}
 	
 	@PostMapping("/insertBoard.do")
-	//Command °´Ã¼ : »ç¿ëÀÚ°¡ Àü¼ÛÇÑ µ¥ÀÌÅÍ¸¦ ¸ÅÇÎÇÑ VO¸¦ ¹Ù·Î »ý¼º
-	//				»ç¿ëÀÚ ÀÔ·Â °ªÀÌ ¸¹¾ÆÁö¸é ÄÚµå°¡ ±æ¾îÁö±â ¶§¹®¿¡ °£·«È­ °¡´É
-	//              »ç¿ëÀÚ ÀÔ·Â inputÀÇ name ¼Ó¼º°ú VO ¸â¹öº¯¼öÀÇ ÀÌ¸§À» ¸ÅÇÎÇØÁÖ´Â °ÍÀÌ Áß¿ä
+	//Command ï¿½ï¿½Ã¼ : ï¿½ï¿½ï¿½ï¿½Ú°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ VOï¿½ï¿½ ï¿½Ù·ï¿½ ï¿½ï¿½ï¿½ï¿½
+	//				ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Úµå°¡ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½È­ ï¿½ï¿½ï¿½ï¿½
+	//              ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½ inputï¿½ï¿½ name ï¿½Ó¼ï¿½ï¿½ï¿½ VO ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ß¿ï¿½
 	public String insertBoard(BoardVO vo, HttpServletRequest request,
 		MultipartHttpServletRequest mhsr) throws IOException {
-		System.out.println("±Û µî·Ï Ã³¸®");
+		System.out.println("ï¿½ï¿½ ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½");
 		boardService.insertBoard(vo);
 		
-		//È­¸é ³×ºñ°ÔÀÌ¼Ç(°Ô½Ã±Û µî·Ï ¿Ï·á ÈÄ °Ô½Ã±Û ¸ñ·ÏÀ¸·Î ÀÌµ¿)
+		//È­ï¿½ï¿½ ï¿½×ºï¿½ï¿½ï¿½Ì¼ï¿½(ï¿½Ô½Ã±ï¿½ ï¿½ï¿½ï¿½ ï¿½Ï·ï¿½ ï¿½ï¿½ ï¿½Ô½Ã±ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½)
 		return "redirect:getBoardList.do";
 	}
 	
-	//ModelAttribute·Î ¼¼¼Ç¿¡ board¶ó´Â ÀÌ¸§À¸·Î ÀúÀåµÈ °´Ã¼°¡ ÀÖ´ÂÁö Ã£¾Æ¼­ Command°´Ã¼¿¡ ´ã¾ÆÁÜ
-//	@RequestMapping(value="/updateBoard.do")
-//	public String updateBoard(@ModelAttribute("board") BoardVO vo, HttpServletRequest request,
-//		MultipartHttpServletRequest mhsr) throws IOException {
-//		System.out.println("±Û ¼öÁ¤ Ã³¸®");
-//		System.out.println("ÀÏ·Ã¹øÈ£ : " + vo.getSeq());
-//		System.out.println("Á¦¸ñ : " + vo.getTitle());
-//		System.out.println("ÀÛ¼ºÀÚ ÀÌ¸§ : " + vo.getWriter());
-//		System.out.println("³»¿ë : " + vo.getContents());
-//		System.out.println("µî·ÏÀÏ : " + vo.getRegDate());
-//		System.out.println("Á¶È¸¼ö : " + vo.getHit());
-//		
-//		int seq = vo.getSeq();
-//		
-//		boardService.updateBoard(vo);
-//		return "redirect:getBoardList.do";
-//	}
-	
-//	@RequestMapping(value="/deleteBoard.do")
-//	public String deleteBoard(BoardVO vo) {
-//		System.out.println("±Û »èÁ¦ Ã³¸®");
-//		
-//		boardService.deleteBoard(vo);
-//		boardService.deleteFileList(vo.getSeq());
-//		return "redirect:getBoardList.do";
-//	}
-//	
-//	@RequestMapping(value="/getBoard.do")
-//	public String getBoard(BoardVO vo, Model model) {
-//		System.out.println("±Û »ó¼¼ Á¶È¸ Ã³¸®");
-//		
-//		//Model °´Ã¼´Â RequestServlet µ¥ÀÌÅÍ º¸°ü¼Ò¿¡ ÀúÀå
-//		//RequestServlet µ¥ÀÌÅÍ º¸°ü¼Ò¿¡ ÀúÀåÇÏ´Â °Í°ú µ¿ÀÏÇÏ°Ô µ¿ÀÛ
-//		//request.setAttribute("board", boardDAO.getBoard(vo)) == model.addAttribute("board", boardDAO.getBoard(vo))
-//		model.addAttribute("board", boardService.getBoard(vo));
-//		model.addAttribute("fileList", boardService.getBoardFileList(vo.getSeq()));		
-//		return "getBoard";
-//	}
 	
 	@RequestMapping(value="/getBoardList.do")
-	//@RequestParam : Command °´Ã¼ÀÎ VO¿¡ ¸ÅÇÎ°ªÀÌ ¾ø´Â »ç¿ëÀÚ ÀÔ·ÂÁ¤º¸´Â Á÷Á¢ ¹Þ¾Æ¼­ Ã³¸®
-	//				  value = È­¸éÀ¸·ÎºÎÅÍ Àü´ÞµÈ ÆÄ¶ó¹ÌÅÍ ÀÌ¸§(jspÀÇ inputÀÇ name¼Ó¼º °ª)
-	//				  required = »ý·« °¡´É ¿©ºÎ
+	//@RequestParam : Command ï¿½ï¿½Ã¼ï¿½ï¿½ VOï¿½ï¿½ ï¿½ï¿½ï¿½Î°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¾Æ¼ï¿½ Ã³ï¿½ï¿½
+	//				  value = È­ï¿½ï¿½ï¿½ï¿½ï¿½Îºï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Þµï¿½ ï¿½Ä¶ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½(jspï¿½ï¿½ inputï¿½ï¿½ nameï¿½Ó¼ï¿½ ï¿½ï¿½)
+	//				  required = ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	public String getBoardList( /*
 								 * @RequestParam(value="searchCondition", defaultValue="TITLE", required=false)
 								 * String condition,
@@ -449,7 +391,7 @@ public class BoardController {
 								 * keyword,
 								 */
 								BoardVO vo, Model model) {
-		System.out.println("±Û ¸ñ·Ï °Ë»ö Ã³¸®");
+		System.out.println("ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ë»ï¿½ Ã³ï¿½ï¿½");
 		
 		model.addAttribute("boardList", boardService.getBoardList(vo));
 		return "getBoardList";
@@ -466,22 +408,22 @@ public class BoardController {
 	@ResponseBody
 	public ResponseEntity<Resource> fileDown(@RequestParam("fileName") String fileName, 
 				HttpServletRequest request) throws Exception {
-		//¾÷·Îµå ÆÄÀÏ °æ·Î
+		//ï¿½ï¿½ï¿½Îµï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 		String path = request.getSession().getServletContext().getRealPath("/") + "/upload/";
 		
 		System.out.println(path);
 		
-		//ÆÄÀÏ°æ·Î, ÆÄÀÏ¸íÀ¸·Î ¸®¼Ò½º °´Ã¼ »ý¼º
+		//ï¿½ï¿½ï¿½Ï°ï¿½ï¿½, ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ò½ï¿½ ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½
 		Resource resource = new FileSystemResource(path + fileName);
 		
-		//ÆÄÀÏ ¸í
+		//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
 		String resourceName = resource.getFilename();
 		
-		//HttpÇì´õ¿¡ ¿É¼ÇÀ» Ãß°¡ÇÏ±â À§ÇØ¼­ Çì´õ º¯¼ö ¼±¾ð
+		//Httpï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½É¼ï¿½ï¿½ï¿½ ï¿½ß°ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½Ø¼ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		HttpHeaders headers = new HttpHeaders();
 		
 		try {
-			//Çì´õ¿¡ ÆÄÀÏ¸íÀ¸·Î Ã·ºÎÆÄÀÏ Ãß°¡
+			//ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½ï¿½ï¿½ï¿½ Ã·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½
 			headers.add("Content-Disposition", "attachment; filename=" + new String(resourceName.getBytes("UTF-8"),
 						"ISO-8859-1"));
 		} catch(UnsupportedEncodingException e) {
@@ -491,16 +433,16 @@ public class BoardController {
 		return new ResponseEntity<Resource>(resource, headers, HttpStatus.OK);
 	}
 	
-	/*************** ÁøÇü °ü¸®ÀÚ ÆäÀÌÁö ******************/
+	/*************** ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ******************/
 	
-    //1:1¹®ÀÇ °ü¸®ÀÚ ÆäÀÌÁö ¸®½ºÆ®
+    //1:1ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®
    @GetMapping("/admin/inquirepage")
     public void admin_inquirepage(Model model) throws Exception{
        
        model.addAttribute("getQuestionList", boardService.getQuestionList());
    }
    
-   // ÁøÇü ¾îµå¹Î - 1:1 ¹®ÀÇ »èÁ¦
+   // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ - 1:1 ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
    @RequestMapping(value = "quedelete")
    public String QuestionDelete(@RequestParam("seq") int seq) {
       boardService.QuestionDelete(seq);
@@ -508,7 +450,7 @@ public class BoardController {
     
     }
    
-   //ÁøÇü - ¹®ÀÇ ´äº¯ ÆäÀÌÁö Á¶È¸
+   //ï¿½ï¿½ï¿½ï¿½ - ï¿½ï¿½ï¿½ï¿½ ï¿½äº¯ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¸
    @RequestMapping("/QueAnwser")
    public String QueAnwser(@RequestParam("seq") int seq, Model model) throws Exception {              
        QueVO vo = boardService.QueAnwser(seq);
@@ -517,8 +459,8 @@ public class BoardController {
        return "/admin/inquiredetail";
     }
    
-   //ÁøÇü ¹®ÀÇ ´äº¯ ÀÛ¼º
-   //ModelAttribute·Î ¼¼¼Ç¿¡ board¶ó´Â ÀÌ¸§À¸·Î ÀúÀåµÈ °´Ã¼°¡ ÀÖ´ÂÁö Ã£¾Æ¼­ Command°´Ã¼¿¡ ´ã¾ÆÁÜ
+   //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½äº¯ ï¿½Û¼ï¿½
+   //ModelAttributeï¿½ï¿½ ï¿½ï¿½ï¿½Ç¿ï¿½ boardï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½Ö´ï¿½ï¿½ï¿½ Ã£ï¿½Æ¼ï¿½ Commandï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
       @RequestMapping(value="/QueUpdate")
       public String QueUpdate(@ModelAttribute("question") QueVO vo, Model model) throws IOException {
          int seq = vo.getSeq();
@@ -529,23 +471,23 @@ public class BoardController {
            return "redirect:/admin/inquirepage";
       }
       
-      /*************** ÇÏÀ± °ü¸®ÀÚ ±Û µî·Ï ******************/
+      /*************** ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ ******************/
       
-      //°ü¸®ÀÚ ¸ÞÀÎÆäÀÌÁö·Î ÀÌµ¿
+      //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½
       @RequestMapping(value = "/admin_page")
       public String admin_page(AdminVO vo, Model model, Criteria cri){
     	  model.addAttribute("admin_registerlist", boardService.admin_getsharinglist(vo, cri));
           return "/admin/admin_page";
       }
       
-      //°ü¸®ÀÚ ¸ÞÀÎÆäÀÌÁö¿¡¼­ ±Ûµî·ÏÈ­¸éÀ¸·Î ÀÌµ¿
+      //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ûµï¿½ï¿½È­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½
       @RequestMapping(value = "/admin_eventmake_view")
       public String admin_eventmake_view() throws Exception {
           return "/admin/eventmake";
       }
   	
       
-  	//°ü¸®ÀÚ ±Û µî·Ï ÈÄ ¸ñ·ÏÀ¸·Î ÀÌµ¿
+  	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½
  	@RequestMapping(value = "/admin_register")
  	public String admin_register(AdminVO vo, Model model, HttpServletRequest request, MultipartHttpServletRequest mhsr) throws IOException {
 
@@ -557,7 +499,7 @@ public class BoardController {
 
  	boardService.admin_register(vo);
  	
- 	//Ã·ºÎÆÄÀÏ µî·Ï
+ 	//Ã·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
    FileUtils fileUtils = new FileUtils();
    List<AttachVO> fileList = fileUtils.parseFileInfo(seq, request, mhsr);
    
@@ -567,19 +509,13 @@ public class BoardController {
        return "redirect:/admin_registerlist";
  	}
  	
- 	//°ü¸®ÀÚ ±Û µî·Ï È­¸é
+ 	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ È­ï¿½ï¿½
 	@RequestMapping("/admin_registerlist")
-	public String admin_registerlist(AdminVO vo, Model model, Criteria cri) throws Exception {
-		System.out.println("cate=============" + vo.getCategory());
+	public String admin_registerlist(AdminVO vo, Model model, Criteria cri) throws Exception {;
 		
 	   model.addAttribute("admin_registerlist", boardService.admin_getsharinglist(vo, cri));
-	
-	   //System.out.println(boardService.getsharinglist(vo, cri));
-	   
-		//ÇÏÀ± Ä«Å×°í¸® 
-		//model.addAttribute("current_category", vo.getCategory());
-	
-		return "/admin/admin_page";
+		
+	   return "/admin/admin_page";
    }
       
 }
