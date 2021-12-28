@@ -8,7 +8,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import com.nplit.interceptor.AuthenticationInterceptor;
 
-@Configuration
+//@Configuration
 public class WebMvcConfig implements WebMvcConfigurer {
 	 @Inject
 	 AuthenticationInterceptor authenticationInterceptor;
@@ -16,7 +16,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(authenticationInterceptor)
-        .excludePathPatterns("/upload/**","/assets/**","/error","/login","/loginProcess");			//ÀÎÅÍ¼ÁÅÍ°¡ Á¦¿ÜÇÒ path¸¦ ÁöÁ¤
+        .excludePathPatterns("/upload/**","/assets/**","/error","/login","/loginProcess");			//ï¿½ï¿½ï¿½Í¼ï¿½ï¿½Í°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ pathï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         
     }
 }

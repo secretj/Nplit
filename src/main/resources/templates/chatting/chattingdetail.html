@@ -410,13 +410,17 @@
          });
 
          $("#button-send").on("click", function (e) {
+    
             var msg = document.getElementById("msg");
-
+			
+			
             console.log(username + ":" + msg.value);
             stomp.send('/pub/chat/message', {}, JSON.stringify({roomId: roomId, message: msg.value, sendId: username, fullFilePath: [[${session.login.fullFilePath}]]}));
             msg.value = '';
-            
+          
          });
+          
+      
       });
    </script>
    <script src="https://kit.fontawesome.com/4a6a853753.js" crossorigin="anonymous"></script>
