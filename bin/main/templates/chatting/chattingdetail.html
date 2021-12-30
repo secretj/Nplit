@@ -342,6 +342,9 @@
 
    <script th:inline="javascript">
       $(document).ready(function () {
+	
+	
+	
          $("#msgArea").scrollTop(999999);
          console.log($("#msgArea").height());
          var messageList = [[${selectMessage}]];
@@ -419,6 +422,15 @@
             msg.value = '';
           
          });
+               $("#msg").keydown( function (key) {
+             if (key.keyCode == 13) {
+             var msg = document.getElementById("msg");
+    
+             console.log(username + ":" + msg.value);
+             stomp.send('/pub/chat/message', {}, JSON.stringify({roomId: roomId, message: msg.value, sendId: username, fullFilePath: [[${session.login.fullFilePath}]]}));
+             msg.value = '';
+             }
+           });    
           
       
       });
