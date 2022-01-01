@@ -5,8 +5,8 @@
 
 <!-- mapper 자체가 DAO 분리되어 나온 개념이기 때문에 namespace는 DAO 명을 따라가는 경우가 일반적임 -->
 <mapper namespace="com.nplit.mapper.LikeMapper">
-    
-    <insert id ="insertLike" parameterType="com.nplit.vo.LikeVO">
+
+	<insert id="insertLike" parameterType="com.nplit.vo.LikeVO">
        <![CDATA[
        INSERT INTO BOARDLIKE  (
                          SEQ,
@@ -19,9 +19,9 @@
                          now()
                       )
        ]]>
-    </insert>
-    
-    <update id ="updateLike" >
+	</insert>
+
+	<update id="updateLike">
     
        <![CDATA[   
        UPDATE
@@ -37,10 +37,10 @@
           WHERE
              seq=#{seq}
              ]]>
-    </update>
-    
-    
-    <delete id ="deleteLike" parameterType="com.nplit.vo.LikeVO" >
+	</update>
+
+
+	<delete id="deleteLike" parameterType="com.nplit.vo.LikeVO">
         <![CDATA[   
               DELETE FROM BOARDLIKE
           WHERE 
@@ -48,16 +48,18 @@
           AND 
              MEMBER_ID =#{memberId}   
        ]]>
-    </delete>
-    <select id = "likeCountUpDown" parameterType="com.nplit.vo.LikeVO" resultType="int">
-       SELECT COUNT(*)
-                      FROM
-                         BOARDLIKE
-                      WHERE
-                         seq=#{seq} 
-    </select>
-    
-    <select id ="getLikeCount" parameterType="com.nplit.vo.LikeVO" resultType="int">
+	</delete>
+	<select id="likeCountUpDown" parameterType="com.nplit.vo.LikeVO"
+		resultType="int">
+		SELECT COUNT(*)
+		FROM
+		BOARDLIKE
+		WHERE
+		seq=#{seq}
+	</select>
+
+	<select id="getLikeCount" parameterType="com.nplit.vo.LikeVO"
+		resultType="int">
        <![CDATA[
        SELECT
              COUNT(*)
@@ -66,9 +68,10 @@
        WHERE
           MEMBER_ID = #{likeId}
           ]]>
-    </select>
-    
-   <select id="selectLikeList" parameterType="HashMap" resultType="HashMap">
+	</select>
+
+	<select id="selectLikeList" parameterType="HashMap"
+		resultType="HashMap">
        <![CDATA[
        SELECT AA.*,
                BB.REG_DATE
@@ -96,6 +99,6 @@
        LIMIT #{criteria.amount} OFFSET #{criteria.startNum}
        
        ]]>
-    </select>
-    
-    </mapper>
+	</select>
+
+</mapper>

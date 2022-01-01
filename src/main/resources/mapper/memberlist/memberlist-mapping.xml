@@ -5,8 +5,8 @@
 
 <!-- mapper 자체가 DAO 분리되어 나온 개념이기 때문에 namespace는 DAO 명을 따라가는 경우가 일반적임 -->
 <mapper namespace="com.nplit.mapper.MemberListMapper">
-    
-    <insert id ="inShare" parameterType="com.nplit.vo.MemberListVO">
+
+	<insert id="inShare" parameterType="com.nplit.vo.MemberListVO">
        <![CDATA[
        INSERT INTO MEMBERLIST  (
                          MEMBER_NO,
@@ -19,26 +19,10 @@
                          #{detailNo}
                       )
        ]]>
-    </insert>
-    
- <!--    <update id ="updateLike" >
-    
-       <![CDATA[   
-       UPDATE
-          BOARD
-       SET 
-          FAVORITE = (
-                    SELECT COUNT(*)
-                      FROM
-                         BOARDLIKE
-                      WHERE
-                         seq=#{seq}
-                   )
-          WHERE
-             seq=#{seq}
-             ]]>
-    </update> -->
-    <update id ="updateMemberList" >
+	</insert>
+
+	
+	<update id="updateMemberList">
     
        <![CDATA[   
        UPDATE
@@ -52,9 +36,9 @@
                          DETAIL_NO=#{detailNo}
                 
              ]]>
-    </update>
-    
-    <delete id ="outShare" parameterType="com.nplit.vo.MemberListVO" >
+	</update>
+
+	<delete id="outShare" parameterType="com.nplit.vo.MemberListVO">
         <![CDATA[   
               DELETE FROM MEMBERLIST
           WHERE 
@@ -62,9 +46,10 @@
           AND 
              MEMBER_ID =#{memberId}   
        ]]>
-    </delete>
-    
-    <select id ="getListCount" parameterType="com.nplit.vo.MemberListVO" resultType="int">
+	</delete>
+
+	<select id="getListCount"
+		parameterType="com.nplit.vo.MemberListVO" resultType="int">
        <![CDATA[
        SELECT
              COUNT(*)
@@ -72,9 +57,10 @@
              MEMBERLIST
        
           ]]>
-    </select>
-    
-	 <select id="selectMemberList" parameterType="HashMap" resultType="HashMap">
+	</select>
+
+	<select id="selectMemberList" parameterType="HashMap"
+		resultType="HashMap">
        <![CDATA[
        SELECT A.SEQ AS seq,
                A.TITLE AS title,
@@ -94,9 +80,10 @@
        LIMIT 4
        
        ]]>
-    </select> 
-    
-         <select id="selectLikeList" parameterType="HashMap" resultType="com.nplit.vo.BoardVO">
+	</select>
+
+	<select id="selectLikeList" parameterType="HashMap"
+		resultType="com.nplit.vo.BoardVO">
        <![CDATA[
        SELECT * FROM BOARD
       WHERE SEQ IN (   
@@ -105,6 +92,6 @@
                      WHERE MEMBER_ID = #{parId}
                )
        ]]>
-    </select> 
-    
-    </mapper>
+	</select>
+
+</mapper>
