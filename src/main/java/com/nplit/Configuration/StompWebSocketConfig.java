@@ -6,28 +6,29 @@ import org.springframework.web.socket.config.annotation.EnableWebSocketMessageBr
 import org.springframework.web.socket.config.annotation.StompEndpointRegistry;
 import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerConfigurer;
 
-@EnableWebSocketMessageBroker		//stomp »ç¿ëÀ» À§ÇÑ ¾î³ëÅ×ÀÌ¼Ç
+@EnableWebSocketMessageBroker // stomp ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¼ï¿½
 @Configuration
 public class StompWebSocketConfig implements WebSocketMessageBrokerConfigurer {
 
-    //endpoint¸¦ /stomp·Î ÇÏ°í, allowedOrigins¸¦ "*"·Î ÇÏ¸é ÆäÀÌÁö¿¡¼­
-    //Get /info 404 Error°¡ ¹ß»ýÇÑ´Ù. ±×·¡¼­ ¾Æ·¡¿Í °°ÀÌ 2°³ÀÇ °èÃþÀ¸·Î ºÐ¸®ÇÏ°í
-    //origins¸¦ °³¹ß µµ¸ÞÀÎÀ¸·Î º¯°æÇÏ´Ï Àß µ¿ÀÛÇÏ¿´´Ù.
-    @Override
-    public void registerStompEndpoints(StompEndpointRegistry registry) {
-        registry.addEndpoint("/stomp/chat")
-                .setAllowedOrigins("http://localhost:8080")
-                .withSockJS();
-    }
+	// endpointï¿½ï¿½ /stompï¿½ï¿½ ï¿½Ï°ï¿½, allowedOriginsï¿½ï¿½ "*"ï¿½ï¿½ ï¿½Ï¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	// Get /info 404 Errorï¿½ï¿½ ï¿½ß»ï¿½ï¿½Ñ´ï¿½. ï¿½×·ï¿½ï¿½ï¿½ ï¿½Æ·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 2ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ð¸ï¿½ï¿½Ï°ï¿½
+	// originsï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ï¿½ï¿½.
+	@Override
+	public void registerStompEndpoints(StompEndpointRegistry registry) {
+		registry.addEndpoint("/stomp/chat").setAllowedOrigins("http://localhost:8080").withSockJS();
+	}
 
-    /*¾îÇÃ¸®ÄÉÀÌ¼Ç ³»ºÎ¿¡¼­ »ç¿ëÇÒ path¸¦ ÁöÁ¤ÇÒ ¼ö ÀÖÀ½*/
-    @Override
-    public void configureMessageBroker(MessageBrokerRegistry registry) {
-        registry.setApplicationDestinationPrefixes("/pub");			/*Client¿¡¼­ SEND ¿äÃ»À» Ã³¸®
-        															Spring docs¿¡¼­´Â /topic, /queue·Î ³ª¿À³ª ÆíÀÇ»ó /pub, /sub·Î º¯°æ*/
-       
-        
-        registry.enableSimpleBroker("/sub");						/*ÇØ´ç °æ·Î·Î SimpleBroker¸¦ µî·Ï. SimpleBroker´Â ÇØ´çÇÏ´Â °æ·Î¸¦
-        																SUBSCRIBEÇÏ´Â Client¿¡°Ô ¸Þ¼¼Áö¸¦ Àü´ÞÇÏ´Â °£´ÜÇÑ ÀÛ¾÷À» ¼öÇà*/
-    }	
+	/* ï¿½ï¿½ï¿½Ã¸ï¿½ï¿½ï¿½ï¿½Ì¼ï¿½ ï¿½ï¿½ï¿½Î¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ pathï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ */
+	@Override
+	public void configureMessageBroker(MessageBrokerRegistry registry) {
+		registry.setApplicationDestinationPrefixes("/pub"); /*
+															 * Clientï¿½ï¿½ï¿½ï¿½ SEND ï¿½ï¿½Ã»ï¿½ï¿½ Ã³ï¿½ï¿½ Spring docsï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ /topic,
+															 * /queueï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ç»ï¿½ /pub, /subï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+															 */
+
+		registry.enableSimpleBroker("/sub"); /*
+												 * ï¿½Ø´ï¿½ ï¿½ï¿½Î·ï¿½ SimpleBrokerï¿½ï¿½ ï¿½ï¿½ï¿½. SimpleBrokerï¿½ï¿½ ï¿½Ø´ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½Î¸ï¿½ SUBSCRIBEï¿½Ï´ï¿½
+												 * Clientï¿½ï¿½ï¿½ï¿½ ï¿½Þ¼ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Û¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+												 */
+	}
 }

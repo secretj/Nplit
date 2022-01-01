@@ -11,57 +11,54 @@ import com.nplit.vo.Criteria;
 import com.nplit.vo.QueVO;
 
 public interface BoardService {
-	//CRUD ����� �޼ҵ� ����
-	//�� ���
+	// CRUD ����� �޼ҵ� ����
+	// �� ���
 	void insertBoard(BoardVO vo);
 
-	//�� ����
+	// �� ����
 	void updateBoard(BoardVO vo);
 
-	//�� ����
+	// �� ����
 	void deleteBoard(BoardVO vo);
 
-	//�� �� ��ȸ
+	// �� �� ��ȸ
 	BoardVO getBoard(BoardVO vo);
 
-	//�� ��� ��ȸ
+	// �� ��� ��ȸ
 	List<BoardVO> getBoardList(BoardVO vo);
 
-
-
-	//��� ���� ����Ʈ ���
+	// ��� ���� ����Ʈ ���
 	void insertBoardFileList(List<BoardFileVO> fileList);
 
-	//���ϸ�� ����
+	// ���ϸ�� ����
 	List<AttachVO> getBoardFileList(int seq);
 
-   //���ϻ���
-   void deleteFile(int seq);
+	// ���ϻ���
+	void deleteFile(int seq);
 
-   //***********���� db ���� ���� **********/
-	//�Խñ� ���� �� �ش� �Խñ��� ÷������ ��� ����
+	// ***********���� db ���� ���� **********/
+	// �Խñ� ���� �� �ش� �Խñ��� ÷������ ��� ����
 	void deleteFileList(int seq);
-void deleteBoardChatMemberList(int seq);  
-void deleteBoardChatMessage(int seq);  
-void deleteBoardChatRoom(int seq);  
-	
-	
-	//���ø� ����
 
-	// ************* ���� ************************ 
-	
-	//�Խñ� ���
+	void deleteBoardChatMemberList(int seq);
+
+	void deleteBoardChatMessage(int seq);
+
+	void deleteBoardChatRoom(int seq);
+
+	// ���ø� ����
+
+	// ************* ���� ************************
+
+	// �Խñ� ���
 	void register(BoardVO vo);
 
 	List<BoardVO> registered_list();
 
-	//���� ����� ����Ʈ ��ȸ
+	// ���� ����� ����Ʈ ��ȸ
 	List<BoardVO> registered_mylist(String id, BoardVO vo, Criteria cri);
-	
 
-
-
-	//�� ��ϼ�
+	// �� ��ϼ�
 	int registered_mylist_count(String id);
 
 	// �Խñ� ����
@@ -70,34 +67,34 @@ void deleteBoardChatRoom(int seq);
 	// �����Խñ� ����
 	void mydelete(int seq);
 
-	//�� ��� �� ��� �� �Ϸù�ȣ ȹ��
+	// �� ��� �� ��� �� �Ϸù�ȣ ȹ��
 	int getBoardSeq();
-	
-	//ī�װ� �� ���� 
+
+	// ī�װ� �� ����
 	List<Map<String, String>> category_count();
 
 	int category_count_grid();
-	
-	// ************* ���� ************************  
-	
+
+	// ************* ���� ************************
+
 	List<Map<String, String>> subscribe_list(BoardVO vo);
-	
+
 	// ���� - ��ǰ ������
 	Map<String, String> details(int seq);
 
 	int hitcount(int seq);
 
 	BoardVO mydetails(int seq);
-	
-	//���ƿ� ���
+
+	// ���ƿ� ���
 	int likeCheck(Map<String, Object> paramMap);
 
-	// ************* ö�� ************************ 
-	
+	// ************* ö�� ************************
+
 	// ö�� - ÷������ ���ε�
 	void insertAttachFileList(List<AttachVO> fileList);
 
-	List<Map<String, String>> getsharinglist(BoardVO vo, Criteria cri); 
+	List<Map<String, String>> getsharinglist(BoardVO vo, Criteria cri);
 
 	// ö�� - ����¡
 
@@ -105,36 +102,34 @@ void deleteBoardChatRoom(int seq);
 
 	// ���� ����¡ grid - ��� ī�װ����� total ���� �ٸ��� �����ϱ�
 	int selectCategoryRegisterCount(BoardVO vo);
-	
-	List<Map<String, String>> getindexsharinglist(BoardVO vo);
-	
-	List<Map<String, String>> getpopularlist(BoardVO vo);
-	
-	//ö�� ����������  - ���� ����� ��� - ����¡ ó��
-	List<Map<String, String>> getpagesharinglist(BoardVO vo, Criteria cri);
-	
-	
-	/*************** ���� ������ ������ ******************/
-   //���� �Խñ� ���
-   List<QueVO> getQuestionList();
-   
-   //������ ���ǻ��� -����
-   void QuestionDelete(int seq);
-   
-   //���� �亯 ������
-   QueVO QueAnwser(int seq);
-   
-   //���� �亯 �ۼ�
-    void QueUpdate(QueVO vo);
-    
-    //����
-    void deleteBoardLike(int seq);
-    
-    /*************** ���� ������ �� ��� ******************/
-    //���� ������ ������ - �� ���
-    void admin_register(AdminVO vo);
 
-    
-    List<Map<String, String>> admin_getsharinglist(AdminVO vo, Criteria cri); 
-   
+	List<Map<String, String>> getindexsharinglist(BoardVO vo);
+
+	List<Map<String, String>> getpopularlist(BoardVO vo);
+
+	// ö�� ���������� - ���� ����� ��� - ����¡ ó��
+	List<Map<String, String>> getpagesharinglist(BoardVO vo, Criteria cri);
+
+	/*************** ���� ������ ������ ******************/
+	// ���� �Խñ� ���
+	List<QueVO> getQuestionList();
+
+	// ������ ���ǻ��� -����
+	void QuestionDelete(int seq);
+
+	// ���� �亯 ������
+	QueVO QueAnwser(int seq);
+
+	// ���� �亯 �ۼ�
+	void QueUpdate(QueVO vo);
+
+	// ����
+	void deleteBoardLike(int seq);
+
+	/*************** ���� ������ �� ��� ******************/
+	// ���� ������ ������ - �� ���
+	void admin_register(AdminVO vo);
+
+	List<Map<String, String>> admin_getsharinglist(AdminVO vo, Criteria cri);
+
 }

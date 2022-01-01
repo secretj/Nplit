@@ -6,6 +6,5 @@ import lombok.Data;
 public class LikeVO {
 	private int seq;
 	private String memberId;
-	
 
 }

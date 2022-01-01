@@ -8,14 +8,15 @@ import com.nplit.vo.Criteria;
 import com.nplit.vo.MemberListVO;
 
 public interface MemberListService {
-	
-   void inShare(MemberListVO vo);
-	
+
+	void inShare(MemberListVO vo);
+
 	void outShare(MemberListVO vo);
-	
+
 	void updateMemberList(MemberListVO vo);
 
 	int getListCount(String parId);
-    // ¶óÀÌÅ© Ã¼Å©
+
+	// ï¿½ï¿½ï¿½ï¿½Å© Ã¼Å©
 	List<Map<String, String>> selectMemberList(Map<String, Object> paramMap);
 }

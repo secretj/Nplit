@@ -4,7 +4,7 @@ import lombok.Data;
 
 //@Getter
 //@Setter
-@Data //Getter¿Í Setter ¸ðµÎ »ý¼ºÇÏ´Â ¾î³ëÅ×ÀÌ¼Ç
+@Data // Getterï¿½ï¿½ Setter ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¼ï¿½
 public class BoardFileVO {
 	private int seq;
 	private int fSeq;

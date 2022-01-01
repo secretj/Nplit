@@ -13,38 +13,37 @@ import com.nplit.vo.LikeVO;
 
 @Service("likeService")
 public class LikeServiceImpl implements LikeService {
-   
-   @Autowired
-   private LikeMapper likeMapper;
-   
-   public void insertLike(LikeVO vo) {
-      likeMapper.insertLike(vo);
-       
-   }
-   
-   public void deleteLike(LikeVO vo) {
-      likeMapper.deleteLike(vo);
-      
-   }
-   public void updateLike(LikeVO vo) {
-      likeMapper.updateLike(vo);
-   }
-   
-   //ÀüÃ¼ ¼ö °¡Á®¿À±â
-      public int getLikeCount(String likeId) {
-         return likeMapper.getLikeCount(likeId);
-      
-      }
-      
-      // ³»°¡ÂòÇÑ ½¦¾î¸µ
-         public List<Map<String, String>> selectLikeList(Map<String, Object> paramMap){
-         return likeMapper.selectLikeList(paramMap);
-      }
-         
-         public int likeCountUpDown(LikeVO vo) {
-           return likeMapper.likeCountUpDown(vo);
-        }  
 
+	@Autowired
+	private LikeMapper likeMapper;
 
-   
+	public void insertLike(LikeVO vo) {
+		likeMapper.insertLike(vo);
+
+	}
+
+	public void deleteLike(LikeVO vo) {
+		likeMapper.deleteLike(vo);
+
+	}
+
+	public void updateLike(LikeVO vo) {
+		likeMapper.updateLike(vo);
+	}
+
+	// ï¿½ï¿½Ã¼ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	public int getLikeCount(String likeId) {
+		return likeMapper.getLikeCount(likeId);
+
+	}
+
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½î¸µ
+	public List<Map<String, String>> selectLikeList(Map<String, Object> paramMap) {
+		return likeMapper.selectLikeList(paramMap);
+	}
+
+	public int likeCountUpDown(LikeVO vo) {
+		return likeMapper.likeCountUpDown(vo);
+	}
+
 }

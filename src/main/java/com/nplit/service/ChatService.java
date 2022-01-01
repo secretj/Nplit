@@ -9,34 +9,33 @@ import com.nplit.vo.ChatRoomVO;
 import com.nplit.vo.QueVO;
 
 public interface ChatService {
-	
-	//Ã¤ÆÃ¹æ °³¼³
+
+	// Ã¤ï¿½Ã¹ï¿½ ï¿½ï¿½ï¿½ï¿½
 	void craeteRoom(ChatRoomVO vo);
-	
-	//Ã¤ÆÃ¹æ »ý¼º½Ã ¹æÀå Âü°¡
+
+	// Ã¤ï¿½Ã¹ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	void joinRoomMaster(ChatMemberListVO vo);
 
-	//Ã¤ÆÃ¹æ Âü°¡
+	// Ã¤ï¿½Ã¹ï¿½ ï¿½ï¿½ï¿½ï¿½
 	void roomJoin(ChatMemberListVO vo);
-	
-	//³»°¡ Âü°¡ÇÑ Ã¤ÆÃ¹æ ¸®½ºÆ® ºÒ·¯¿À±â
+
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã¤ï¿½Ã¹ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½Ò·ï¿½ï¿½ï¿½ï¿½ï¿½
 	List<ChatRoomVO> selectMyChatting(String memberId);
 
-	//ÁøÇü - Ã¤ÆÃ¹æ Á¤º¸ Á¶È¸
+	// ï¿½ï¿½ï¿½ï¿½ - Ã¤ï¿½Ã¹ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¸
 	ChatRoomVO selectChattingDetail(int seq);
-	
-	//¸Þ¼¼Áö ÀúÀå
+
+	// ï¿½Þ¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	void insertSendMsg(ChatMessageVO vo);
 
-	//¸Þ¼¼Áö Á¶È¸
-	 List<ChatMessageVO> selectMessage(int seq);
-	
-	 //¿øÁØ 
-	 int getListCount(String parId);
+	// ï¿½Þ¼ï¿½ï¿½ï¿½ ï¿½ï¿½È¸
+	List<ChatMessageVO> selectMessage(int seq);
 
-	 Object selectMemberList(Map<String, Object> paramMap);
-	
-	   int chatcheck(ChatMemberListVO cmlvo);
-	   
-	   
+	// ï¿½ï¿½ï¿½ï¿½
+	int getListCount(String parId);
+
+	Object selectMemberList(Map<String, Object> paramMap);
+
+	int chatcheck(ChatMemberListVO cmlvo);
+
 }

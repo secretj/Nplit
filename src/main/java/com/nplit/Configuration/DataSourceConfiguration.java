@@ -20,32 +20,31 @@ import com.zaxxer.hikari.HikariDataSource;
 public class DataSourceConfiguration {
 	@Autowired
 	private ApplicationContext applicationContext;
-	
+
 	@Bean
-	@ConfigurationProperties(prefix="spring.datasource.hikari")
+	@ConfigurationProperties(prefix = "spring.datasource.hikari")
 	public HikariConfig hikariConfig() {
 		return new HikariConfig();
 	}
-	
+
 	@Bean
 	public DataSource dataSource() throws Exception {
 		DataSource dataSource = new HikariDataSource(hikariConfig());
 		return dataSource;
 	}
-	
+
 	@Bean
 	public SqlSessionFactory sqlSessionFactory(DataSource dataSource) throws Exception {
 		SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
 		sqlSessionFactoryBean.setDataSource(dataSource);
-		
-		//Mybatis ¼³Á¤ ÆÄÀÏ À§Ä¡ ÁöÁ¤
+
+		// Mybatis ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½ï¿½
 		sqlSessionFactoryBean.setConfigLocation(applicationContext.getResource("classpath:mybatis-config.xml"));
-		
-		sqlSessionFactoryBean.setMapperLocations(applicationContext
-									.getResources("classpath:/mapper/**/*-mapping.xml"));
+
+		sqlSessionFactoryBean.setMapperLocations(applicationContext.getResources("classpath:/mapper/**/*-mapping.xml"));
 		return sqlSessionFactoryBean.getObject();
 	}
-	
+
 	@Bean
 	public SqlSessionTemplate sqlSessionTemplate(SqlSessionFactory sqlSessionFactory) {
 		return new SqlSessionTemplate(sqlSessionFactory);

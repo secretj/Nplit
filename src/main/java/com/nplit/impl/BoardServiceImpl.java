@@ -18,17 +18,18 @@ import com.nplit.vo.QueVO;
 
 @Service("boardService")
 /*
- * ¾÷¹«·ÎÁ÷ Ã³¸®¸¦ ´ã´çÇÏ´Â Å¬·¡½º ex) °èÁÂÀÌÃ¼ ±â´É Ã³¸®ÇÒ ¶§ DBÀÔ·ÂÀº DAO ÇÏ°Ô µÇ´Âµ¥ DBÀÔ·Â Àü ÇÊ¿äÇÑ ÀÛ¾÷µé(°èÁÂ¾ÏÈ£È­, ±Ý¾×
- * ÄÄ¸¶ Ãß°¡...) ÇÏ´Â ·ÎÁ÷µéÀ» ServiceImplÅ¬·¡½º¿¡¼­ Ã³¸®ÇØÁÖ¸é µÊ
+ * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½ ex) ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ DBï¿½Ô·ï¿½ï¿½ï¿½ DAO ï¿½Ï°ï¿½ ï¿½Ç´Âµï¿½
+ * DBï¿½Ô·ï¿½ ï¿½ï¿½ ï¿½Ê¿ï¿½ï¿½ï¿½ ï¿½Û¾ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½Â¾ï¿½È£È­, ï¿½Ý¾ï¿½ ï¿½Ä¸ï¿½ ï¿½ß°ï¿½...) ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * ServiceImplÅ¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ ï¿½ï¿½
  */
 public class BoardServiceImpl implements BoardService {
 	@Autowired
 	private BoardMapper boardMapper;
 
 	public void insertBoard(BoardVO vo) {
-		// °´Ã¼ »ý¼º ½Ã¿¡ ÇÊµå º¯¼öÀÇ intÅ¸ÀÔµéÀº 0À¸·Î ÃÊ±âÈ­ µÊ
+		// ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã¿ï¿½ ï¿½Êµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ intÅ¸ï¿½Ôµï¿½ï¿½ï¿½ 0ï¿½ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­ ï¿½ï¿½
 //		if(vo.getSeq() == 0) { 
-//			throw new IllegalArgumentException("0¹ø ±ÛÀº µî·ÏÇÒ ¼ö ¾ø½À´Ï´Ù."); 
+//			throw new IllegalArgumentException("0ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½."); 
 //		}
 		boardMapper.insertBoard(vo);
 		/* boardDAO.insertBoard(vo); */
@@ -60,38 +61,39 @@ public class BoardServiceImpl implements BoardService {
 		return boardMapper.getBoardFileList(seq);
 	}
 
-	/************** ¿¹Áø db ¿¬µ¿»èÁ¦ *************/
+	/************** ï¿½ï¿½ï¿½ï¿½ db ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ *************/
 
-	
 	@Override
-	// ¿¹Áø ÆÄÀÏ »èÁ¦
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	public void deleteFile(int seq) {
 		boardMapper.deleteFile(seq);
 	}
 
-	//Ã¤ÆÃ ¸â¹ö ¸®½ºÆ® »èÁ¦
+	// Ã¤ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½
 	@Override
 	public void deleteBoardChatMemberList(int seq) {
 		boardMapper.deleteBoardChatMemberList(seq);
 	}
-	// ¸Þ¼¼Áö ³»¿ª »èÁ¦
+
+	// ï¿½Þ¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	@Override
 	public void deleteBoardChatMessage(int seq) {
 		boardMapper.deleteBoardChatMessage(seq);
 	}
-	
-	//Ã¤ÆÃ ¹æ »èÁ¦
+
+	// Ã¤ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	public void deleteBoardChatRoom(int seq) {
 		boardMapper.deleteBoardChatMessage(seq);
 	}
-	//ÆÄÀÏ ¸®½ºÆ® »èÁ¦
+
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½
 	public void deleteFileList(int seq) {
 		boardMapper.deleteFileList(seq);
 	}
 
-	// ¿£ÇÃ¸´ ½ÃÀÛ ******************************************************
+	// ï¿½ï¿½ï¿½Ã¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ******************************************************
 
-	// °Ô½Ã±Û µî·Ï
+	// ï¿½Ô½Ã±ï¿½ ï¿½ï¿½ï¿½
 	public void register(BoardVO vo) {
 		boardMapper.register(vo);
 	}
@@ -100,7 +102,7 @@ public class BoardServiceImpl implements BoardService {
 		return boardMapper.registered_list();
 	}
 
-	// ³»°¡ µî·ÏÇÑ ½¦¾î¸µ ÆäÀÌÁö
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½î¸µ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	public List<BoardVO> registered_mylist(String id, BoardVO vo, Criteria cri) {
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 		paramMap.put("id", id);
@@ -110,28 +112,27 @@ public class BoardServiceImpl implements BoardService {
 		return boardMapper.registered_mylist(paramMap);
 	}
 
-
-	// ¸¶ÀÌÆäÀÌÁö - µî·ÏµÈ ±Û ¼ö
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ - ï¿½ï¿½Ïµï¿½ ï¿½ï¿½ ï¿½ï¿½
 	public int registered_mylist_count(String id) {
 		return boardMapper.registered_mylist_count(id);
 	}
 
-	// °Ô½Ã±Û ¼öÁ¤
+	// ï¿½Ô½Ã±ï¿½ ï¿½ï¿½ï¿½ï¿½
 	public void myupdate(BoardVO vo) {
 		boardMapper.myupdate(vo);
 	}
 
-	// °Ô½Ã±Û »èÁ¦
+	// ï¿½Ô½Ã±ï¿½ ï¿½ï¿½ï¿½ï¿½
 	public void mydelete(int seq) {
 		boardMapper.mydelete(seq);
 	}
 
-	// ¸¶ÀÌÆäÀÌÁö - µðÅ×ÀÏ
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ - ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	public BoardVO mydetails(int seq) {
 		return boardMapper.mydetails(seq);
 	}
 
-	// ÇÏÀ± Ä«Å×°í¸®º° µî·ÏµÈ ±Û ¼ö
+	// ï¿½ï¿½ï¿½ï¿½ Ä«ï¿½×°ï¿½ï¿½ï¿½ ï¿½ï¿½Ïµï¿½ ï¿½ï¿½ ï¿½ï¿½
 	public List<Map<String, String>> category_count() {
 		return boardMapper.category_count();
 	}
@@ -140,8 +141,8 @@ public class BoardServiceImpl implements BoardService {
 		return boardMapper.category_count_grid();
 	}
 
-	/* ********** ¿øÁØ ********** */
-	// ¿øÁØ - »óÇ° µðÅ×ÀÏ
+	/* ********** ï¿½ï¿½ï¿½ï¿½ ********** */
+	// ï¿½ï¿½ï¿½ï¿½ - ï¿½ï¿½Ç° ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	public Map<String, String> details(int seq) {
 		return boardMapper.details(seq);
 	}
@@ -154,12 +155,12 @@ public class BoardServiceImpl implements BoardService {
 		return boardMapper.getBoardSeq();
 	}
 
-	// ÁÁ¾Æ¿ä ±â´É
+	// ï¿½ï¿½ï¿½Æ¿ï¿½ ï¿½ï¿½ï¿½
 	public int likeCheck(Map<String, Object> paramMap) {
 		return boardMapper.likeCheck(paramMap);
 	}
 
-	// Ã¶¿ì - Ã·ºÎÆÄÀÏ ¾÷·Îµå
+	// Ã¶ï¿½ï¿½ - Ã·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Îµï¿½
 	public void insertAttachFileList(List<AttachVO> fileList) {
 		for (AttachVO file : fileList) {
 			boardMapper.insertAttachFileList(file);
@@ -173,11 +174,11 @@ public class BoardServiceImpl implements BoardService {
 				.println("vo.getSearchAddress()==============================================" + vo.getSearchAddress());
 		cri.setStartNum((cri.getPageNum() - 1) * cri.getAmount());
 		paramMap.put("cri", cri);
-		System.out.println("getBoardList ±â´É Ã³¸®");
+		System.out.println("getBoardList ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½");
 		return boardMapper.getsharinglist(paramMap);
 	}
 
-	// ÇÏÀ± ÆäÀÌÂ¡ grid - ½¦¾î¸µ Ä«Å×°í¸®º°·Î total °³¼ö ´Ù¸£°Ô ÁöÁ¤ÇÏ±â
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Â¡ grid - ï¿½ï¿½ï¿½î¸µ Ä«ï¿½×°ï¿½ï¿½ï¿½ï¿½ï¿½ total ï¿½ï¿½ï¿½ï¿½ ï¿½Ù¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½
 	public int selectRegisterCount(BoardVO vo) {
 		return boardMapper.selectRegisterCount(vo);
 	}
@@ -186,76 +187,74 @@ public class BoardServiceImpl implements BoardService {
 		return boardMapper.selectCategoryRegisterCount(vo);
 	}
 
-	/* ÀÎµ¦½º */
+	/* ï¿½Îµï¿½ï¿½ï¿½ */
 
-	// ÃÖ½Å¼ø
+	// ï¿½Ö½Å¼ï¿½
 	public List<Map<String, String>> getindexsharinglist(BoardVO vo) {
 		return boardMapper.getindexsharinglist(vo);
 	}
 
-	// ÀÎ±â¼ø
+	// ï¿½Î±ï¿½ï¿½
 	public List<Map<String, String>> getpopularlist(BoardVO vo) {
 		return boardMapper.getpopularlist(vo);
 	}
 
-	// ±¸µ¶
+	// ï¿½ï¿½ï¿½ï¿½
 	public List<Map<String, String>> subscribe_list(BoardVO vo) {
 		return boardMapper.subscribe_list(vo);
 	}
 
-	/*************** ÁøÇü °ü¸®ÀÚ ÆäÀÌÁö ******************/
+	/*************** ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ******************/
 
-	// ¹®ÀÇ °Ô½Ã±Û ¸ñ·Ï
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½Ô½Ã±ï¿½ ï¿½ï¿½ï¿½
 	@Override
 	public List<QueVO> getQuestionList() {
 		return boardMapper.getQuestionList();
 	}
 
-	// °ü¸®ÀÚ 1:1 ¹®ÀÇ »èÁ¦
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 1:1 ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	public void QuestionDelete(int seq) {
 		boardMapper.QuestionDelete(seq);
 	}
 
-	// ¹®ÀÇ »ó¼¼º¸±â
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½ó¼¼ºï¿½ï¿½ï¿½
 	public QueVO QueAnwser(int seq) {
 		return boardMapper.QueAnwser(seq);
 	}
 
-	// ¹®ÀÇ ´äº¯ ÀÛ¼º
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½äº¯ ï¿½Û¼ï¿½
 	public void QueUpdate(QueVO vo) {
 		boardMapper.QueUpdate(vo);
 	}
 
-	// Ã¶¿ì ¸¶ÀÌÆäÀÌÁö - ³»°¡ µî·ÏÇÐ ½¦¾î¸µ - ÆäÀÌÂ¡ Ã³¸®
+	// Ã¶ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ - ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½î¸µ - ï¿½ï¿½ï¿½ï¿½Â¡ Ã³ï¿½ï¿½
 	public List<Map<String, String>> getpagesharinglist(BoardVO vo, Criteria cri) {
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 		paramMap.put("vo", vo);
 		cri.setStartNum((cri.getPageNum() - 1) * cri.getAmount());
 		paramMap.put("cri", cri);
-		System.out.println("getBoardList ±â´É Ã³¸®");
+		System.out.println("getBoardList ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½");
 		return boardMapper.getsharinglist(paramMap);
 	}
 
-	// ¿¹Áø ±Û »èÁ¦½Ã ÁÁ¾Æ¿ä °°ÀÌ »èÁ¦
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Æ¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	@Override
 	public void deleteBoardLike(int seq) {
 		boardMapper.deleteBoardLike(seq);
 
 	}
 
-	/*************** ÇÏÀ± °ü¸®ÀÚ ±Û µî·Ï ******************/
+	/*************** ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ ******************/
 
-	// ÇÏÀ± °ü¸®ÀÚ °Ô½Ã±Û µî·Ï
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô½Ã±ï¿½ ï¿½ï¿½ï¿½
 	public void admin_register(AdminVO vo) {
 		boardMapper.admin_register(vo);
 	}
 
-
-
 	public List<Map<String, String>> admin_getsharinglist(AdminVO vo, Criteria cri) {
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 		paramMap.put("vo", vo);
-		System.out.println("getBoardList ±â´É Ã³¸®");
+		System.out.println("getBoardList ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½");
 		return boardMapper.admin_getsharinglist(paramMap);
 	}
 

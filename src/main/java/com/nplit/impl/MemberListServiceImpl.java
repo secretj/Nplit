@@ -1,7 +1,7 @@
 
-  package com.nplit.impl;
-  
-  import java.util.List;
+package com.nplit.impl;
+
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,35 +10,35 @@ import org.springframework.stereotype.Service;
 import com.nplit.mapper.MemberListMapper;
 import com.nplit.service.MemberListService;
 import com.nplit.vo.MemberListVO;
-  
-  @Service("mlService") 
-  public class MemberListServiceImpl implements MemberListService {
-  
-  @Autowired 
-  private MemberListMapper mlMapper;
-  
-  public void inShare(MemberListVO vo) { 
-	  mlMapper.inShare(vo);
- 
-  }
-  
-  public void outShare(MemberListVO vo) {
-	  mlMapper.outShare(vo);
-  
-  } 
-  public void updateMemberList(MemberListVO vo) {
-	  mlMapper.updateMemberList(vo); 
-  }
-  
-  //ÀüÃ¼ ¼ö °¡Á®¿À±â
-  public int getListCount(String parId) { 
-	  return mlMapper.getListCount(parId);
-    }
-  
-  // ³»°¡ÂòÇÑ 
-  public List<Map<String, String>> selectMemberList(Map<String,Object> paramMap){
-	  return mlMapper.selectMemberList(paramMap);
-	  }
-  
-   }
- 
+
+@Service("mlService")
+public class MemberListServiceImpl implements MemberListService {
+
+	@Autowired
+	private MemberListMapper mlMapper;
+
+	public void inShare(MemberListVO vo) {
+		mlMapper.inShare(vo);
+
+	}
+
+	public void outShare(MemberListVO vo) {
+		mlMapper.outShare(vo);
+
+	}
+
+	public void updateMemberList(MemberListVO vo) {
+		mlMapper.updateMemberList(vo);
+	}
+
+	// ï¿½ï¿½Ã¼ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	public int getListCount(String parId) {
+		return mlMapper.getListCount(parId);
+	}
+
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	public List<Map<String, String>> selectMemberList(Map<String, Object> paramMap) {
+		return mlMapper.selectMemberList(paramMap);
+	}
+
+}

@@ -14,119 +14,119 @@ import com.nplit.vo.QueVO;
 
 @Repository
 public class UserDAOImpl implements UserDAO {
-    @Inject
-    SqlSession sqlSession;
- 
+	@Inject
+	SqlSession sqlSession;
 
-    /**
-     * login¿¡ ¼º°øÇÏ¸é, À¯Àú Á¤º¸¸¦ ´ã°í ÀÖ´Â UserVO °´Ã¼¸¦ ¹ÝÈ¯ÇÑ´Ù.
-     */
-    @Override
-    public MemberVO login(MemberVO dto) {
-        // MapperÀÇ namespace¸í.id : ÀÚ½Å¿¡°Ô ¸Â°Ô ÀÛ¼ºÇØ¼­ ³Ö´Â´Ù.
-        return sqlSession.selectOne("com.nplit.mapper.UserMapper.login", dto);
-    }
- 
-    //°³ÀÎÁ¤º¸ ¼öÁ¤
-    @Override
-    public void profileUpdate(MemberVO vo) {
-        sqlSession.update("com.nplit.mapper.UserMapper.profileUpdate", vo);
-    }
-    
-    //ºñ¹Ð¹øÈ£ ¼öÁ¤
-    @Override
-    public void pwdUpdate(MemberVO vo) {
-       sqlSession.update("com.nplit.mapper.UserMapper.pwdUpdate", vo);
-    }
-    
-    //È¸¿øÅ»Åð
-    @Override
-    public void memberDelete(MemberVO vo) {
-       sqlSession.delete("com.nplit.mapper.UserMapper.memberDelete", vo);
-    }
-    
-    // ÀÚµ¿·Î±×ÀÎ Ã¼Å©ÇÑ °æ¿ì¿¡ »ç¿ëÀÚ Å×ÀÌºí¿¡ ¼¼¼Ç°ú À¯È¿½Ã°£À» ÀúÀåÇÏ±â À§ÇÑ ¸Þ¼­µå
-    public void keepLogin(String memberId, String sessionId,Date next){
-         
-        Map<String, Object> map = new HashMap<String,Object>();
-        map.put("memberId", memberId);
-        map.put("sessionId", sessionId);
-        map.put("next", next);
-         
-        // Mapper.xml·Î µ¥ÀÌÅÍ¸¦ Àü´ÞÇÒ ¶§ ÇÑ °´Ã¼¹Û¿¡ Àü´Þ ¸øÇÔÀ¸·Î mapÀ¸·Î ¹­¾î¼­ º¸³»ÁÜ ´Ü... ÁÖÀÇÇÒ Á¡Àº
-        // Mapper.xml ¾È¿¡¼­ #{} ÀÌ ¾È¿¡ ÁöÁ¤ÇÑ ÀÌ¸§ÀÌ¶û °°¾Æ¾ßÇÔ.. ÀÚµ¿À¸·Î ¸ÅÇÎµÉ ¼ö ÀÖµµ·Ï
-        // ¾Æ·¡°¡ ¼öÇàµÇ¸é¼­, »ç¿ëÀÚ Å×ÀÌºí¿¡ ¼¼¼Çid¿Í À¯È¿½Ã°£ÀÌ ÀúÀåµÊ
-        sqlSession.update("com.nplit.mapper.UserMapper.keepLogin",map);
-    }
- 
-    // ÀÌÀü¿¡ ·Î±×ÀÎÇÑ ÀûÀÌ ÀÖ´ÂÁö, Áï À¯È¿½Ã°£ÀÌ ³ÑÁö ¾ÊÀº ¼¼¼ÇÀ» °¡Áö°í ÀÖ´ÂÁö Ã¼Å©ÇÑ´Ù.
-    public MemberVO checkUserWithSessionKey(String sessionId){
-        // À¯È¿½Ã°£ÀÌ ³²¾ÆÀÖ°í(>now()) Àü´Þ¹ÞÀº ¼¼¼Ç id¿Í ÀÏÄ¡ÇÏ´Â »ç¿ëÀÚ Á¤º¸¸¦ ²¨³½´Ù.
-        return sqlSession.selectOne("com.nplit.mapper.UserMapper.checkUserWithSessionKey",sessionId);
-     
-    }
-     
-    @Override
-    public MemberVO LoginInfo(MemberVO vo) {
-        return sqlSession.selectOne("com.nplit.mapper.UserMapper.LoginInfo", vo);
-    }
- 
-    //±¸±Û
-    //È¸¿ø Á¤º¸ Á¶È¸ - ID,PWÁ¤º¸¿¡ ÇØ´çÇÏ´Â »ç¿ëÀÚ Á¤º¸
-    @Override
-    public MemberVO readMemberWithIDPW(String member_id, String password) throws Exception {
-       //Å×½ºÆ®(ÄÁÆ®·Ñ·¯) È£Ãâ -> Á¤º¸¸¦ ÀúÀå -> DB·ÎÀÌµ¿
+	/**
+	 * loginï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½, ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ UserVO ï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½ï¿½È¯ï¿½Ñ´ï¿½.
+	 */
+	@Override
+	public MemberVO login(MemberVO dto) {
+		// Mapperï¿½ï¿½ namespaceï¿½ï¿½.id : ï¿½Ú½Å¿ï¿½ï¿½ï¿½ ï¿½Â°ï¿½ ï¿½Û¼ï¿½ï¿½Ø¼ï¿½ ï¿½Ö´Â´ï¿½.
+		return sqlSession.selectOne("com.nplit.mapper.UserMapper.login", dto);
+	}
 
-       //StringÀÎÀÚ¸¦ 2°³¸¦ °¡Á®°¥ ¼ö ¾ø±â¶§¹®¿¡ ÆÄ¶ó¹ÌÅÍ µÎ°³¸¦ °´Ã¼ÀÎ Map¿¡ ³Ö¾î¼­ °¡Áö°í ³Ñ±ä´Ù
-       //return sqlSession.selectOne(namespace+".readMemberWithIDPW", userid, userpw);      
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+	@Override
+	public void profileUpdate(MemberVO vo) {
+		sqlSession.update("com.nplit.mapper.UserMapper.profileUpdate", vo);
+	}
 
-       // DB·Î Á¤º¸¸¦ Àü´ÞÇÏ±â À§ÇØ¼­´Â sqlSeesion °´Ã¼ È°¿ë
-       // * 1°³ ÀÌ»óÀÇ Á¤º¸¸¦ Àü´ÞÇÒ¶§´Â °´Ã¼ ´ÜÀ§·Î Àü´Þ
-       // * °´Ã¼(VO) ¾È¿¡ ÀúÀåÀÌ ¾ÈµÇ´Â Á¤º¸ÀÇ °æ¿ì MapÀ» »ç¿ë
-       // MapÀº key-valueÇüÅÂ : ÀÌ¶§ key°ªÀº sql±¸¹®ÀÇ #{¤·¤·¤·} ÀÌ¸§°ú °°¾Æ¾ßÇÔ
+	// ï¿½ï¿½Ð¹ï¿½È£ ï¿½ï¿½ï¿½ï¿½
+	@Override
+	public void pwdUpdate(MemberVO vo) {
+		sqlSession.update("com.nplit.mapper.UserMapper.pwdUpdate", vo);
+	}
 
-       Map<String, Object> paramMap = new HashMap<String, Object>();
-       paramMap.put("memberId", member_id);
-       paramMap.put("password", password);
+	// È¸ï¿½ï¿½Å»ï¿½ï¿½
+	@Override
+	public void memberDelete(MemberVO vo) {
+		sqlSession.delete("com.nplit.mapper.UserMapper.memberDelete", vo);
+	}
 
-       System.out.println("readMemberWithIDPW ¿¡¼­ ÀÐÀº Á¤º¸ "+ paramMap.get(member_id));
-    //   return sqlSession.selectOne("com.nplit.mapper.UserMapper.readMemberWithIDPW", paramMap);   
-      return sqlSession.selectOne("com.nplit.mapper.UserMapper.login", paramMap);   
-    }
+	// ï¿½Úµï¿½ï¿½Î±ï¿½ï¿½ï¿½ Ã¼Å©ï¿½ï¿½ ï¿½ï¿½ì¿¡ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½ï¿½Ç°ï¿½ ï¿½ï¿½È¿ï¿½Ã°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¼ï¿½ï¿½ï¿½
+	public void keepLogin(String memberId, String sessionId, Date next) {
 
-	//±¸±Û ¶§¹®¿¡ Ãß°¡ 
-	  @Override
-	  public void join(MemberVO vo) {
-	      sqlSession.insert("com.nplit.mapper.UserMapper.join", vo);
-	        }
-	
-	// ¿¹Áø ¾ÆÀÌµð Áßº¹Ã¼Å©
-	  @Override
-	  public int idChk(MemberVO vo) throws Exception {
-	     int result = sqlSession.selectOne("com.nplit.mapper.UserMapper.idChk", vo);
-	     return result;
-	  }
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("memberId", memberId);
+		map.put("sessionId", sessionId);
+		map.put("next", next);
 
-  //¿¹Áø ´Ð³×ÀÓ Áßº¹Ã¼Å©
-     @Override
-     public int nicknameChk(MemberVO vo) throws Exception {
-        int result = sqlSession.selectOne("com.nplit.mapper.UserMapper.nicknameChk", vo.getNickname());
-         System.out.println("UserDAOImpl ¿¡¼­ ¹ÝÈ¯°ª : "+result);
-        return result;
-        
-     }
-     
-   //ºñ¹Ð¹øÈ£º¯°æ
-     @Override
-     public int updatePw(MemberVO vo) throws Exception {
-        return sqlSession.update("com.nplit.mapper.UserMapper.updatePw", vo);
-     }
-    // 1:1¹®ÀÇÇÏ±â
-     @Override
-     public void question(QueVO vo) {
-         sqlSession.insert("com.nplit.mapper.UserMapper.question", vo);
-      }
-     
-     
-    
+		// Mapper.xmlï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½Ã¼ï¿½Û¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ mapï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½î¼­ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		// ï¿½ï¿½... ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+		// Mapper.xml ï¿½È¿ï¿½ï¿½ï¿½ #{} ï¿½ï¿½ ï¿½È¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ï¿½Ì¶ï¿½ ï¿½ï¿½ï¿½Æ¾ï¿½ï¿½ï¿½.. ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Îµï¿½ ï¿½ï¿½ ï¿½Öµï¿½ï¿½ï¿½
+		// ï¿½Æ·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ç¸é¼­, ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½ï¿½ï¿½idï¿½ï¿½ ï¿½ï¿½È¿ï¿½Ã°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
+		sqlSession.update("com.nplit.mapper.UserMapper.keepLogin", map);
+	}
+
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Î±ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ï¿½ï¿½, ï¿½ï¿½ ï¿½ï¿½È¿ï¿½Ã°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ï¿½ï¿½ Ã¼Å©ï¿½Ñ´ï¿½.
+	public MemberVO checkUserWithSessionKey(String sessionId) {
+		// ï¿½ï¿½È¿ï¿½Ã°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ö°ï¿½(>now()) ï¿½ï¿½ï¿½Þ¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ idï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
+		return sqlSession.selectOne("com.nplit.mapper.UserMapper.checkUserWithSessionKey", sessionId);
+
+	}
+
+	@Override
+	public MemberVO LoginInfo(MemberVO vo) {
+		return sqlSession.selectOne("com.nplit.mapper.UserMapper.LoginInfo", vo);
+	}
+
+	// ï¿½ï¿½ï¿½ï¿½
+	// È¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¸ - ID,PWï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ø´ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+	@Override
+	public MemberVO readMemberWithIDPW(String member_id, String password) throws Exception {
+		// ï¿½×½ï¿½Æ®(ï¿½ï¿½Æ®ï¿½Ñ·ï¿½) È£ï¿½ï¿½ -> ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ -> DBï¿½ï¿½ï¿½Ìµï¿½
+
+		// Stringï¿½ï¿½ï¿½Ú¸ï¿½ 2ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½â¶§ï¿½ï¿½ï¿½ï¿½ ï¿½Ä¶ï¿½ï¿½ï¿½ï¿½ ï¿½Î°ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¼ï¿½ï¿½ Mapï¿½ï¿½ ï¿½Ö¾î¼­ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ±ï¿½ï¿½
+		// return sqlSession.selectOne(namespace+".readMemberWithIDPW", userid, userpw);
+
+		// DBï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½Ø¼ï¿½ï¿½ï¿½ sqlSeesion ï¿½ï¿½Ã¼ È°ï¿½ï¿½
+		// * 1ï¿½ï¿½ ï¿½Ì»ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ò¶ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+		// * ï¿½ï¿½Ã¼(VO) ï¿½È¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ÈµÇ´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ Mapï¿½ï¿½ ï¿½ï¿½ï¿½
+		// Mapï¿½ï¿½ key-valueï¿½ï¿½ï¿½ï¿½ : ï¿½Ì¶ï¿½ keyï¿½ï¿½ï¿½ï¿½ sqlï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ #{ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½} ï¿½Ì¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Æ¾ï¿½ï¿½ï¿½
+
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("memberId", member_id);
+		paramMap.put("password", password);
+
+		System.out.println("readMemberWithIDPW ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ " + paramMap.get(member_id));
+		// return sqlSession.selectOne("com.nplit.mapper.UserMapper.readMemberWithIDPW",
+		// paramMap);
+		return sqlSession.selectOne("com.nplit.mapper.UserMapper.login", paramMap);
+	}
+
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½
+	@Override
+	public void join(MemberVO vo) {
+		sqlSession.insert("com.nplit.mapper.UserMapper.join", vo);
+	}
+
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ßºï¿½Ã¼Å©
+	@Override
+	public int idChk(MemberVO vo) throws Exception {
+		int result = sqlSession.selectOne("com.nplit.mapper.UserMapper.idChk", vo);
+		return result;
+	}
+
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½Ð³ï¿½ï¿½ï¿½ ï¿½ßºï¿½Ã¼Å©
+	@Override
+	public int nicknameChk(MemberVO vo) throws Exception {
+		int result = sqlSession.selectOne("com.nplit.mapper.UserMapper.nicknameChk", vo.getNickname());
+		System.out.println("UserDAOImpl ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯ï¿½ï¿½ : " + result);
+		return result;
+
+	}
+
+	// ï¿½ï¿½Ð¹ï¿½È£ï¿½ï¿½ï¿½ï¿½
+	@Override
+	public int updatePw(MemberVO vo) throws Exception {
+		return sqlSession.update("com.nplit.mapper.UserMapper.updatePw", vo);
+	}
+
+	// 1:1ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½
+	@Override
+	public void question(QueVO vo) {
+		sqlSession.insert("com.nplit.mapper.UserMapper.question", vo);
+	}
+
 }

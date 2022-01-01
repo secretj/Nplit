@@ -6,40 +6,39 @@ import com.nplit.vo.MemberVO;
 import com.nplit.vo.QueVO;
 
 public interface UserDAO {
-	 
+
 	public void profileUpdate(MemberVO vo);
-	
+
 	public void pwdUpdate(MemberVO vo);
-	
-    public MemberVO login(MemberVO dto);
-     
-    // ÀÚµ¿·Î±×ÀÎ Ã¼Å©ÇÑ °æ¿ì¿¡ »ç¿ëÀÚ Å×ÀÌºí¿¡ ¼¼¼Ç°ú À¯È¿½Ã°£À» ÀúÀåÇÏ±â À§ÇÑ ¸Þ¼­µå
-    public void keepLogin(String memberId, String sessionId, Date next);
-     
-    // ÀÌÀü¿¡ ·Î±×ÀÎÇÑ ÀûÀÌ ÀÖ´ÂÁö, Áï À¯È¿½Ã°£ÀÌ ³ÑÁö ¾ÊÀº ¼¼¼ÇÀ» °¡Áö°í ÀÖ´ÂÁö Ã¼Å©ÇÑ´Ù.
-    public MemberVO checkUserWithSessionKey(String sessionId);
-    
-    public MemberVO LoginInfo(MemberVO vo);
 
-    //¿¹Áø  ±¸±Û R: È¸¿ø Á¤º¸ Á¶È¸ - ID,PWÁ¤º¸¿¡ ÇØ´çÇÏ´Â »ç¿ëÀÚ Á¤º¸
-    public MemberVO readMemberWithIDPW(String memberId,String password) throws Exception;
+	public MemberVO login(MemberVO dto);
 
-    //È¸¿ø°¡ÀÔ
+	// ï¿½Úµï¿½ï¿½Î±ï¿½ï¿½ï¿½ Ã¼Å©ï¿½ï¿½ ï¿½ï¿½ì¿¡ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½ï¿½Ç°ï¿½ ï¿½ï¿½È¿ï¿½Ã°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¼ï¿½ï¿½ï¿½
+	public void keepLogin(String memberId, String sessionId, Date next);
+
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Î±ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ï¿½ï¿½, ï¿½ï¿½ ï¿½ï¿½È¿ï¿½Ã°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ï¿½ï¿½ Ã¼Å©ï¿½Ñ´ï¿½.
+	public MemberVO checkUserWithSessionKey(String sessionId);
+
+	public MemberVO LoginInfo(MemberVO vo);
+
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ R: È¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¸ - ID,PWï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ø´ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+	public MemberVO readMemberWithIDPW(String memberId, String password) throws Exception;
+
+	// È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	public void join(MemberVO vo);
-	 
-	//¾ÆÀÌµð Áßº¹ Ã¼Å©
+
+	// ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ßºï¿½ Ã¼Å©
 	public int idChk(MemberVO vo) throws Exception;
 
-	//°èÁ¤ »èÁ¦
-    public void memberDelete(MemberVO vo);
-    
-    //¿¹Áø ´Ð³×ÀÓ Áßº¹Ã¼Å©
-    int nicknameChk(MemberVO vo) throws Exception;
-    
-    
-    // ºñ¹Ð¹øÈ£ º¯°æ
-    public int updatePw(MemberVO vo) throws Exception;
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+	public void memberDelete(MemberVO vo);
 
-    //1:1 ¹®ÀÇÇÏ±â
-    public void question(QueVO vo);
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½Ð³ï¿½ï¿½ï¿½ ï¿½ßºï¿½Ã¼Å©
+	int nicknameChk(MemberVO vo) throws Exception;
+
+	// ï¿½ï¿½Ð¹ï¿½È£ ï¿½ï¿½ï¿½ï¿½
+	public int updatePw(MemberVO vo) throws Exception;
+
+	// 1:1 ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½
+	public void question(QueVO vo);
 }

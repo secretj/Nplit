@@ -10,13 +10,13 @@ import com.nplit.interceptor.AuthenticationInterceptor;
 
 //@Configuration
 public class WebMvcConfig implements WebMvcConfigurer {
-	 @Inject
-	 AuthenticationInterceptor authenticationInterceptor;
-	 
-    @Override
-    public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(authenticationInterceptor)
-        .excludePathPatterns("/upload/**","/assets/**","/error","/login","/loginProcess");			//���ͼ��Ͱ� ������ path�� ����
-        
-    }
+	@Inject
+	AuthenticationInterceptor authenticationInterceptor;
+
+	@Override
+	public void addInterceptors(InterceptorRegistry registry) {
+		registry.addInterceptor(authenticationInterceptor).excludePathPatterns("/upload/**", "/assets/**", "/error",
+				"/login", "/loginProcess"); // ���ͼ��Ͱ� ������ path�� ����
+
+	}
 }

@@ -12,70 +12,67 @@ import com.nplit.vo.ChatMemberListVO;
 import com.nplit.vo.ChatMessageVO;
 import com.nplit.vo.ChatRoomVO;
 
-
 @Service("chatService")
-public class ChatServiceImpl implements ChatService{
-	
+public class ChatServiceImpl implements ChatService {
+
 	@Autowired
 	private ChatMapper chatMapper;
-	
-	
-	//Ã¤ÆÃ¹æ °³¼³
+
+	// Ã¤ï¿½Ã¹ï¿½ ï¿½ï¿½ï¿½ï¿½
 	@Override
 	public void craeteRoom(ChatRoomVO vo) {
 		chatMapper.createRoom(vo);
 	}
-	
-	//Ã¤ÆÃ¹æ »ý¼º½Ã ¹æÀå Âü°¡
+
+	// Ã¤ï¿½Ã¹ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	@Override
 	public void joinRoomMaster(ChatMemberListVO vo) {
 		chatMapper.joinRoomMaster(vo);
 	}
-	
-	//Ã¤ÆÃ¹æ Âü°¡
+
+	// Ã¤ï¿½Ã¹ï¿½ ï¿½ï¿½ï¿½ï¿½
 	@Override
 	public void roomJoin(ChatMemberListVO vo) {
 		chatMapper.roomJoin(vo);
 	}
-	
-    //³»°¡ Âü°¡ÇÑ Ã¤ÆÃ ¸®½ºÆ®»Ì¾Æ¿À±â
-    public List<ChatRoomVO> selectMyChatting(String memberId) {
-       
-       List<ChatRoomVO> chatlist = chatMapper.selectMyChatting(memberId);
-       return chatlist;
-    }
-    
-    public int chatcheck(ChatMemberListVO cmlvo) {
-    	   return chatMapper.chatcheck(cmlvo);
 
-    	   }
-    //ÁøÇü - Ã¤ÆÃ¹æ Á¤º¸ Á¶È¸
-    public ChatRoomVO selectChattingDetail(int seq) {
-    	return chatMapper.selectChattingDetail(seq);
-    }
-    
-    //¸Þ¼¼Áö Àü¼Û
-    @Override
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã¤ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½Ì¾Æ¿ï¿½ï¿½ï¿½
+	public List<ChatRoomVO> selectMyChatting(String memberId) {
+
+		List<ChatRoomVO> chatlist = chatMapper.selectMyChatting(memberId);
+		return chatlist;
+	}
+
+	public int chatcheck(ChatMemberListVO cmlvo) {
+		return chatMapper.chatcheck(cmlvo);
+
+	}
+
+	// ï¿½ï¿½ï¿½ï¿½ - Ã¤ï¿½Ã¹ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¸
+	public ChatRoomVO selectChattingDetail(int seq) {
+		return chatMapper.selectChattingDetail(seq);
+	}
+
+	// ï¿½Þ¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+	@Override
 	public void insertSendMsg(ChatMessageVO vo) {
 		chatMapper.insertSendMsg(vo);
 	}
-    
-    //ÁøÇü - ¸Þ¼¼Áö Á¶È¸
-    public List<ChatMessageVO> selectMessage(int seq) {
-    	List<ChatMessageVO> msglist = chatMapper.selectMessage(seq);
-    	return msglist;
-    }
-    
-    //ÀüÃ¼ ¼ö °¡Á®¿À±â
-    public int getListCount(String parId) { 
-       return chatMapper.getListCount(parId);
-      }
 
-    // ³»°¡ÂòÇÑ 
-    public List<Map<String, String>> selectMemberList(Map<String,Object> paramMap){
-       return chatMapper.selectMemberList(paramMap);
-       }
-    
-     }
- 
-    
+	// ï¿½ï¿½ï¿½ï¿½ - ï¿½Þ¼ï¿½ï¿½ï¿½ ï¿½ï¿½È¸
+	public List<ChatMessageVO> selectMessage(int seq) {
+		List<ChatMessageVO> msglist = chatMapper.selectMessage(seq);
+		return msglist;
+	}
+
+	// ï¿½ï¿½Ã¼ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	public int getListCount(String parId) {
+		return chatMapper.getListCount(parId);
+	}
+
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	public List<Map<String, String>> selectMemberList(Map<String, Object> paramMap) {
+		return chatMapper.selectMemberList(paramMap);
+	}
+
+}

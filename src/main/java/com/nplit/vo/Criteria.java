@@ -1,47 +1,47 @@
 package com.nplit.vo;
 
 public class Criteria {
-   
-   private int pageNum;
-   private int amount;
-   private int startNum;
-   
-   public Criteria() {
-      //°´Ã¼ »ý¼º½Ã ±âº» »ý¼ºÀÚ È£Ãâ ½Ã ¸Å°³º¯¼ö¸¦ Áà¼­ ¸Å°³º¯¼ö¸¦ °¡Áö°í ÀÖ´Â »ý¼ºÀÚ ÇÔ¼ö È£Ãâ
-      this(1, 9);
-   }
-   
-   public Criteria(int pageNum, int amount) {
-      this.pageNum = pageNum;
-      this.amount = amount;
-   }
 
-   public int getPageNum() {
-      return pageNum;
-   }
+	private int pageNum;
+	private int amount;
+	private int startNum;
 
-   public void setPageNum(int pageNum) {
-      this.pageNum = pageNum;
-   }
+	public Criteria() {
+		// ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½âº» ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È£ï¿½ï¿½ ï¿½ï¿½ ï¿½Å°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½à¼­ ï¿½Å°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô¼ï¿½ È£ï¿½ï¿½
+		this(1, 9);
+	}
 
-   public int getAmount() {
-      return amount;
-   }
+	public Criteria(int pageNum, int amount) {
+		this.pageNum = pageNum;
+		this.amount = amount;
+	}
 
-   public void setAmount(int amount) {
-      this.amount = amount;
-   }
+	public int getPageNum() {
+		return pageNum;
+	}
 
-   public int getStartNum() {
-      return startNum;
-   }
+	public void setPageNum(int pageNum) {
+		this.pageNum = pageNum;
+	}
 
-   public void setStartNum(int startNum) {
-      this.startNum = startNum;
-   }
+	public int getAmount() {
+		return amount;
+	}
 
-   @Override
-   public String toString() {
-      return "Criteria [pageNum=" + pageNum + ", amount=" + amount + "]";
-   }
+	public void setAmount(int amount) {
+		this.amount = amount;
+	}
+
+	public int getStartNum() {
+		return startNum;
+	}
+
+	public void setStartNum(int startNum) {
+		this.startNum = startNum;
+	}
+
+	@Override
+	public String toString() {
+		return "Criteria [pageNum=" + pageNum + ", amount=" + amount + "]";
+	}
 }

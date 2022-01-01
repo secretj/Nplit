@@ -5,30 +5,30 @@ import lombok.Data;
 
 @Data
 public class BoardVO {
-   private int seq; //°Ô½Ã±Û ¹øÈ£
-   private String title; //°Ô½Ã±Û Á¦¸ñ
-   private String writer; //ÀÛ¼ºÀÚ
-   private String category; //Ä«Å×°í¸®
-   private String tag; //ÅÂ±×
-   private int hit; //Á¶È¸¼ö
-   private String answer; //´äº¯
-   private String contents; //³»¿ë
-   private String price; //±Ý¾×
-   private String productname; //»óÇ°¸í
-   private String maxNum; //ÃÖ´ë Âü¿©ÀÎ¿ø
-   private String address; //Àå¼Ò
-   private String productlink; //»óÇ°¸µÅ©
-   private String cover_img; //»óÇ° ´ëÇ¥ ÀÌ¹ÌÁö
-   private String deleteYN; //±Û »èÁ¦¿©ºÎ
-   private Date regDate; //±Û µî·ÏÀÏ
-   private Date updateDate; //±Û ¼öÁ¤ÀÏ
-   private String file_no; //ÆÄÀÏ¹øÈ£
-   private String status; //±Û ´äº¯¿©ºÎ
-   private String totalNum; //±Û ´äº¯¿©ºÎ
-   private String favorite; //Âò µî·Ï
-   private String reported_id; //½Å°íÀÚ
+	private int seq; // ï¿½Ô½Ã±ï¿½ ï¿½ï¿½È£
+	private String title; // ï¿½Ô½Ã±ï¿½ ï¿½ï¿½ï¿½ï¿½
+	private String writer; // ï¿½Û¼ï¿½ï¿½ï¿½
+	private String category; // Ä«ï¿½×°ï¿½
+	private String tag; // ï¿½Â±ï¿½
+	private int hit; // ï¿½ï¿½È¸ï¿½ï¿½
+	private String answer; // ï¿½äº¯
+	private String contents; // ï¿½ï¿½ï¿½ï¿½
+	private String price; // ï¿½Ý¾ï¿½
+	private String productname; // ï¿½ï¿½Ç°ï¿½ï¿½
+	private String maxNum; // ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Î¿ï¿½
+	private String address; // ï¿½ï¿½ï¿½
+	private String productlink; // ï¿½ï¿½Ç°ï¿½ï¿½Å©
+	private String cover_img; // ï¿½ï¿½Ç° ï¿½ï¿½Ç¥ ï¿½Ì¹ï¿½ï¿½ï¿½
+	private String deleteYN; // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	private Date regDate; // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
+	private Date updateDate; // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	private String file_no; // ï¿½ï¿½ï¿½Ï¹ï¿½È£
+	private String status; // ï¿½ï¿½ ï¿½äº¯ï¿½ï¿½ï¿½ï¿½
+	private String totalNum; // ï¿½ï¿½ ï¿½äº¯ï¿½ï¿½ï¿½ï¿½
+	private String favorite; // ï¿½ï¿½ ï¿½ï¿½ï¿½
+	private String reported_id; // ï¿½Å°ï¿½ï¿½ï¿½
 //   private String SearchCondition;
-   private String SearchKeyword; //Á¦Ç°¸í
-   private String SearchCategory; // Ä«Å×°í¸®¸í
-   private String SearchAddress; // Áö¿ª¸í
+	private String SearchKeyword; // ï¿½ï¿½Ç°ï¿½ï¿½
+	private String SearchCategory; // Ä«ï¿½×°ï¿½ï¿½ï¿½
+	private String SearchAddress; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 }

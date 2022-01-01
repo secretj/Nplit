@@ -5,9 +5,9 @@ import lombok.Data;
 @Data
 
 public class AttachVO {
-   private int fileno;
-   private int seq;
-   private long filesize;
-   private String filename;
-   private String uploadpath;
+	private int fileno;
+	private int seq;
+	private long filesize;
+	private String filename;
+	private String uploadpath;
 }

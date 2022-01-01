@@ -7,17 +7,18 @@ import com.nplit.vo.BoardVO;
 import com.nplit.vo.LikeVO;
 
 public interface LikeService {
-   
-   void insertLike(LikeVO vo);
-   
-   void deleteLike(LikeVO vo);
-   
-   void updateLike(LikeVO vo);
 
-   int getLikeCount(String likeId);
-    // ¶óÀÌÅ© Ã¼Å©
-   List<Map<String, String>> selectLikeList(Map<String, Object> paramMap);
+	void insertLike(LikeVO vo);
 
-   int likeCountUpDown(LikeVO vo);
+	void deleteLike(LikeVO vo);
+
+	void updateLike(LikeVO vo);
+
+	int getLikeCount(String likeId);
+
+	// ï¿½ï¿½ï¿½ï¿½Å© Ã¼Å©
+	List<Map<String, String>> selectLikeList(Map<String, Object> paramMap);
+
+	int likeCountUpDown(LikeVO vo);
 
 }

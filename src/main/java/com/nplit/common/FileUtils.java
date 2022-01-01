@@ -15,49 +15,48 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import com.nplit.vo.AttachVO;
 
 public class FileUtils {
-   public List<AttachVO> parseFileInfo(int seq, HttpServletRequest request, 
-         MultipartHttpServletRequest mhsr) throws IOException {
-      if(ObjectUtils.isEmpty(mhsr)) {
-         return null;
-      }
-      
-      List<AttachVO> fileList = new ArrayList<AttachVO>();
-      
-      
-      //¼­¹öÀÇ Àý´ë °æ·Î ¾ò±â
-      String root_path = request.getSession().getServletContext().getRealPath("/");
-      String attach_path = "/upload/";
-      
-      //À§ °æ·ÎÀÇ Æú´õ°¡ ¾øÀ¸¸é Æú´õ »ý¼º
-      File file = new File(root_path + attach_path);
-      if(file.exists() == false) {
-         file.mkdir();
-      }
-      
-      //ÆÄÀÏ ÀÌ¸§µéÀ» iterator·Î ´ãÀ½
-      Iterator<String> iterator = mhsr.getFileNames();
-      
-      while(iterator.hasNext()) {
-         //ÆÄÀÏ¸íÀ¸·Î ÆÄÀÏ ¸®½ºÆ® ²¨³»¿À±â
-         List<MultipartFile> list = mhsr.getFiles(iterator.next());
-         
-         //ÆÄÀÏ ¸®½ºÆ® °³¼ö ¸¸Å­ ¸®ÅÏÇÒ ÆÄÀÏ ¸®½ºÆ®¿¡ ´ã¾ÆÁÖ°í »ý¼º
-         for(MultipartFile mf : list) {
-            if(mf.getSize() > 0) {
-               AttachVO attach = new AttachVO();
-               attach.setSeq(seq);
-               attach.setFilesize(mf.getSize());
-               attach.setFilename(mf.getOriginalFilename());
-               attach.setUploadpath(root_path + attach_path);
-               fileList.add(attach);
+	public List<AttachVO> parseFileInfo(int seq, HttpServletRequest request, MultipartHttpServletRequest mhsr)
+			throws IOException {
+		if (ObjectUtils.isEmpty(mhsr)) {
+			return null;
+		}
 
-               file = new File(root_path + attach_path + mf.getOriginalFilename());
-               mf.transferTo(file);
-            } else {
-               fileList = null;
-            }
-         }
-      }
-      return fileList;
-   }
+		List<AttachVO> fileList = new ArrayList<AttachVO>();
+
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
+		String root_path = request.getSession().getServletContext().getRealPath("/");
+		String attach_path = "/upload/";
+
+		// ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+		File file = new File(root_path + attach_path);
+		if (file.exists() == false) {
+			file.mkdir();
+		}
+
+		// ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ï¿½ï¿½ï¿½ï¿½ iteratorï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+		Iterator<String> iterator = mhsr.getFileNames();
+
+		while (iterator.hasNext()) {
+			// ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			List<MultipartFile> list = mhsr.getFiles(iterator.next());
+
+			// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å­ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ö°ï¿½ ï¿½ï¿½ï¿½ï¿½
+			for (MultipartFile mf : list) {
+				if (mf.getSize() > 0) {
+					AttachVO attach = new AttachVO();
+					attach.setSeq(seq);
+					attach.setFilesize(mf.getSize());
+					attach.setFilename(mf.getOriginalFilename());
+					attach.setUploadpath(root_path + attach_path);
+					fileList.add(attach);
+
+					file = new File(root_path + attach_path + mf.getOriginalFilename());
+					mf.transferTo(file);
+				} else {
+					fileList = null;
+				}
+			}
+		}
+		return fileList;
+	}
 }

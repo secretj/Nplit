@@ -7,19 +7,23 @@ import org.apache.ibatis.annotations.Mapper;
 
 import com.nplit.vo.BoardVO;
 import com.nplit.vo.LikeVO;
+
 @Mapper
 public interface LikeMapper {
-   void insertLike(LikeVO vo);
-   void deleteLike(LikeVO vo);
-   int updateLike(LikeVO vo);
+	void insertLike(LikeVO vo);
+
+	void deleteLike(LikeVO vo);
+
+	int updateLike(LikeVO vo);
+
 //   public List<LikeVO> getMemberId(LikeVO vo) {
 //      return member_id;
 //   }
-      //ÀüÃ¼ ¼ö °¡Á®¿À±â
-      int getLikeCount(String likeId);
-      List<Map<String, String>> selectLikeList(Map<String, Object> paramMap);
-      
-      int likeCountUpDown(LikeVO vo);
+	// ï¿½ï¿½Ã¼ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	int getLikeCount(String likeId);
 
+	List<Map<String, String>> selectLikeList(Map<String, Object> paramMap);
+
+	int likeCountUpDown(LikeVO vo);
 
 }

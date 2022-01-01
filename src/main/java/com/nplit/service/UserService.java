@@ -9,59 +9,58 @@ import com.nplit.vo.MemberVO;
 import com.nplit.vo.QueVO;
 
 public interface UserService {
-	// ·Î±×ÀÎ
-    public MemberVO login(MemberVO dto);
-     
-    // ÀÚµ¿·Î±×ÀÎ Ã¼Å©ÇÑ °æ¿ì¿¡ »ç¿ëÀÚ Å×ÀÌºí¿¡ ¼¼¼Ç°ú À¯È¿½Ã°£À» ÀúÀåÇÏ±â À§ÇÑ ¸Þ¼­µå
-    public void keepLogin(String member_id, String sessionId, Date next);
-     
-    // ÀÌÀü¿¡ ·Î±×ÀÎÇÑ ÀûÀÌ ÀÖ´ÂÁö, Áï À¯È¿½Ã°£ÀÌ ³ÑÁö ¾ÊÀº ¼¼¼ÇÀ» °¡Áö°í ÀÖ´ÂÁö Ã¼Å©ÇÑ´Ù.
-    public MemberVO checkUserWithSessionKey(String sessionId);
+	// ï¿½Î±ï¿½ï¿½ï¿½
+	public MemberVO login(MemberVO dto);
 
-	//È¸¿ø°¡ÀÔ
-    void join(MemberVO vo);
-	
-	//°³ÀÎÁ¤º¸¼öÁ¤
+	// ï¿½Úµï¿½ï¿½Î±ï¿½ï¿½ï¿½ Ã¼Å©ï¿½ï¿½ ï¿½ï¿½ì¿¡ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½ï¿½Ç°ï¿½ ï¿½ï¿½È¿ï¿½Ã°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¼ï¿½ï¿½ï¿½
+	public void keepLogin(String member_id, String sessionId, Date next);
+
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Î±ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ï¿½ï¿½, ï¿½ï¿½ ï¿½ï¿½È¿ï¿½Ã°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ï¿½ï¿½ Ã¼Å©ï¿½Ñ´ï¿½.
+	public MemberVO checkUserWithSessionKey(String sessionId);
+
+	// È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	void join(MemberVO vo);
+
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	void profileUpdate(MemberVO vo);
-	
-	//ºñ¹Ð¹øÈ£ ¼öÁ¤
-    void pwdUpdate(MemberVO vo);
-   
-    //È¸¿øÅ»Åð
-    void memberDelete(MemberVO vo);
-	
-    //·Î±×ÀÎ È¸¿ø Á¤º¸
+
+	// ï¿½ï¿½Ð¹ï¿½È£ ï¿½ï¿½ï¿½ï¿½
+	void pwdUpdate(MemberVO vo);
+
+	// È¸ï¿½ï¿½Å»ï¿½ï¿½
+	void memberDelete(MemberVO vo);
+
+	// ï¿½Î±ï¿½ï¿½ï¿½ È¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	MemberVO LoginInfo(MemberVO vo);
-	
-	// ±¸±ÛÈ¸¿ø°¡ÀÔ
-   public void joinMemberByGoogle(MemberVO vo);
 
-   // ±¸±Û·Î±×ÀÎ
-   public MemberVO loginMemberByGoogle(MemberVO vo);
+	// ï¿½ï¿½ï¿½ï¿½È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	public void joinMemberByGoogle(MemberVO vo);
 
-   
-   //*********  ¿¹Áø Áßº¹°Ë»ç  ************
-   //¾ÆÀÌµð Áßº¹È®ÀÎ Ã¼Å©
-   public int idChk(MemberVO vo) throws Exception;
-   
-   //¿¹Áø ´Ð³×ÀÓ Áßº¹Ã¼Å©
-   public int nicknameChk(MemberVO vo) throws Exception;
-   
-   //¿¹Áø ·Î±×ÀÎ °Ë»ç
-   public int loginChk(MemberVO vo)throws Exception;
-   
-   //ÀÌ¸ÞÀÏ¹ß¼Û
-   public void sendEmail(MemberVO vo, String div) throws Exception;
-   
-   //ºñ¹Ð¹øÈ£Ã£±â
-   public String findPw(MemberVO vo) throws Exception;
-   
-   //1:1¹®ÀÇÇÏ±â µî·Ï
-   public void question(QueVO vo, HttpServletRequest request);
+	// ï¿½ï¿½ï¿½Û·Î±ï¿½ï¿½ï¿½
+	public MemberVO loginMemberByGoogle(MemberVO vo);
 
-   //´Ù¸¥ »ç¶÷ ÇÁ·ÎÇÊ Á¶È¸
-   public MemberVO selectOtherProfile(String memberId);
-   
-   //³»°¡ ¹®ÀÇÇÑ ¸®½ºÆ® Á¶È¸
-   List<QueVO> selectMyQuestion(String memberId);
+	// ********* ï¿½ï¿½ï¿½ï¿½ ï¿½ßºï¿½ï¿½Ë»ï¿½ ************
+	// ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ßºï¿½È®ï¿½ï¿½ Ã¼Å©
+	public int idChk(MemberVO vo) throws Exception;
+
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½Ð³ï¿½ï¿½ï¿½ ï¿½ßºï¿½Ã¼Å©
+	public int nicknameChk(MemberVO vo) throws Exception;
+
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½Î±ï¿½ï¿½ï¿½ ï¿½Ë»ï¿½
+	public int loginChk(MemberVO vo) throws Exception;
+
+	// ï¿½Ì¸ï¿½ï¿½Ï¹ß¼ï¿½
+	public void sendEmail(MemberVO vo, String div) throws Exception;
+
+	// ï¿½ï¿½Ð¹ï¿½È£Ã£ï¿½ï¿½
+	public String findPw(MemberVO vo) throws Exception;
+
+	// 1:1ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½
+	public void question(QueVO vo, HttpServletRequest request);
+
+	// ï¿½Ù¸ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¸
+	public MemberVO selectOtherProfile(String memberId);
+
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½È¸
+	List<QueVO> selectMyQuestion(String memberId);
 }

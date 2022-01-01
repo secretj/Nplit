@@ -6,45 +6,44 @@ import org.apache.ibatis.annotations.Mapper;
 
 import com.nplit.vo.MemberVO;
 import com.nplit.vo.QueVO;
-//Äõ¸®¹® ´ãÀ» ÀÎÅÍÆäÀÌ½º
+
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì½ï¿½
 @Mapper
 public interface UserMapper {
 	MemberVO login(String memberId);
-	
+
 	void keepLogin(MemberVO vo);
-	
+
 	MemberVO checkUserWithSessionKey(String sessionKey);
-	
+
 	void join(MemberVO vo);
-	
+
 	void profileUpdate(MemberVO vo);
-	
+
 	void pwdUpdate(MemberVO vo);
 
 	void memberDelete(MemberVO vo);
-	
+
 	MemberVO LoginInfo(MemberVO vo);
-	
-	 //*********  ¿¹Áø Áßº¹°Ë»ç  ************
+
+	// ********* ï¿½ï¿½ï¿½ï¿½ ï¿½ßºï¿½ï¿½Ë»ï¿½ ************
 	int nicknameChk(MemberVO vo);
+
 	int idChk(MemberVO vo);
-	
+
 	MemberVO LoginInfoEmail(MemberVO vo);
-   
-   void question(QueVO vo);
-   
-   //¿¹Áø ·Î±×ÀÎ °Ë»ç
-   int loginChk(MemberVO vo);
-   
-   
-   // *************** ÁøÇü ********************
-   
-   //´Ù¸¥ »ç¶÷ ÇÁ·ÎÇÊ Á¶È¸
-   MemberVO selectOtherProfile(String memberId);
-   
-   //³»°¡ ¹®ÀÇÇÑ ¸®½ºÆ® º¸±â
-   List<QueVO> selectMyQuestion(String memberId);
-   
-   
-   
+
+	void question(QueVO vo);
+
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½Î±ï¿½ï¿½ï¿½ ï¿½Ë»ï¿½
+	int loginChk(MemberVO vo);
+
+	// *************** ï¿½ï¿½ï¿½ï¿½ ********************
+
+	// ï¿½Ù¸ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¸
+	MemberVO selectOtherProfile(String memberId);
+
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½
+	List<QueVO> selectMyQuestion(String memberId);
+
 }

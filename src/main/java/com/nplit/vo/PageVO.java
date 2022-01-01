@@ -1,60 +1,60 @@
 package com.nplit.vo;
 
 public class PageVO {
-   private int startPage;
-   private int endPage;
-   private boolean prev, next;
-   
-   private int total;
-   //ÇöÀç ÆäÀÌÁö ¹øÈ£, ÇÑ ÆäÀÌÁö¿¡ Ç¥ÃâÇÒ µ¥ÀÌÅÍ °³¼ö
-   private Criteria cri;
-   
-   public PageVO(Criteria cri, int total) {
-      this.cri = cri;
-      this.total = total;
-      
-      //½ÃÀÛÆäÀÌÁö, ¸¶Áö¸·ÆäÀÌÁö °è»ê
-      this.endPage = (int)(Math.ceil(cri.getPageNum() / 10.0)) * 10;
-      this.startPage = this.endPage - 9;
-      
-      int realEnd = (int) (Math.ceil(total * 1.0 / cri.getAmount()));
-      
-      if(realEnd < this.endPage) {
-         this.endPage = realEnd;
-      }
-      
-      //ÀÌÀü, ´ÙÀ½ ¹öÆ° Ç¥Ãâ ¿©ºÎ °áÁ¤
-      this.prev = this.startPage > 1;
-      this.next = this.endPage < realEnd;
-   }
+	private int startPage;
+	private int endPage;
+	private boolean prev, next;
 
-   public int getStartPage() {
-      return startPage;
-   }
+	private int total;
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È£, ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ç¥ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+	private Criteria cri;
 
-   public int getEndPage() {
-      return endPage;
-   }
+	public PageVO(Criteria cri, int total) {
+		this.cri = cri;
+		this.total = total;
 
-   public boolean isPrev() {
-      return prev;
-   }
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
+		this.endPage = (int) (Math.ceil(cri.getPageNum() / 10.0)) * 10;
+		this.startPage = this.endPage - 9;
 
-   public boolean isNext() {
-      return next;
-   }
+		int realEnd = (int) (Math.ceil(total * 1.0 / cri.getAmount()));
 
-   public int getTotal() {
-      return total;
-   }
+		if (realEnd < this.endPage) {
+			this.endPage = realEnd;
+		}
 
-   public Criteria getCri() {
-      return cri;
-   }
+		// ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ° Ç¥ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+		this.prev = this.startPage > 1;
+		this.next = this.endPage < realEnd;
+	}
 
-   @Override
-   public String toString() {
-      return "PageVO [startPage=" + startPage + ", endPage=" + endPage + ", prev=" + prev + ", next=" + next
-            + ", total=" + total + "]";
-   }
+	public int getStartPage() {
+		return startPage;
+	}
+
+	public int getEndPage() {
+		return endPage;
+	}
+
+	public boolean isPrev() {
+		return prev;
+	}
+
+	public boolean isNext() {
+		return next;
+	}
+
+	public int getTotal() {
+		return total;
+	}
+
+	public Criteria getCri() {
+		return cri;
+	}
+
+	@Override
+	public String toString() {
+		return "PageVO [startPage=" + startPage + ", endPage=" + endPage + ", prev=" + prev + ", next=" + next
+				+ ", total=" + total + "]";
+	}
 }
