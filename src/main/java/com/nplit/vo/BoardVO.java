@@ -5,30 +5,29 @@ import lombok.Data;
 
 @Data
 public class BoardVO {
-	private int seq; // �Խñ� ��ȣ
-	private String title; // �Խñ� ����
-	private String writer; // �ۼ���
-	private String category; // ī�װ�
-	private String tag; // �±�
-	private int hit; // ��ȸ��
-	private String answer; // �亯
-	private String contents; // ����
-	private String price; // �ݾ�
-	private String productname; // ��ǰ��
-	private String maxNum; // �ִ� �����ο�
-	private String address; // ���
-	private String productlink; // ��ǰ��ũ
-	private String cover_img; // ��ǰ ��ǥ �̹���
-	private String deleteYN; // �� ��������
-	private Date regDate; // �� �����
-	private Date updateDate; // �� ������
-	private String file_no; // ���Ϲ�ȣ
-	private String status; // �� �亯����
-	private String totalNum; // �� �亯����
-	private String favorite; // �� ���
-	private String reported_id; // �Ű���
-//   private String SearchCondition;
-	private String SearchKeyword; // ��ǰ��
-	private String SearchCategory; // ī�װ���
-	private String SearchAddress; // ������
+	 private int seq; //게시글 번호
+	   private String title; //게시글 제목
+	   private String writer; //작성자
+	   private String category; //카테고리
+	   private String tag; //태그
+	   private int hit; //조회수
+	   private String answer; //답변
+	   private String contents; //내용
+	   private String price; //금액
+	   private String productname; //상품명
+	   private String maxNum; //최대 참여인원
+	   private String address; //장소
+	   private String productlink; //상품링크
+	   private String cover_img; //상품 대표 이미지
+	   private String deleteYN; //글 삭제여부
+	   private Date regDate; //글 등록일
+	   private Date updateDate; //글 수정일
+	   private String file_no; //파일번호
+	   private String status; //글 답변여부
+	   private String totalNum; //글 답변여부
+	   private String favorite; //찜 등록
+	   private String reported_id; //신고자
+	   private String SearchKeyword; //제품명
+	   private String SearchCategory; // 카테고리명
+	   private String SearchAddress; // 지역명
 }

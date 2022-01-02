@@ -31,13 +31,13 @@ public class LikeServiceImpl implements LikeService {
 		likeMapper.updateLike(vo);
 	}
 
-	// ��ü �� ��������
+	// 전체 수 가져오기
 	public int getLikeCount(String likeId) {
 		return likeMapper.getLikeCount(likeId);
 
 	}
 
-	// �������� ���
+	// 내가찜한 쉐어링
 	public List<Map<String, String>> selectLikeList(Map<String, Object> paramMap) {
 		return likeMapper.selectLikeList(paramMap);
 	}

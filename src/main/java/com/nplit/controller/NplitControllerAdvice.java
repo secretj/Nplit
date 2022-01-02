@@ -8,7 +8,7 @@ import com.nplit.exception.FailedSendMailException;
 import com.nplit.exception.ResponseBodyException;
 
 /**
- * ��Ʈ�ѷ� ������Ʈ ��ü ������ ó���ϴ� Ŭ����
+ * 컨트롤러 컴포넌트 전체 오류를 처리하는 클래스
  * 
  * @author Park
  *

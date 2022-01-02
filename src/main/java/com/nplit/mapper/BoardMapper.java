@@ -13,141 +13,142 @@ import com.nplit.vo.QueVO;
 
 @Mapper
 public interface BoardMapper {
-	// CRUD ����� �޼ҵ� ����
-	// �� ���
+	// CRUD 기능의 메소드 구현
+	// 글 등록
 	void insertBoard(BoardVO vo);
 
-	// �� ����
+	// 글 수정
 	void updateBoard(BoardVO vo);
 
-	// �� ����
+	// 글 삭제
 	void deleteBoard(BoardVO vo);
 
-	// �� �� ��ȸ
+	// 글 상세 조회
 	BoardVO getBoard(BoardVO vo);
 
-	// �� ��� ��ȸ
+	// 글 목록 조회
 	List<BoardVO> getBoardList(BoardVO vo);
 
 	int selectBoardCount(BoardVO vo);
 
-	// ��� ���� ����Ʈ ���
+	// 디비에 파일 리스트 등록
 	void insertBoardFileList(BoardFileVO vo);
 
-	// ���ϸ�� ����
+	// 파일목록 리턴
 	List<AttachVO> getBoardFileList(int seq);
 
-	// ���� ����
+	// 파일 삭제
 	void deleteFile(int seq);
 
-	/********** ���� db ���� ���� ********/
+	/********** 예진 db 연동 삭제 ********/
 
-	// ���� �Խñ� ������ �ش� �Խñ��� ÷������ ����
+	// 예진 게시글 삭제시 해당 게시글의 첨부파일 삭제
 	void deleteFileList(int seq);
 
-	// ä�� ��� ����Ʈ ����
+	// 채팅 멤버 리스트 삭제
 	void deleteBoardChatMemberList(int seq);
 
-	// ä�� �޼��� ����
+	// 채팅 메세지 삭제
 	void deleteBoardChatMessage(int seq);
 
 	void deleteBoardChatRoom(int seq);
 
 	/*****************/
 
-	// ���ø� ����
+	// 엔플릿 시작
 
-	/* ���� ��� ��� */
+	/* 하윤 쉐어링 등록 */
 
-	// �Խñ� ���
+	// 게시글 등록
 	void register(BoardVO vo);
 
-	// ����Ʈ
+	// 리스트
 	List<BoardVO> registered_list();
 
-	// ���� ī�װ��� ��ϵ� �� ��
+	// 하윤 카테고리별 등록된 글 수
 	List<Map<String, String>> category_count();
 
 	int category_count_grid();
 
-	/* ���� ���������� */
+	/* 하윤 마이페이지 */
 
-	// ���� ����� ����Ʈ
+	// 내가 등록한 리스트
 	List<BoardVO> registered_mylist(Map<String, Object> paramMap);
 
-	// �� ��ϼ�
+	// 총 등록수
 	int registered_mylist_count(String id);
 
-	// �Խñ� ����
+	// 게시글 수정
 	void myupdate(BoardVO vo);
 
-	// �Խñ� ����
+	// 게시글 삭제
 	void mydelete(int seq);
 
-	// ���������� - ��Ͽ��� �������� �̵�
+	// 마이페이지 - 목록에서 상세페이지 이동
 	BoardVO mydetails(int seq);
 
-	/* ���� ��� ������ */
+	/* 원준 쉐어링 디테일 */
 
-	// ���� - ��ǰ ������
+	// 원준 - 상품 디테일
 	Map<String, String> details(int seq);
 
-	// ��ȸ��
+	// 조회수
 	int hitcount(int seq);
 
-	// ����
+	// 구독
 	List<Map<String, String>> subscribe_list(BoardVO vo);
 
-	// ���ƿ�
+	// 좋아요
 	int likeCheck(Map<String, Object> paramMap);
 
-	// �� ��� �� ��� �� �Ϸù�ȣ ȹ��
+	// 글 등록 전 등록 될 일련번호 획득
 	int getBoardSeq();
 
-	/* ö�� ÷������ ���ε� */
+	/* 철우 첨부파일 업로드 */
 
-	// ö�� - ÷������ ���ε�
+	// 철우 - 첨부파일 업로드
 	void insertAttachFileList(AttachVO file);
 
 	List<Map<String, String>> getsharinglist(Map<String, Object> paramMap);
 
-	// ö�� - ����¡
+	// 철우 - 페이징
 	int selectRegisterCount(BoardVO vo);
 
-	// ���� ����¡ grid - ��� ī�װ����� total ���� �ٸ��� �����ϱ�
+	// 하윤 페이징 grid - 쉐어링 카테고리별로 total 개수 다르게 지정하기
 	int selectCategoryRegisterCount(BoardVO vo);
 
-	/* �ε��� */
+	/* 인덱스 */
 
-	// �ֽż� ��ȸ
+	// 최신순 조회
 	List<Map<String, String>> getindexsharinglist(BoardVO vo);
 
-	// �α��
+	// 인기순
 	List<Map<String, String>> getpopularlist(BoardVO vo);
 
-	/*************** ���� ������ ���ǰԽ��� ******************/
+	/*************** 진형 관리자 문의게시판 ******************/
 
-	// ���� �Խñ� ���
+	// 문의 게시글 목록
 	List<QueVO> getQuestionList();
 
-	// ������ 1:1 ���� ����
+	// 관리자 1:1 문의 삭제
 	void QuestionDelete(int seq);
 
-	// ���� �亯 ������
+	// 문의 답변 페이지
 	QueVO QueAnwser(int seq);
 
-	// ���� �亯 ���
+	// 문의 답변 등록
 	void QueUpdate(QueVO vo);
 
-	// ö�� ���������� - ���� ����� ��� - ����¡ ó��
+	// 철우 마이페이지 - 내가 등록학 쉐어링 - 페이징 처리
 	List<Map<String, String>> getpagesharinglist(Map<String, Object> paramMap);
 
 	void deleteBoardLike(int seq);
 
-	/*************** ���� ������ �� ��� ******************/
+	/*************** 하윤 관리자 글 등록 ******************/
 
-	// �Խñ� ���
+	// 게시글 등록
 	void admin_register(AdminVO vo);
 
+	// 리스트
 	List<Map<String, String>> admin_getsharinglist(Map<String, Object> paramMap);
 }

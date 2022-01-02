@@ -40,7 +40,7 @@ import com.nplit.vo.PageVO;
 import com.nplit.vo.QueVO;
 
 @Controller
-//board�� model ����� ��ü�� ������ HttpSession ������ �����ҿ��� ������ Ű ��(board)�� ����
+//board로 model 저장된 객체가 있으면 HttpSession 데이터 보관소에서 동일한 키 값(board)로 저장//board�� model ����� ��ü�� ������ HttpSession ������ �����ҿ��� ������ Ű ��(board)�� ����
 //@SessionAttributes("board")
 public class BoardController {
 	@Autowired
@@ -48,15 +48,15 @@ public class BoardController {
 	@Autowired
 	private ChatService chatService;
 
-	// @ModelAttribute : 1. Command ��ü �̸� ����
-	// 2. View(JSP)���� ����� ������ ����
+	// @ModelAttribute : 1. Command 객체 이름 지정
+	// 2. View(JSP)에서 사용할 데이터 설정
 	@ModelAttribute("conditionMap")
 	public Map<String, String> searchConditionMap() {
 		Map<String, String> conditionMap = new HashMap<String, String>();
 		conditionMap.put("����", "TITLE");
 		conditionMap.put("����", "CONTENT");
-		// ���� ���� ReqeustServlet ������ �����ҿ� ����
-		// conditionMap�̶�� Ű ������ �����Ͱ� ����
+		// 리턴 값은 ReqeustServlet 데이터 보관소에 저장
+		// conditionMap이라는 키 값으로 데이터가 저장
 		return conditionMap;
 	}
 
@@ -77,14 +77,14 @@ public class BoardController {
 		return "/main/notice";
 	}
 
-	/******* ���� ó�� nearme �������� ���� �� ȭ�� **********/
+	/******* 하윤 처음 nearme 페이지에 왔을 때 화면 **********/
 	@RequestMapping(value = "/near_me")
 	public String near_me(BoardVO vo, Model model, Criteria cri) {
 		model.addAttribute("registerlist", boardService.getsharinglist(vo, cri));
 		return "/near/near_me";
 	}
 
-	/************** ���� nearme ������ -> �˻��� ����� ���� ******************/
+	/************** 하윤 nearme 페이지 -> 검색후 목록이 나옴 ******************/
 	@RequestMapping("/registerlist_nearme")
 	public String registerlist_nearme(BoardVO vo, Model model, Criteria cri) throws Exception {
 		if (vo.getSearchAddress() == null) {
@@ -103,7 +103,7 @@ public class BoardController {
 		return "/near/near_me";
 	}
 
-	// ******************* ä�� ������ �̵� **************************
+	// ******************* chatting **************************
 
 	@RequestMapping(value = "/chatting")
 	public String chatting() {
@@ -112,13 +112,13 @@ public class BoardController {
 
 	// ******************* sharing **************************
 
-	// �� ��� ȭ������ �̵�(url ���� �Է�, a�±� Ŭ��)
+	// 글 등록 화면으로 이동(url 직접 입력, a태그 클릭)
 	@RequestMapping(value = "/register_view")
 	public String register_view() throws Exception {
 		return "/sharing/register";
 	}
 
-	// �� ��� �� -> �� ���� �������� �̵�
+	// 글 등록 후 -> 상세 보기 페이지로 이동
 	@RequestMapping("/register")
 	public String register(BoardVO vo, ChatRoomVO crvo, ChatMemberListVO cmlvo, Model model, HttpServletRequest request,
 			MultipartHttpServletRequest mhsr) throws IOException {
@@ -131,16 +131,16 @@ public class BoardController {
 
 		boardService.register(vo);
 
-		// ä�ù� ����
+		// 채팅방 개설
 		crvo.setRoomId(seq);
 		chatService.craeteRoom(crvo);
 
-		// ���� ä�ù� ����
+		// 방장 채팅방 참가
 		cmlvo.setRoomId(seq);
 		cmlvo.setMemberId(id);
 		chatService.joinRoomMaster(cmlvo);
 
-		// ÷������ ���
+		// 첨부파일 등록
 		FileUtils fileUtils = new FileUtils();
 		List<AttachVO> fileList = fileUtils.parseFileInfo(seq, request, mhsr);
 
@@ -150,7 +150,7 @@ public class BoardController {
 		return "redirect:/details?seq=" + seq;
 	}
 
-	// ��� ��� ȭ�� - �׸���(�⺻)
+	// 쉐어링 목록 화면 - 그리드(기본)
 	@RequestMapping("/registerlist")
 	public String registerlist(BoardVO vo, Model model, Criteria cri) throws Exception {
 		System.out.println("cate==========================================" + vo.getCategory());
@@ -184,8 +184,6 @@ public class BoardController {
 		model.addAttribute("pageMaker", new PageVO(cri, total));
 
 		System.out.println(boardService.getsharinglist(vo, cri));
-
-		// ���� ī�װ�
 		model.addAttribute("current_category", vo.getCategory());
 
 		return "/sharing/grid";
@@ -193,7 +191,7 @@ public class BoardController {
 
 	// ******************* mypage - sharing **************************
 
-	// ���� ���������� ��� ��� ����
+	// 하윤 마이페이지 쉐어링 목록 보기
 	@RequestMapping(value = "/sharing_registered")
 	public String registered_mylist(BoardVO vo, Criteria cri, Model model, HttpServletRequest request)
 			throws Exception {
@@ -202,7 +200,7 @@ public class BoardController {
 		MemberVO loginInfo = (MemberVO) session.getAttribute("login");
 		String id = loginInfo.getMemberId();
 
-		// ����¡ó�� ����
+		// 페이징처리 수정
 		cri.setAmount(4);
 		int total = boardService.registered_mylist_count(id); // total = ���� ����� ��� �� ����
 		System.out.println("**** ���� ����� ��� �� ����" + total);
@@ -214,22 +212,22 @@ public class BoardController {
 		return "/mypage/sharing_registered";
 	}
 
-	// ���� ���������� - ��� ����
+	// 하윤 마이페이지 - 쉐어링 삭제
 	@RequestMapping(value = "/mypage/sharing_registered/delete")
 	public String mypage_sharing_delete(@RequestParam("seq") int seq) {
 		boardService.mydelete(seq);
 		boardService.deleteFile(seq);
 
-		// ���� �� ���� -> ���ƿ� ���̺� ����
+		// 예진 글 삭제 -> 좋아요 테이블 삭제
 		boardService.deleteBoardLike(seq);
-		// �ۻ��� -> ä�� ���� ���̺� ���� ����
+		// 글삭제 -> 채팅 관련 테이블 정보 삭제
 		boardService.deleteBoardChatMemberList(seq);
 		boardService.deleteBoardChatMessage(seq);
 		boardService.deleteBoardChatRoom(seq);
 		return "redirect:/sharing_registered";
 	}
 
-	// �������������� �� ���� ȭ������ �̵�(url ���� �Է�, a�±� Ŭ��)
+	// 마이페이지에서 글 수정 화면으로 이동(url 직접 입력, a태그 클릭)
 	@RequestMapping(value = "/myupdate_view")
 	public String update_view(@RequestParam("seq") int seq, Model model) {
 		BoardVO vo = boardService.mydetails(seq);
@@ -240,9 +238,8 @@ public class BoardController {
 		return "/sharing/update";
 	}
 
-	// ���� �� ���� ���
-	// ModelAttribute�� ���ǿ� board��� �̸����� ����� ��ü�� �ִ��� ã�Ƽ� Command��ü��
-	// �����
+	// 하윤 글 수정 기능
+	// ModelAttribute로 세션에 board라는 이름으로 저장된 객체가 있는지 찾아서 Command객체에 담아줌
 	@RequestMapping(value = "/myupdate")
 	public String myupdate(@ModelAttribute("myupdate") BoardVO vo, Model model, HttpSession session)
 			throws IOException {
@@ -256,35 +253,35 @@ public class BoardController {
 		return "redirect:/details?seq=" + vo.getSeq();
 	}
 
-	// ���� delete ��� ����
+	// 하윤 delete 기능 구현
 	@RequestMapping(value = "/mydelete")
 	public String mydelete(int seq) {
 		System.out.println("�� ���� ó��");
 		boardService.deleteFile(seq);
 		boardService.mydelete(seq);
-		// ���� �� ���� -> ���ƿ� ���̺� ����
+		// 예진 글 삭제 -> 좋아요 테이블 삭제
 		boardService.deleteBoardLike(seq);
-		// �ۻ��� -> ä�� ���� ���̺� ���� ����
+		// 글삭제 -> 채팅 관련 테이블 정보 삭제
 		boardService.deleteBoardChatMemberList(seq);
 		boardService.deleteBoardChatMessage(seq);
 		boardService.deleteBoardChatRoom(seq);
 		return "redirect:/sharing_registered";
 	}
 
-	// ���� ���������� - ��� �󼼺���
+	// 하윤 마이페이지 - 쉐어링 상세보기
 	@RequestMapping(value = "/sharing_registered/details")
 	public String mypage_sharing_details(@RequestParam("seq") int seq, Model model, HttpSession session) {
 		MemberVO loginInfo = (MemberVO) session.getAttribute("login");
 		String memberId = loginInfo.getMemberId();
 
-		// boardService.hitcount(seq); //��ȸ���� ���� ������Ʈ�ϰ�
+		// boardService.hitcount(seq); //조회수를 먼저 업데이트하고
 
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 
 		paramMap.put("seq", seq);
 		paramMap.put("memberId", memberId);
 
-		// ��ǰ�� ��ȸ�ؾ��� (���Ʒ� ������ �ٲ���־ ��ȸ���� 0���� �� ����)
+		// 상품을 조회해야함 (위아래 순서가 바뀌어있어서 조회수가 0부터 뜬 것임)
 		Map<String, String> resultMap = boardService.details(seq);
 
 		model.addAttribute("board", boardService.mydetails(seq));
@@ -297,17 +294,17 @@ public class BoardController {
 		return "/sharing/details";
 	}
 
-	// ���� - ��������
+	// 원준 - 상세페이지
 	@RequestMapping("/details")
 	public String details(@RequestParam("seq") int seq, Model model, BoardVO vo, HttpSession session) {
 
 		if ((MemberVO) session.getAttribute("login") == null) {
-			boardService.hitcount(seq); // ��ȸ���� ���� ������Ʈ�ϰ�
+			boardService.hitcount(seq); // 조회수를 먼저 업데이트하고
 
 			Map<String, Object> paramMap = new HashMap<String, Object>();
 
 			paramMap.put("seq", seq);
-			// ��ǰ�� ��ȸ�ؾ��� (���Ʒ� ������ �ٲ���־ ��ȸ���� 0���� �� ����)
+			// 상품을 조회해야함 (위아래 순서가 바뀌어있어서 조회수가 0부터 뜬 것임)
 			Map<String, String> resultMap = boardService.details(seq);
 			System.out.println("===================>" + resultMap);
 
@@ -319,14 +316,14 @@ public class BoardController {
 			MemberVO loginInfo = (MemberVO) session.getAttribute("login");
 			String memberId = loginInfo.getMemberId();
 
-			boardService.hitcount(seq); // ��ȸ���� �դ��� ������Ʈ�ϰ�
+			boardService.hitcount(seq); // 조회수를 먼저 업데이트하고
 
 			Map<String, Object> paramMap = new HashMap<String, Object>();
 
 			paramMap.put("seq", seq);
 			paramMap.put("memberId", memberId);
 
-			// ��ǰ�� ��ȸ�ؾ��� (���Ʒ� ������ �ٲ���־ ��ȸ���� 0���� �� ����)
+			// 상품을 조회해야함 (위아래 순서가 바뀌어있어서 조회수가 0부터 뜬 것임)
 			Map<String, String> resultMap = boardService.details(seq);
 			System.out.println("===================>" + resultMap);
 
@@ -338,33 +335,23 @@ public class BoardController {
 		return "/sharing/details";
 	}
 
-//	@GetMapping(value="/sharing_list")
-//	public String list() {
-//		return "insertBoard";
-//	}
-//
-//	@GetMapping(value="/insertBoard.do")
-//	public String insertBoardView() {
-//		return "insertBoard";
-//	}
-
 	@PostMapping("/insertBoard.do")
-	// Command ��ü : ����ڰ� ������ �����͸� ������ VO�� �ٷ� ����
-	// ����� �Է� ���� �������� �ڵ尡 ������� ������ ����ȭ ����
-	// ����� �Է� input�� name �Ӽ��� VO ��������� �̸��� �������ִ� ���� �߿�
+	// Command 객체 : 사용자가 전송한 데이터를 매핑한 VO를 바로 생성
+	// 사용자 입력 값이 많아지면 코드가 길어지기 때문에 간략화 가능
+	// 사용자 입력 input의 name 속성과 VO 멤버변수의 이름을 매핑해주는 것이 중요
 	public String insertBoard(BoardVO vo, HttpServletRequest request, MultipartHttpServletRequest mhsr)
 			throws IOException {
-		System.out.println("�� ��� ó��");
+		System.out.println("글 등록 처리");
 		boardService.insertBoard(vo);
 
-		// ȭ�� �׺���̼�(�Խñ� ��� �Ϸ� �� �Խñ� ������� �̵�)
+		// 화면 네비게이션(게시글 등록 완료 후 게시글 목록으로 이동)
 		return "redirect:getBoardList.do";
 	}
 
 	@RequestMapping(value = "/getBoardList.do")
-	// @RequestParam : Command ��ü�� VO�� ���ΰ��� ���� ����� �Է������� ���� �޾Ƽ� ó��
-	// value = ȭ�����κ��� ���޵� �Ķ���� �̸�(jsp�� input�� name�Ӽ� ��)
-	// required = ���� ���� ����
+	// @RequestParam : Command 객체인 VO에 매핑값이 없는 사용자 입력정보는 직접 받아서 처리
+	// value = 화면으로부터 전달된 파라미터 이름(jsp의 input의 name속성 값)
+	// required = 생략 가능 여부
 	public String getBoardList( /*
 								 * @RequestParam(value="searchCondition", defaultValue="TITLE", required=false)
 								 * String condition,
@@ -373,7 +360,7 @@ public class BoardController {
 								 * keyword,
 								 */
 			BoardVO vo, Model model) {
-		System.out.println("�� ��� �˻� ó��");
+		System.out.println("글 목록 검색 처리");
 
 		model.addAttribute("boardList", boardService.getBoardList(vo));
 		return "getBoardList";
@@ -389,22 +376,22 @@ public class BoardController {
 	@ResponseBody
 	public ResponseEntity<Resource> fileDown(@RequestParam("fileName") String fileName, HttpServletRequest request)
 			throws Exception {
-		// ���ε� ���� ���
+		// 업로드 파일 경로
 		String path = request.getSession().getServletContext().getRealPath("/") + "/upload/";
 
 		System.out.println(path);
 
-		// ���ϰ��, ���ϸ����� ���ҽ� ��ü ����
+		// 파일경로, 파일명으로 리소스 객체 생성
 		Resource resource = new FileSystemResource(path + fileName);
 
-		// ���� ��
+		// 파일 명
 		String resourceName = resource.getFilename();
 
-		// Http����� �ɼ��� �߰��ϱ� ���ؼ� ��� ���� ����
+		// Http헤더에 옵션을 추가하기 위해서 헤더 변수 선언
 		HttpHeaders headers = new HttpHeaders();
 
 		try {
-			// ����� ���ϸ����� ÷������ �߰�
+			// 헤더에 파일명으로 첨부파일 추가
 			headers.add("Content-Disposition",
 					"attachment; filename=" + new String(resourceName.getBytes("UTF-8"), "ISO-8859-1"));
 		} catch (UnsupportedEncodingException e) {
@@ -414,16 +401,16 @@ public class BoardController {
 		return new ResponseEntity<Resource>(resource, headers, HttpStatus.OK);
 	}
 
-	/*************** ���� ������ ������ ******************/
+	/*************** 진형 관리자 페이지 ******************/
 
-	// 1:1���� ������ ������ ����Ʈ
+	// 1:1문의 관리자 페이지 리스트
 	@GetMapping("/admin/inquirepage")
 	public void admin_inquirepage(Model model) throws Exception {
 
 		model.addAttribute("getQuestionList", boardService.getQuestionList());
 	}
 
-	// ���� ���� - 1:1 ���� ����
+	// 진형 어드민 - 1:1 문의 삭제
 	@RequestMapping(value = "quedelete")
 	public String QuestionDelete(@RequestParam("seq") int seq) {
 		boardService.QuestionDelete(seq);
@@ -431,7 +418,7 @@ public class BoardController {
 
 	}
 
-	// ���� - ���� �亯 ������ ��ȸ
+	// 진형 - 문의 답변 페이지 조회
 	@RequestMapping("/QueAnwser")
 	public String QueAnwser(@RequestParam("seq") int seq, Model model) throws Exception {
 		QueVO vo = boardService.QueAnwser(seq);
@@ -440,9 +427,8 @@ public class BoardController {
 		return "/admin/inquiredetail";
 	}
 
-	// ���� ���� �亯 �ۼ�
-	// ModelAttribute�� ���ǿ� board��� �̸����� ����� ��ü�� �ִ��� ã�Ƽ� Command��ü��
-	// �����
+	// 진형 문의 답변 작성
+	// ModelAttribute로 세션에 board라는 이름으로 저장된 객체가 있는지 찾아서 Command객체에 담아줌
 	@RequestMapping(value = "/QueUpdate")
 	public String QueUpdate(@ModelAttribute("question") QueVO vo, Model model) throws IOException {
 		int seq = vo.getSeq();
@@ -453,22 +439,22 @@ public class BoardController {
 		return "redirect:/admin/inquirepage";
 	}
 
-	/*************** ���� ������ �� ��� ******************/
+	/*************** 하윤 관리자 글 등록 ******************/
 
-	// ������ ������������ �̵�
+	// 관리자 메인페이지로 이동
 	@RequestMapping(value = "/admin_page")
 	public String admin_page(AdminVO vo, Model model, Criteria cri) {
 		model.addAttribute("admin_registerlist", boardService.admin_getsharinglist(vo, cri));
 		return "/admin/admin_page";
 	}
 
-	// ������ �������������� �۵��ȭ������ �̵�
+	// 관리자 메인페이지에서 글등록화면으로 이동
 	@RequestMapping(value = "/admin_eventmake_view")
 	public String admin_eventmake_view() throws Exception {
 		return "/admin/eventmake";
 	}
 
-	// ������ �� ��� �� ������� �̵�
+	// 관리자 글 등록 후 목록으로 이동
 	@RequestMapping(value = "/admin_register")
 	public String admin_register(AdminVO vo, Model model, HttpServletRequest request, MultipartHttpServletRequest mhsr)
 			throws IOException {
@@ -481,7 +467,7 @@ public class BoardController {
 
 		boardService.admin_register(vo);
 
-		// ÷������ ���
+		// 첨부파일 등록
 		FileUtils fileUtils = new FileUtils();
 		List<AttachVO> fileList = fileUtils.parseFileInfo(seq, request, mhsr);
 
@@ -491,9 +477,10 @@ public class BoardController {
 		return "redirect:/admin_registerlist";
 	}
 
-	// ������ �� ��� ȭ��
+	// 관리자 글 등록 화면
 	@RequestMapping("/admin_registerlist")
 	public String admin_registerlist(AdminVO vo, Model model, Criteria cri) throws Exception {
+		System.out.println("cate=============" + vo.getCategory());
 
 		model.addAttribute("admin_registerlist", boardService.admin_getsharinglist(vo, cri));
 

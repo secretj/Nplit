@@ -30,7 +30,7 @@ public class ChatController {
 	@Inject
 	ChatService service;
 
-	// ä�ù� ����
+	// 채팅방 참가
 	@RequestMapping(value = "/roomJoin")
 	public String roomJoin(@RequestParam("roomId") int roomId, ChatMemberListVO cmlvo, Model model,
 			HttpServletRequest request) {
@@ -44,7 +44,7 @@ public class ChatController {
 			service.roomJoin(cmlvo);
 		}
 
-		// ä�ù� ���� �ҷ�����
+		// 채팅방 정보 불러오기
 		ChatRoomVO vo = service.selectChattingDetail(roomId);
 		model.addAttribute("selectMyChatting", vo);
 		model.addAttribute("chatcheck", service.chatcheck(cmlvo));
@@ -52,12 +52,12 @@ public class ChatController {
 
 	}
 
-	// ���� ������ ä�� ����Ʈ�̾ƿ���
+	// 내가 참가한 채팅 리스트뽑아오기
 	@RequestMapping("/selectMyChatting")
 	public String selectMyChatting(HttpSession session, ChatMemberListVO cmlvo, Model model) {
 
-		MemberVO loginInfo = (MemberVO) session.getAttribute("login"); // �α��� ���� �̾ƿ���
-		// loginInfo��� ������ �α��� ���̵� ����
+		MemberVO loginInfo = (MemberVO) session.getAttribute("login"); // 로그인 정보 뽑아오기
+		// writer라는 변수에 로그인 아이디 저장
 
 		model.addAttribute("selectMyChatting", service.selectMyChatting(loginInfo.getMemberId()));
 		model.addAttribute("chatcheck", service.chatcheck(cmlvo));
@@ -65,7 +65,7 @@ public class ChatController {
 		return "chatting/chatting";
 	}
 
-	// ���� - ä�ù� ���� ��ȸ
+	// 진형 - 채팅방 정보 조회
 	@RequestMapping("/selectChattingDetail")
 	public String selectChattingDetail(@RequestParam("roomId") int seq, Model model) {
 		ChatRoomVO vo = service.selectChattingDetail(seq);
@@ -73,7 +73,7 @@ public class ChatController {
 		return "chatting/chattingdetail";
 	}
 
-	// �޼��� ����
+	// 메세지 저장
 	@RequestMapping(value = "/insertSendMsg")
 	public void insertSendMsg(@RequestParam("roomId") int roomId, ChatMessageVO vo, HttpServletRequest request) {
 
@@ -88,7 +88,7 @@ public class ChatController {
 
 	}
 
-	// ���� - �ش� ���� �޼��� ��ȸ
+	// 진형 - 해당 방의 메세지 조회
 	@RequestMapping("/selectMessage")
 	public String selectMessage(@RequestParam("roomId") int seq, Model model) {
 		List<ChatMessageVO> cm = service.selectMessage(seq);

@@ -31,12 +31,12 @@ public class MemberListServiceImpl implements MemberListService {
 		mlMapper.updateMemberList(vo);
 	}
 
-	// ��ü �� ��������
+//전체 수 가져오기
 	public int getListCount(String parId) {
 		return mlMapper.getListCount(parId);
 	}
 
-	// ��������
+// 내가찜한 
 	public List<Map<String, String>> selectMemberList(Map<String, Object> paramMap) {
 		return mlMapper.selectMemberList(paramMap);
 	}

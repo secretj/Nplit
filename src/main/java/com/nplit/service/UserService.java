@@ -9,58 +9,58 @@ import com.nplit.vo.MemberVO;
 import com.nplit.vo.QueVO;
 
 public interface UserService {
-	// �α���
+	// 로그인
 	public MemberVO login(MemberVO dto);
 
-	// �ڵ��α��� üũ�� ��쿡 ����� ���̺� ���ǰ� ��ȿ�ð��� �����ϱ� ���� �޼���
+	// 자동로그인 체크한 경우에 사용자 테이블에 세션과 유효시간을 저장하기 위한 메서드
 	public void keepLogin(String member_id, String sessionId, Date next);
 
-	// ������ �α����� ���� �ִ���, �� ��ȿ�ð��� ���� ���� ������ ������ �ִ��� üũ�Ѵ�.
+	// 이전에 로그인한 적이 있는지, 즉 유효시간이 넘지 않은 세션을 가지고 있는지 체크한다.
 	public MemberVO checkUserWithSessionKey(String sessionId);
 
-	// ȸ������
+	// 회원가입
 	void join(MemberVO vo);
 
-	// ������������
+	// 개인정보수정
 	void profileUpdate(MemberVO vo);
 
-	// ��й�ȣ ����
+	// 비밀번호 수정
 	void pwdUpdate(MemberVO vo);
 
-	// ȸ��Ż��
+	// 회원탈퇴
 	void memberDelete(MemberVO vo);
 
-	// �α��� ȸ�� ����
+	// 로그인 회원 정보
 	MemberVO LoginInfo(MemberVO vo);
 
-	// ����ȸ������
+	// 구글회원가입
 	public void joinMemberByGoogle(MemberVO vo);
 
-	// ���۷α���
+	// 구글로그인
 	public MemberVO loginMemberByGoogle(MemberVO vo);
 
-	// ********* ���� �ߺ��˻� ************
-	// ���̵� �ߺ�Ȯ�� üũ
+	// ********* 예진 중복검사 ************
+	// 아이디 중복확인 체크
 	public int idChk(MemberVO vo) throws Exception;
 
-	// ���� �г��� �ߺ�üũ
+	// 예진 닉네임 중복체크
 	public int nicknameChk(MemberVO vo) throws Exception;
 
-	// ���� �α��� �˻�
+	// 예진 로그인 검사
 	public int loginChk(MemberVO vo) throws Exception;
 
-	// �̸��Ϲ߼�
+	// 이메일발송
 	public void sendEmail(MemberVO vo, String div) throws Exception;
 
-	// ��й�ȣã��
+	// 비밀번호찾기
 	public String findPw(MemberVO vo) throws Exception;
 
-	// 1:1�����ϱ� ���
+	// 1:1문의하기 등록
 	public void question(QueVO vo, HttpServletRequest request);
 
-	// �ٸ� ��� ������ ��ȸ
+	// 다른 사람 프로필 조회
 	public MemberVO selectOtherProfile(String memberId);
 
-	// ���� ������ ����Ʈ ��ȸ
+	// 내가 문의한 리스트 조회
 	List<QueVO> selectMyQuestion(String memberId);
 }

@@ -1,14 +1,15 @@
 package com.nplit.exception;
 
 /**
- * ·Î±×ÀÎÀÌ ½ÇÆĞ ÇßÀ» ¶§ ÀÍ¼Á¼Ç.
+ * ë¡œê·¸ì¸ì´ ì‹¤íŒ¨ í–ˆì„ ë•Œ ìµì…‰ì…˜.
+ * 
  * @author Park
  *
  */
 public class LoginFailedException extends ResponseBodyException {
-   private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-   public LoginFailedException(String message, Throwable cause) {
-      super(message, 200, cause);
-   }
+	public LoginFailedException(String message, Throwable cause) {
+		super(message, 200, cause);
+	}
 }

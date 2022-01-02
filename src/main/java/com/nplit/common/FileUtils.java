@@ -23,24 +23,24 @@ public class FileUtils {
 
 		List<AttachVO> fileList = new ArrayList<AttachVO>();
 
-		// ������ ���� ��� ���
+		// 서버의 절대 경로 얻기
 		String root_path = request.getSession().getServletContext().getRealPath("/");
 		String attach_path = "/upload/";
 
-		// �� ����� ������ ������ ���� ����
+		// 위 경로의 폴더가 없으면 폴더 생성
 		File file = new File(root_path + attach_path);
 		if (file.exists() == false) {
 			file.mkdir();
 		}
 
-		// ���� �̸����� iterator�� ����
+		// 파일 이름들을 iterator로 담음
 		Iterator<String> iterator = mhsr.getFileNames();
 
 		while (iterator.hasNext()) {
-			// ���ϸ����� ���� ����Ʈ ��������
+			// 파일명으로 파일 리스트 꺼내오기
 			List<MultipartFile> list = mhsr.getFiles(iterator.next());
 
-			// ���� ����Ʈ ���� ��ŭ ������ ���� ����Ʈ�� ����ְ� ����
+			// 파일 리스트 개수 만큼 리턴할 파일 리스트에 담아주고 생성
 			for (MultipartFile mf : list) {
 				if (mf.getSize() > 0) {
 					AttachVO attach = new AttachVO();

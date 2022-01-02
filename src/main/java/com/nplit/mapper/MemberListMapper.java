@@ -16,7 +16,6 @@ public interface MemberListMapper {
 
 	int updateMemberList(MemberListVO vo);
 
-
 	// ��ü �� ��������
 	int getListCount(String parId);
 

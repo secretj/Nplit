@@ -1,14 +1,15 @@
 package com.nplit.exception;
 
 /**
- * ÀÌ¸ŞÀÏ Àü¼ÛÀÌ ½ÇÆĞ ÇßÀ» ¶§ ÀÍ¼Á¼Ç.
+ * ì´ë©”ì¼ ì „ì†¡ì´ ì‹¤íŒ¨ í–ˆì„ ë•Œ ìµì…‰ì…˜.
+ * 
  * @author Park
  *
  */
 public class FailedSendMailException extends ResponseBodyException {
-   private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-   public FailedSendMailException(String message, Throwable cause) {
-      super(message, 100, cause);
-   }
+	public FailedSendMailException(String message, Throwable cause) {
+		super(message, 100, cause);
+	}
 }
