@@ -268,8 +268,8 @@ public class UserController {
 		// 파일 업로드 처리 - 진형
 		MultipartFile uploadFile = vo.getUploadFile();
 
-		String root_path = request.getSession().getServletContext().getRealPath("/");
-		String attach_path = "/upload/";
+		String root_path = request.getSession().getServletContext().getRealPath("/");	//상대 경로
+		String attach_path = "/upload/";	//절대 경로
 
 		if (!uploadFile.isEmpty()) {
 			String fileName = uploadFile.getOriginalFilename();

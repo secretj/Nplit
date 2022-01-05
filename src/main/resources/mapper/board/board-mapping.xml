@@ -554,7 +554,7 @@
              ON A.SEQ = B.SEQ
              AND B.FILENO = 1
        ORDER BY A.SEQ DESC
-       LIMIT 6<!-- 숫자만 바꾸면된다 유미야 알겠지? 그러고 그런말 하지마 멕이는말^^ -->
+       LIMIT 6
    </select>
    
    <!-- 인덱스페이지 : 인기순 -->

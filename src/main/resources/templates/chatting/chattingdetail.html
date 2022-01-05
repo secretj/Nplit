@@ -343,15 +343,12 @@
    <script th:inline="javascript">
       $(document).ready(function () {
 	
-	
-	
          $("#msgArea").scrollTop(999999);
          console.log($("#msgArea").height());
          var messageList = [[${selectMessage}]];
          messageList.forEach(function (item) {
             console.log(item);
          });
-         //var roomTitle = [[${selectChattingDetail?.title}]];
          var roomId = [[${selectChattingDetail?.roomId}]];
          var username = [[${session.login.memberId}]];
 

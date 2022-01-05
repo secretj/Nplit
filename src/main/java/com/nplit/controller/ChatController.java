@@ -34,7 +34,7 @@ public class ChatController {
 	@RequestMapping(value = "/roomJoin")
 	public String roomJoin(@RequestParam("roomId") int roomId, ChatMemberListVO cmlvo, Model model,
 			HttpServletRequest request) {
-
+																																										
 		HttpSession session = request.getSession();
 		MemberVO loginInfo = (MemberVO) session.getAttribute("login");
 		String memberId = loginInfo.getMemberId();
